@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D8798788-BFA1-43A9-9D9D-CFF2695B595D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Chapy</RootNamespace>
+    <AssemblyName>Chapy</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=11.2.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=11.2.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChapyModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChapyModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChapyModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChapyModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChapyModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CpBuilding.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpClass.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpClassStaff.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpCorporation.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpGradeCode.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpGroup.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpHoliday.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpPosition.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpSchedule.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpScheduleDetail.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpSchool.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpStaff.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpStaffType.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpStartEndDate.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpTannin.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpTerm.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CpTimeZone.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreateSchedule.cs" />
+    <Compile Include="FrmEachTeacherSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEachTeacherSetting.Designer.cs">
+      <DependentUpon>FrmEachTeacherSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAllTeacherSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAllTeacherSetting.Designer.cs">
+      <DependentUpon>FrmAllTeacherSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGroup.Designer.cs">
+      <DependentUpon>FrmGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGroupList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGroupList.Designer.cs">
+      <DependentUpon>FrmGroupList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuilding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuilding.Designer.cs">
+      <DependentUpon>FrmBuilding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuildingList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuildingList.Designer.cs">
+      <DependentUpon>FrmBuildingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCorporation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCorporation.Designer.cs">
+      <DependentUpon>FrmCorporation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHoliday.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHoliday.Designer.cs">
+      <DependentUpon>FrmHoliday.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLawSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLawSetting.Designer.cs">
+      <DependentUpon>FrmLawSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMaintain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMaintain.Designer.cs">
+      <DependentUpon>FrmMaintain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMakeShift.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMakeShift.Designer.cs">
+      <DependentUpon>FrmMakeShift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPosition.Designer.cs">
+      <DependentUpon>FrmPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPositionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPositionList.Designer.cs">
+      <DependentUpon>FrmPositionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrinter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrinter.Designer.cs">
+      <DependentUpon>FrmPrinter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSchedule.Designer.cs">
+      <DependentUpon>FrmSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSchoolSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSchoolSelect.Designer.cs">
+      <DependentUpon>FrmSchoolSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmShool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShool.Designer.cs">
+      <DependentUpon>FrmShool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStaff.Designer.cs">
+      <DependentUpon>FrmStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStaffGroupSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStaffGroupSelect.Designer.cs">
+      <DependentUpon>FrmStaffGroupSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStaffRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStaffRegister.Designer.cs">
+      <DependentUpon>FrmStaffRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStaffsSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStaffsSelect.Designer.cs">
+      <DependentUpon>FrmStaffsSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStaffType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStaffType.Designer.cs">
+      <DependentUpon>FrmStaffType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStaffTypeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStaffTypeList.Designer.cs">
+      <DependentUpon>FrmStaffTypeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTannin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTannin.Designer.cs">
+      <DependentUpon>FrmTannin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTanninList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTanninList.Designer.cs">
+      <DependentUpon>FrmTanninList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTerm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTerm.Designer.cs">
+      <DependentUpon>FrmTerm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTermList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTermList.Designer.cs">
+      <DependentUpon>FrmTermList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWorkArrangement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWorkArrangement.Designer.cs">
+      <DependentUpon>FrmWorkArrangement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWorkArrangementDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWorkArrangementDetail.Designer.cs">
+      <DependentUpon>FrmWorkArrangementDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JapanHoliday.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MakeSchedule.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Staffs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staffs.Designer.cs">
+      <DependentUpon>Staffs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FrmAllTeacherSetting.resx">
+      <DependentUpon>FrmAllTeacherSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEachTeacherSetting.resx">
+      <DependentUpon>FrmEachTeacherSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGroup.resx">
+      <DependentUpon>FrmGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGroupList.resx">
+      <DependentUpon>FrmGroupList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuilding.resx">
+      <DependentUpon>FrmBuilding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuildingList.resx">
+      <DependentUpon>FrmBuildingList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCorporation.resx">
+      <DependentUpon>FrmCorporation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHoliday.resx">
+      <DependentUpon>FrmHoliday.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLawSetting.resx">
+      <DependentUpon>FrmLawSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMaintain.resx">
+      <DependentUpon>FrmMaintain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMakeShift.resx">
+      <DependentUpon>FrmMakeShift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPosition.resx">
+      <DependentUpon>FrmPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPositionList.resx">
+      <DependentUpon>FrmPositionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrinter.resx">
+      <DependentUpon>FrmPrinter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSchedule.resx">
+      <DependentUpon>FrmSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSchoolSelect.resx">
+      <DependentUpon>FrmSchoolSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmShool.resx">
+      <DependentUpon>FrmShool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStaff.resx">
+      <DependentUpon>FrmStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStaffGroupSelect.resx">
+      <DependentUpon>FrmStaffGroupSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStaffRegister.resx">
+      <DependentUpon>FrmStaffRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStaffsSelect.resx">
+      <DependentUpon>FrmStaffsSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStaffType.resx">
+      <DependentUpon>FrmStaffType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStaffTypeList.resx">
+      <DependentUpon>FrmStaffTypeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTannin.resx">
+      <DependentUpon>FrmTannin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTanninList.resx">
+      <DependentUpon>FrmTanninList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTerm.resx">
+      <DependentUpon>FrmTerm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTermList.resx">
+      <DependentUpon>FrmTermList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWorkArrangement.resx">
+      <DependentUpon>FrmWorkArrangement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWorkArrangementDetail.resx">
+      <DependentUpon>FrmWorkArrangementDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Staffs.resx">
+      <DependentUpon>Staffs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="ChapyModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ChapyModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ChapyModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ChapyModel.edmx</DependentUpon>
+      <LastGenOutput>ChapyModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="ChapyModel.edmx.diagram">
+      <DependentUpon>ChapyModel.edmx</DependentUpon>
+    </None>
+    <None Include="ChapyModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ChapyModel.edmx</DependentUpon>
+      <LastGenOutput>ChapyModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

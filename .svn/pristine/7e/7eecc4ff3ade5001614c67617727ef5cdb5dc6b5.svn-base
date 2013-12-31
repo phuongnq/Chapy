@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="chapyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="chapyEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="CpBuildings" EntityType="chapyModel.CpBuilding" />
+    <EntitySet Name="CpClasses" EntityType="chapyModel.CpClass" />
+    <EntitySet Name="CpClassStaffs" EntityType="chapyModel.CpClassStaff" />
+    <EntitySet Name="CpCorporations" EntityType="chapyModel.CpCorporation" />
+    <EntitySet Name="CpGradeCodes" EntityType="chapyModel.CpGradeCode" />
+    <EntitySet Name="CpGroups" EntityType="chapyModel.CpGroup" />
+    <EntitySet Name="CpHolidays" EntityType="chapyModel.CpHoliday" />
+    <EntitySet Name="CpPositions" EntityType="chapyModel.CpPosition" />
+    <EntitySet Name="CpSchools" EntityType="chapyModel.CpSchool" />
+    <EntitySet Name="CpStaffs" EntityType="chapyModel.CpStaff" />
+    <EntitySet Name="CpStaffTypes" EntityType="chapyModel.CpStaffType" />
+    <EntitySet Name="CpStartEndDates" EntityType="chapyModel.CpStartEndDate" />
+    <EntitySet Name="CpTannins" EntityType="chapyModel.CpTannin" />
+    <EntitySet Name="CpTerms" EntityType="chapyModel.CpTerm" />
+    <EntitySet Name="CpTimeZones" EntityType="chapyModel.CpTimeZone" />
+    <EntitySet Name="JapanHolidays" EntityType="chapyModel.JapanHoliday" />
+    <EntitySet Name="sysdiagrams" EntityType="chapyModel.sysdiagram" />
+    <AssociationSet Name="FK_CpClass_CpGradeCode" Association="chapyModel.FK_CpClass_CpGradeCode">
+      <End Role="CpGradeCode" EntitySet="CpGradeCodes" />
+      <End Role="CpClass" EntitySet="CpClasses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CpClassStaff_CpClass" Association="chapyModel.FK_CpClassStaff_CpClass">
+      <End Role="CpClass" EntitySet="CpClasses" />
+      <End Role="CpClassStaff" EntitySet="CpClassStaffs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CpStaff_CpPosition" Association="chapyModel.FK_CpStaff_CpPosition">
+      <End Role="CpPosition" EntitySet="CpPositions" />
+      <End Role="CpStaff" EntitySet="CpStaffs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CpStaff_CpSchools" Association="chapyModel.FK_CpStaff_CpSchools">
+      <End Role="CpSchool" EntitySet="CpSchools" />
+      <End Role="CpStaff" EntitySet="CpStaffs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CpStartEndDate_CpSchools" Association="chapyModel.FK_CpStartEndDate_CpSchools">
+      <End Role="CpSchool" EntitySet="CpSchools" />
+      <End Role="CpStartEndDate" EntitySet="CpStartEndDates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CpTannin_CpSchools" Association="chapyModel.FK_CpTannin_CpSchools">
+      <End Role="CpSchool" EntitySet="CpSchools" />
+      <End Role="CpTannin" EntitySet="CpTannins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CpStaff_CpStaffType" Association="chapyModel.FK_CpStaff_CpStaffType">
+      <End Role="CpStaffType" EntitySet="CpStaffTypes" />
+      <End Role="CpStaff" EntitySet="CpStaffs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CpBuilding">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="SchoolId" />
+    <Property Type="Int32" Name="Code" />
+    <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Abbreviation" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreatedAt" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+  </EntityType>
+  <EntityType Name="CpClass">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="GradeCodeId" Nullable="false" />
+    <Property Type="Int32" Name="SchoolId" Nullable="false" />
+    <Property Type="Int32" Name="TermId" Nullable="false" />
+    <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreatedAt" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+    <NavigationProperty Name="CpGradeCode" Relationship="chapyModel.FK_CpClass_CpGradeCode" FromRole="CpClass" ToRole="CpGradeCode" />
+    <NavigationProperty Name="CpClassStaffs" Relationship="chapyModel.FK_CpClassStaff_CpClass" FromRole="CpClass" ToRole="CpClassStaff" />
+  </EntityType>
+  <EntityType Name="CpClassStaff">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ClassId" Nullable="false" />
+    <Property Type="Int32" Name="StaffId1" Nullable="false" />
+    <Property Type="Int32" Name="StaffId2" />
+    <Property Type="Int32" Name="StaffId3" />
+    <Property Type="Int32" Name="StaffId4" />
+    <Property Type="Int32" Name="StaffId5" />
+    <Property Type="Int32" Name="StaffId6" />
+    <Property Type="Int32" Name="NumberOfStaff" />
+    <Property Type="Int32" Name="TanninId" Nullable="false" />
+    <Property Type="DateTime" Name="CreatedAt" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+    <NavigationProperty Name="CpClass" Relationship="chapyModel.FK_CpClassStaff_CpClass" FromRole="CpClassStaff" ToRole="CpClass" />
+  </EntityType>
+  <EntityType Name="CpCorporation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ChairManFirstName" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ChairManLastName" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PostCode" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address1" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address2" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Tel" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Fax" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Email" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="HomePage" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CreatedAt" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+  </EntityType>
+  <EntityType Name="CpGradeCode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="TermId" Nullable="false" />
+    <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreatedAt" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+    <NavigationProperty Name="CpClasses" Relationship="chapyModel.FK_CpClass_CpGradeCode" FromRole="CpGradeCode" ToRole="CpClass" />
+  </EntityType>
+  <EntityType Name="CpGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="SchoolId" />
+    <Property Type="Int32" Name="Code" />
+    <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Abbreviation" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreatedAt" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+  </EntityType>
+  <EntityType Name="CpHoliday">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="Date" Precision="3" />
+    <Property Type="String" Name="Reason" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SchoolId" />
+  </EntityType>
+  <EntityType Name="CpPosition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="SchoolId" />
+    <Property Type="Int32" Name="Code" />
+    <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Abbreviation" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreatedAt" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+    <NavigationProperty Name="CpStaffs" Relationship="chapyModel.FK_CpStaff_CpPosition" FromRole="CpPosition" ToRole="CpStaff" />
+  </EntityType>
+  <EntityType Name="CpSchool">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="CorporationId" />
+    <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Code" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Representation" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PrinceName1" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PrinceName2" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PostCode" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address1" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address2" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Tel" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Fax" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Email" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="HomePage" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Byte" Name="UsePass" />
+    <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreatedAt" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+    <NavigationProperty Name="CpStaffs" Relationship="chapyModel.FK_CpStaff_CpSchools" FromRole="CpSchool" ToRole="CpStaff" />
+    <NavigationProperty Name="CpStartEndDates" Relationship="chapyModel.FK_CpStartEndDate_CpSchools" FromRole="CpSchool" ToRole="CpStartEndDate" />
+    <NavigationProperty Name="CpTannins" Relationship="chapyModel.FK_CpTannin_CpSchools" FromRole="CpSchool" ToRole="CpTannin" />
+  </EntityType>
+  <EntityType Name="CpStaff">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="StaffTypeId" Nullable="false" />
+    <Property Type="Int32" Name="PositionId" Nullable="false" />
+    <Property Type="Int32" Name="SchoolId" Nullable="false" />
+    <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Hiragana" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Abbreviation" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="Byte" Name="Gender" />
+    <Property Type="DateTime" Name="BirthDay" Precision="3" />
+    <Property Type="DateTime" Name="CreatedAt" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+    <NavigationProperty Name="CpPosition" Relationship="chapyModel.FK_CpStaff_CpPosition" FromRole="CpStaff" ToRole="CpPosition" />
+    <NavigationProperty Name="CpSchool" Relationship="chapyModel.FK_CpStaff_CpSchools" FromRole="CpStaff" ToRole="CpSchool" />
+    <NavigationProperty Name="CpStaffType" Relationship="chapyModel.FK_CpStaff_CpStaffType" FromRole="CpStaff" ToRole="CpStaffType" />
+  </EntityType>
+  <EntityType Name="CpStaffType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="SchoolId" />
+    <Property Type="Int32" Name="Code" />
+    <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Abbreviation" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CreatedAt" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+    <NavigationProperty Name="CpStaffs" Relationship="chapyModel.FK_CpStaff_CpStaffType" FromRole="CpStaffType" ToRole="CpStaff" />
+  </EntityType>
+  <EntityType Name="CpStartEndDate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="SchoolId" Nullable="false" />
+    <Property Type="DateTime" Name="StartDate" Precision="3" />
+    <Property Type="DateTime" Name="EndDate" Precision="3" />
+    <Property Type="DateTime" Name="CreatedAt" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+    <NavigationProperty Name="CpSchool" Relationship="chapyModel.FK_CpStartEndDate_CpSchools" FromRole="CpStartEndDate" ToRole="CpSchool" />
+  </EntityType>
+  <EntityType Name="CpTannin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="SchoolId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CreatedAt" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+    <NavigationProperty Name="CpSchool" Relationship="chapyModel.FK_CpTannin_CpSchools" FromRole="CpTannin" ToRole="CpSchool" />
+  </EntityType>
+  <EntityType Name="CpTerm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="SchoolId" Nullable="false" />
+    <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreatedAt" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+  </EntityType>
+  <EntityType Name="CpTimeZone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="SchoolId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Abbreviation" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Color" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DayOfWeeks" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="StartTime" Precision="3" />
+    <Property Type="DateTime" Name="EndTime" Precision="3" />
+    <Property Type="DateTime" Name="RestStartTime1" Precision="3" />
+    <Property Type="DateTime" Name="RestEndTime1" Precision="3" />
+    <Property Type="DateTime" Name="RestStartTime2" Precision="3" />
+    <Property Type="DateTime" Name="RestEndTime2" Precision="3" />
+    <Property Type="String" Name="ApplyClassed" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreatedAt" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+  </EntityType>
+  <EntityType Name="JapanHoliday">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Year" />
+    <Property Type="DateTime" Name="Date" Precision="0" />
+    <Property Type="String" Name="Name" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="principal_id" Nullable="false" />
+    <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="version" />
+    <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_CpClass_CpGradeCode">
+    <End Type="chapyModel.CpGradeCode" Role="CpGradeCode" Multiplicity="1" />
+    <End Type="chapyModel.CpClass" Role="CpClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CpGradeCode">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CpClass">
+        <PropertyRef Name="GradeCodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CpClassStaff_CpClass">
+    <End Type="chapyModel.CpClass" Role="CpClass" Multiplicity="1" />
+    <End Type="chapyModel.CpClassStaff" Role="CpClassStaff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CpClass">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CpClassStaff">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CpStaff_CpPosition">
+    <End Type="chapyModel.CpPosition" Role="CpPosition" Multiplicity="1" />
+    <End Type="chapyModel.CpStaff" Role="CpStaff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CpPosition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CpStaff">
+        <PropertyRef Name="PositionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CpStaff_CpSchools">
+    <End Type="chapyModel.CpSchool" Role="CpSchool" Multiplicity="1" />
+    <End Type="chapyModel.CpStaff" Role="CpStaff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CpSchool">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CpStaff">
+        <PropertyRef Name="SchoolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CpStartEndDate_CpSchools">
+    <End Type="chapyModel.CpSchool" Role="CpSchool" Multiplicity="1" />
+    <End Type="chapyModel.CpStartEndDate" Role="CpStartEndDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CpSchool">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CpStartEndDate">
+        <PropertyRef Name="SchoolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CpTannin_CpSchools">
+    <End Type="chapyModel.CpSchool" Role="CpSchool" Multiplicity="1" />
+    <End Type="chapyModel.CpTannin" Role="CpTannin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CpSchool">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CpTannin">
+        <PropertyRef Name="SchoolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CpStaff_CpStaffType">
+    <End Type="chapyModel.CpStaffType" Role="CpStaffType" Multiplicity="1" />
+    <End Type="chapyModel.CpStaff" Role="CpStaff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CpStaffType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CpStaff">
+        <PropertyRef Name="StaffTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

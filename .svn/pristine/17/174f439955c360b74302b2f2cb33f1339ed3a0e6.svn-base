@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="chapyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="chapyModelStoreContainer">
+    <EntitySet Name="CpBuildings" EntityType="chapyModel.Store.CpBuildings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CpClass" EntityType="chapyModel.Store.CpClass" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CpClassStaff" EntityType="chapyModel.Store.CpClassStaff" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CpCorporation" EntityType="chapyModel.Store.CpCorporation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CpGradeCode" EntityType="chapyModel.Store.CpGradeCode" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CpGroup" EntityType="chapyModel.Store.CpGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CpHoliday" EntityType="chapyModel.Store.CpHoliday" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CpPosition" EntityType="chapyModel.Store.CpPosition" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CpSchools" EntityType="chapyModel.Store.CpSchools" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CpStaff" EntityType="chapyModel.Store.CpStaff" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CpStaffType" EntityType="chapyModel.Store.CpStaffType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CpStartEndDate" EntityType="chapyModel.Store.CpStartEndDate" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CpTannin" EntityType="chapyModel.Store.CpTannin" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CpTerm" EntityType="chapyModel.Store.CpTerm" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CpTimeZone" EntityType="chapyModel.Store.CpTimeZone" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JapanHolidays" EntityType="chapyModel.Store.JapanHolidays" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="chapyModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_CpClass_CpGradeCode" Association="chapyModel.Store.FK_CpClass_CpGradeCode">
+      <End Role="CpGradeCode" EntitySet="CpGradeCode" />
+      <End Role="CpClass" EntitySet="CpClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CpClassStaff_CpClass" Association="chapyModel.Store.FK_CpClassStaff_CpClass">
+      <End Role="CpClass" EntitySet="CpClass" />
+      <End Role="CpClassStaff" EntitySet="CpClassStaff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CpStaff_CpPosition" Association="chapyModel.Store.FK_CpStaff_CpPosition">
+      <End Role="CpPosition" EntitySet="CpPosition" />
+      <End Role="CpStaff" EntitySet="CpStaff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CpStaff_CpSchools" Association="chapyModel.Store.FK_CpStaff_CpSchools">
+      <End Role="CpSchools" EntitySet="CpSchools" />
+      <End Role="CpStaff" EntitySet="CpStaff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CpStaff_CpStaffType" Association="chapyModel.Store.FK_CpStaff_CpStaffType">
+      <End Role="CpStaffType" EntitySet="CpStaffType" />
+      <End Role="CpStaff" EntitySet="CpStaff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CpStartEndDate_CpSchools" Association="chapyModel.Store.FK_CpStartEndDate_CpSchools">
+      <End Role="CpSchools" EntitySet="CpSchools" />
+      <End Role="CpStartEndDate" EntitySet="CpStartEndDate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CpTannin_CpSchools" Association="chapyModel.Store.FK_CpTannin_CpSchools">
+      <End Role="CpSchools" EntitySet="CpSchools" />
+      <End Role="CpTannin" EntitySet="CpTannin" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CpBuildings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="int" />
+    <Property Name="Code" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Abbreviation" Type="nvarchar" MaxLength="64" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CpClass">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="GradeCodeId" Type="int" Nullable="false" />
+    <Property Name="SchoolId" Type="int" Nullable="false" />
+    <Property Name="TermId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CpClassStaff">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="StaffId1" Type="int" Nullable="false" />
+    <Property Name="StaffId2" Type="int" />
+    <Property Name="StaffId3" Type="int" />
+    <Property Name="StaffId4" Type="int" />
+    <Property Name="StaffId5" Type="int" />
+    <Property Name="StaffId6" Type="int" />
+    <Property Name="NumberOfStaff" Type="int" />
+    <Property Name="TanninId" Type="int" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CpCorporation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ChairManFirstName" Type="nvarchar" MaxLength="255" />
+    <Property Name="ChairManLastName" Type="nvarchar" MaxLength="255" />
+    <Property Name="PostCode" Type="nvarchar" MaxLength="16" />
+    <Property Name="Address1" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Address2" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Tel" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="Fax" Type="varchar" MaxLength="64" />
+    <Property Name="Email" Type="varchar" MaxLength="64" />
+    <Property Name="HomePage" Type="text" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CpGradeCode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="TermId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CpGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="SchoolId" Type="int" />
+    <Property Name="Code" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Abbreviation" Type="nvarchar" MaxLength="64" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CpHoliday">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="int" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="CpPosition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="int" />
+    <Property Name="Code" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Abbreviation" Type="nvarchar" MaxLength="64" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CpSchools">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Code" Type="varchar" MaxLength="50" />
+    <Property Name="Representation" Type="nvarchar" MaxLength="255" />
+    <Property Name="PrinceName1" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrinceName2" Type="nvarchar" MaxLength="50" />
+    <Property Name="PostCode" Type="nvarchar" MaxLength="16" />
+    <Property Name="Address1" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Address2" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Tel" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="Fax" Type="varchar" MaxLength="64" />
+    <Property Name="Email" Type="varchar" MaxLength="64" />
+    <Property Name="HomePage" Type="text" />
+    <Property Name="UsePass" Type="tinyint" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CpStaff">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="StaffTypeId" Type="int" Nullable="false" />
+    <Property Name="PositionId" Type="int" Nullable="false" />
+    <Property Name="SchoolId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Hiragana" Type="nvarchar" MaxLength="255" />
+    <Property Name="Abbreviation" Type="nvarchar" MaxLength="64" />
+    <Property Name="Gender" Type="tinyint" />
+    <Property Name="BirthDay" Type="datetime" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CpStaffType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="int" />
+    <Property Name="Code" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Abbreviation" Type="varchar" MaxLength="64" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CpStartEndDate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CpTannin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CpTerm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="SchoolId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CpTimeZone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="SchoolId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Abbreviation" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="Color" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="DayOfWeeks" Type="varchar" MaxLength="64" />
+    <Property Name="StartTime" Type="datetime" />
+    <Property Name="EndTime" Type="datetime" />
+    <Property Name="RestStartTime1" Type="datetime" />
+    <Property Name="RestEndTime1" Type="datetime" />
+    <Property Name="RestStartTime2" Type="datetime" />
+    <Property Name="RestEndTime2" Type="datetime" />
+    <Property Name="ApplyClassed" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="JapanHolidays">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Year" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_CpClass_CpGradeCode">
+    <End Role="CpGradeCode" Type="chapyModel.Store.CpGradeCode" Multiplicity="1" />
+    <End Role="CpClass" Type="chapyModel.Store.CpClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CpGradeCode">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CpClass">
+        <PropertyRef Name="GradeCodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CpClassStaff_CpClass">
+    <End Role="CpClass" Type="chapyModel.Store.CpClass" Multiplicity="1" />
+    <End Role="CpClassStaff" Type="chapyModel.Store.CpClassStaff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CpClass">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CpClassStaff">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CpStaff_CpPosition">
+    <End Role="CpPosition" Type="chapyModel.Store.CpPosition" Multiplicity="1" />
+    <End Role="CpStaff" Type="chapyModel.Store.CpStaff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CpPosition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CpStaff">
+        <PropertyRef Name="PositionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CpStaff_CpSchools">
+    <End Role="CpSchools" Type="chapyModel.Store.CpSchools" Multiplicity="1" />
+    <End Role="CpStaff" Type="chapyModel.Store.CpStaff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CpSchools">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CpStaff">
+        <PropertyRef Name="SchoolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CpStaff_CpStaffType">
+    <End Role="CpStaffType" Type="chapyModel.Store.CpStaffType" Multiplicity="1" />
+    <End Role="CpStaff" Type="chapyModel.Store.CpStaff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CpStaffType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CpStaff">
+        <PropertyRef Name="StaffTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CpStartEndDate_CpSchools">
+    <End Role="CpSchools" Type="chapyModel.Store.CpSchools" Multiplicity="1" />
+    <End Role="CpStartEndDate" Type="chapyModel.Store.CpStartEndDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CpSchools">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CpStartEndDate">
+        <PropertyRef Name="SchoolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CpTannin_CpSchools">
+    <End Role="CpSchools" Type="chapyModel.Store.CpSchools" Multiplicity="1" />
+    <End Role="CpTannin" Type="chapyModel.Store.CpTannin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CpSchools">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CpTannin">
+        <PropertyRef Name="SchoolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
