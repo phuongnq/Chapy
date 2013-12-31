@@ -79,8 +79,8 @@ namespace Chapy
         //Environment Variables
         public static bool japaneseYear = true;     //Calendar in Japanese or in Western
 
-        public static bool jobType = true;          //staff sort by job type
-        public static bool positionType = true;      //staff sort by position
+        public static bool jobTypeSort = true;          //staff sort by job type
+        public static bool positionTypeSort = true;      //staff sort by position
 
         public static bool staffCodeSort = true;     //staff sort by code
         public static bool staffFuriganaSort = false;    //staff sort by furigana

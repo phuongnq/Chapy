@@ -106,10 +106,10 @@ namespace Chapy
                 }
             }
             //set variable for job type
-            VariableGlobal.jobType = cbMaintain_JobType.Checked;
+            VariableGlobal.jobTypeSort = cbMaintain_JobType.Checked;
 
             //set variable for position type
-            VariableGlobal.positionType = cbMaintain_PositionType.Checked;
+            VariableGlobal.positionTypeSort = cbMaintain_PositionType.Checked;
 
             //set varibale for staff sort attributes
             VariableGlobal.staffCodeSort = rbMaintain_StaffCodeSort.Checked;
@@ -139,8 +139,8 @@ namespace Chapy
             }
 
             //check staff type and job type
-            cbMaintain_JobType.Checked = VariableGlobal.jobType;
-            cbMaintain_PositionType.Checked = VariableGlobal.positionType;
+            cbMaintain_JobType.Checked = VariableGlobal.jobTypeSort;
+            cbMaintain_PositionType.Checked = VariableGlobal.positionTypeSort;
 
             rbMaintain_StaffCodeSort.Checked = VariableGlobal.staffCodeSort;
             rbMaintain_StaffFuriganaSort.Checked = VariableGlobal.staffFuriganaSort;

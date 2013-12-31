@@ -841,6 +841,20 @@ namespace Chapy
                              select c);
             if (!staffList.Any()) return;
 
+            //sort by staff type and job type
+            if (VariableGlobal.jobTypeSort) staffList = staffList.OrderBy(c => c.jobType);
+            if (VariableGlobal.positionTypeSort) staffList = staffList.OrderBy(c => c.PositionId);
+
+            //sort by staff attributes
+            if (VariableGlobal.staffCodeSort) staffList = staffList.OrderBy( c => c.Code);
+            if (VariableGlobal.staffFuriganaSort) staffList = staffList.OrderBy(c => c.Hiragana);
+            if (VariableGlobal.staffBirthdaySort) staffList = staffList.OrderBy(c => c.BirthDay);
+            if (VariableGlobal.staffStartWorkSort) staffList = staffList.OrderBy(c => c.beginJob);
+
+            //sort by gender
+            if (VariableGlobal.staffMtoWSort) staffList = staffList.OrderBy(c => c.Gender);
+            if (VariableGlobal.staffWotMSort) staffList = staffList.OrderByDescending(c => c.Gender);
+
             dgv_StaffList.Rows.Clear();
             foreach (var staff in staffList)
             {
