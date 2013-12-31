@@ -76,7 +76,20 @@ namespace Chapy
         public static ArrayList data_staffs = new ArrayList();
         public static ArrayList StaffIds = new ArrayList();
         
+        //Environment Variables
+        public static bool japaneseYear = true;     //Calendar in Japanese or in Western
 
+        public static bool jobType = true;          //staff sort by job type
+        public static bool positionType = true;      //staff sort by position
+
+        public static bool staffCodeSort = true;     //staff sort by code
+        public static bool staffFuriganaSort = false;    //staff sort by furigana
+        public static bool staffBirthdaySort = false;    //staff sort by birthday
+        public static bool staffStartWorkSort = false;  //staff sort by start work day
+
+        public static bool staffMtoWSort = true;        //sort from Man to Woman
+        public static bool staffWotMSort = false;       //sort from Woman to Man
+        public static bool staffMWSort = false;         //sort mixed Man and Woman
 
     }
 }

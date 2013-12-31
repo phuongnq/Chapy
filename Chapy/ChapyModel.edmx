@@ -210,12 +210,22 @@
           <Property Name="Abbreviation" Type="nvarchar" MaxLength="64" />
           <Property Name="Gender" Type="tinyint" />
           <Property Name="BirthDay" Type="datetime" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="UpdatedAt" Type="datetime" />
           <Property Name="Hiragana2" Type="nvarchar" MaxLength="255" />
           <Property Name="Name2" Type="nvarchar" MaxLength="255" />
           <Property Name="beginJob" Type="datetime" />
           <Property Name="jobType" Type="tinyint" />
-          <Property Name="CreatedAt" Type="datetime" />
-          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="PostCode" Type="nvarchar" MaxLength="16" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="255" />
+          <Property Name="HomePage" Type="text" />
+          <Property Name="Tel" Type="varchar" MaxLength="16" />
+          <Property Name="Mobile" Type="varchar" MaxLength="16" />
+          <Property Name="Email" Type="varchar" MaxLength="64" />
+          <Property Name="EmerencyAddress1" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmerencyAddress2" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmerencyTel" Type="varchar" MaxLength="16" />
         </EntityType>
         <EntityType Name="CpStaffType">
           <Key>
@@ -285,7 +295,7 @@
           <Property Name="UpdatedAt" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'chappy_12_08.dbo.JapanHolidays' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'chapy.dbo.JapanHolidays' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="JapanHolidays">
           <Key>
@@ -574,6 +584,16 @@
           <Property Type="String" Name="Name2" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="beginJob" Precision="3" />
           <Property Type="Byte" Name="jobType" />
+          <Property Type="String" Name="PostCode" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address1" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address2" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HomePage" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Tel" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Mobile" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmerencyAddress1" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmerencyAddress2" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmerencyTel" MaxLength="16" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="CpStaffType">
           <Key>
@@ -941,6 +961,16 @@
           <EntitySetMapping Name="CpStaffs">
             <EntityTypeMapping TypeName="chappyModel.CpStaff">
               <MappingFragment StoreEntitySet="CpStaff">
+                <ScalarProperty Name="EmerencyTel" ColumnName="EmerencyTel" />
+                <ScalarProperty Name="EmerencyAddress2" ColumnName="EmerencyAddress2" />
+                <ScalarProperty Name="EmerencyAddress1" ColumnName="EmerencyAddress1" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="HomePage" ColumnName="HomePage" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
                 <ScalarProperty Name="jobType" ColumnName="jobType" />
                 <ScalarProperty Name="beginJob" ColumnName="beginJob" />
                 <ScalarProperty Name="Name2" ColumnName="Name2" />

@@ -105,7 +105,51 @@ namespace Chapy
                         VariableGlobal.japaneseYear = false;
                 }
             }
+            //set variable for job type
+            VariableGlobal.jobType = cbMaintain_JobType.Checked;
+
+            //set variable for position type
+            VariableGlobal.positionType = cbMaintain_PositionType.Checked;
+
+            //set varibale for staff sort attributes
+            VariableGlobal.staffCodeSort = rbMaintain_StaffCodeSort.Checked;
+            VariableGlobal.staffFuriganaSort = rbMaintain_StaffFuriganaSort.Checked;
+            VariableGlobal.staffBirthdaySort = rbMaintain_StaffBirthdaySort.Checked;
+            VariableGlobal.staffStartWorkSort = rbMaintain_StaffStartWorkSort.Checked;
+
+            VariableGlobal.staffMtoWSort = rbMaintain_StaffMtoWSort.Checked;
+            VariableGlobal.staffWotMSort = rbMaintain_StaffWtoMSort.Checked;
+            VariableGlobal.staffMWSort = rbMaintain_StaffMWSort.Checked;
+
             MessageBox.Show("環境設定完了しました");
+        }
+
+        //load Maintain Screen
+        //1. set default Environment Variable
+        private void FrmMaintain_Load(object sender, EventArgs e)
+        {
+            //check Year Type
+            if (VariableGlobal.japaneseYear)
+            {
+                rbMaintain_YearTypeJapanese.Checked = true;
+            }
+            else
+            {
+                rbMaintain_YearTypeWestern.Checked = true;
+            }
+
+            //check staff type and job type
+            cbMaintain_JobType.Checked = VariableGlobal.jobType;
+            cbMaintain_PositionType.Checked = VariableGlobal.positionType;
+
+            rbMaintain_StaffCodeSort.Checked = VariableGlobal.staffCodeSort;
+            rbMaintain_StaffFuriganaSort.Checked = VariableGlobal.staffFuriganaSort;
+            rbMaintain_StaffBirthdaySort.Checked = VariableGlobal.staffBirthdaySort;
+            rbMaintain_StaffStartWorkSort.Checked = VariableGlobal.staffStartWorkSort;
+
+            rbMaintain_StaffMtoWSort.Checked = VariableGlobal.staffMtoWSort;
+            rbMaintain_StaffWtoMSort.Checked = VariableGlobal.staffWotMSort;
+            rbMaintain_StaffMWSort.Checked = VariableGlobal.staffMWSort;
         }
 
        

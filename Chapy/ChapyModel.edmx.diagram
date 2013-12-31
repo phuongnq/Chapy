@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c2a8d292c17245f8998dc88d032b5d93" Name="Diagram1">
+      <Diagram DiagramId="c2a8d292c17245f8998dc88d032b5d93" Name="Diagram1" ZoomLevel="102">
         <EntityTypeShape EntityType="chappyModel.CpBuilding" Width="1.5" PointX="0.50162179046386" PointY="26.446636242068671" />
         <EntityTypeShape EntityType="chappyModel.CpClass" Width="1.5" PointX="7.5852404607391177" PointY="1.6716526307499282" />
         <EntityTypeShape EntityType="chappyModel.CpClassStaff" Width="1.5" PointX="5.641100504268473" PointY="1.0464836214885505" />
-        <EntityTypeShape EntityType="chappyModel.CpCorporation" Width="1.5" PointX="2.0959082553609778" PointY="13.416039249587822" />
+        <EntityTypeShape EntityType="chappyModel.CpCorporation" Width="1.5" PointX="1" PointY="12.375" />
         <EntityTypeShape EntityType="chappyModel.CpGradeCode" Width="1.5" PointX="4.5804021063169476" PointY="15.51942572720322" />
         <EntityTypeShape EntityType="chappyModel.CpGroup" Width="1.5" PointX="5.62629934289786" PointY="6.1107798247182652" />
         <EntityTypeShape EntityType="chappyModel.CpHoliday" Width="1.5" PointX="7.077784183937025" PointY="23.553078453779722" />
         <EntityTypeShape EntityType="chappyModel.CpPosition" Width="1.5" PointX="7.5187449061864733" PointY="21.332830215493605" />
-        <EntityTypeShape EntityType="chappyModel.CpSchool" Width="1.5" PointX="6.8017506333076163" PointY="1.2266512369861133" />
+        <EntityTypeShape EntityType="chappyModel.CpSchool" Width="1.5" PointX="1.125" PointY="0.875" />
         <EntityTypeShape EntityType="chappyModel.CpStaff" Width="1.5" PointX="2.5882674281430744" PointY="10.466398348317668" />
         <EntityTypeShape EntityType="chappyModel.CpStaffType" Width="1.5" PointX="10.373103712859146" PointY="31.667426541292773" />
         <EntityTypeShape EntityType="chappyModel.CpStartEndDate" Width="1.5" PointX="9.0307774865211812" PointY="13.044212958330387" />
         <EntityTypeShape EntityType="chappyModel.CpTannin" Width="1.5" PointX="9.6561730027460371" PointY="13.084606519473999" />
-        <EntityTypeShape EntityType="chappyModel.CpTerm" Width="1.5" PointX="2.4937377099384266" PointY="13.237677520717345" />
+        <EntityTypeShape EntityType="chappyModel.CpTerm" Width="1.5" PointX="4.125" PointY="13.125" />
         <EntityTypeShape EntityType="chappyModel.CpTimeZone" Width="1.5" PointX="8.9896429334718935" PointY="19.803574943823541" />
         <EntityTypeShape EntityType="chappyModel.JapanHoliday" Width="1.5" PointX="0.12860198697475811" PointY="4.1393032987319414" />
         <EntityTypeShape EntityType="chappyModel.sysdiagram" Width="1.5" PointX="8.1160043012890988" PointY="2.6001572919078906" />
@@ -29,7 +29,7 @@
         <AssociationConnector Association="chappyModel.FK_CpStartEndDate_CpSchools" />
         <AssociationConnector Association="chappyModel.FK_CpTannin_CpSchools" />
         <AssociationConnector Association="chappyModel.FK_CpStaff_CpStaffType" />
-        <EntityTypeShape EntityType="chappyModel.CpScheduleDetail" Width="1.5" PointX="5.6338002354064027" PointY="3.6871797459605986" />
+        <EntityTypeShape EntityType="chappyModel.CpScheduleDetail" Width="1.5" PointX="3.5" PointY="2.75" />
         <AssociationConnector Association="chappyModel.FK_CpScheduleDetail_CpScheduleDetail" />
         <EntityTypeShape EntityType="chappyModel.CpSchedule" Width="1.5" PointX="4.6713699068275139" PointY="24.578146677733468" />
         <AssociationConnector Association="chappyModel.FK_CpScheduleDetail_CpSchedule" />

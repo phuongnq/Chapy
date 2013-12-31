@@ -38,16 +38,16 @@
             this.btn_Group = new DevComponents.DotNetBar.ButtonX();
             this.btn_Calendar = new DevComponents.DotNetBar.ButtonX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.rbMaintain_YearTypeJapanese = new System.Windows.Forms.RadioButton();
+            this.rbMaintain_YearTypeWestern = new System.Windows.Forms.RadioButton();
+            this.cbMaintain_JobType = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbMaintain_PositionType = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.rbMaintain_StaffCodeSort = new System.Windows.Forms.RadioButton();
+            this.rbMaintain_StaffFuriganaSort = new System.Windows.Forms.RadioButton();
+            this.rbMaintain_StaffBirthdaySort = new System.Windows.Forms.RadioButton();
+            this.rbMaintain_StaffStartWorkSort = new System.Windows.Forms.RadioButton();
+            this.rbMaintain_StaffMtoWSort = new System.Windows.Forms.RadioButton();
+            this.rbMaintain_StaffWtoMSort = new System.Windows.Forms.RadioButton();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.btn_Back = new DevComponents.DotNetBar.ButtonX();
             this.btn_Vacation = new DevComponents.DotNetBar.ButtonX();
@@ -56,20 +56,21 @@
             this.grpBoxMaintain_YearType = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.rbMaintain_StaffMWSort = new System.Windows.Forms.RadioButton();
+            this.grbxMaintain_StaffSort = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.tbxStaff_Code = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.btnMaintain_Save = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.grpBoxMaintain_YearType.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.grbxMaintain_StaffSort.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.SuspendLayout();
@@ -140,7 +141,7 @@
             this.btn_TanninMaster.BackColor = System.Drawing.Color.LightBlue;
             this.btn_TanninMaster.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
             this.btn_TanninMaster.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_TanninMaster.Location = new System.Drawing.Point(294, 32);
+            this.btn_TanninMaster.Location = new System.Drawing.Point(237, 32);
             this.btn_TanninMaster.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_TanninMaster.Name = "btn_TanninMaster";
             this.btn_TanninMaster.Size = new System.Drawing.Size(160, 45);
@@ -155,7 +156,7 @@
             this.btn_StaffType.BackColor = System.Drawing.Color.LightBlue;
             this.btn_StaffType.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
             this.btn_StaffType.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_StaffType.Location = new System.Drawing.Point(564, 32);
+            this.btn_StaffType.Location = new System.Drawing.Point(448, 32);
             this.btn_StaffType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_StaffType.Name = "btn_StaffType";
             this.btn_StaffType.Size = new System.Drawing.Size(160, 45);
@@ -170,7 +171,7 @@
             this.btn_Position.BackColor = System.Drawing.Color.LightBlue;
             this.btn_Position.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
             this.btn_Position.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Position.Location = new System.Drawing.Point(793, 32);
+            this.btn_Position.Location = new System.Drawing.Point(652, 32);
             this.btn_Position.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Position.Name = "btn_Position";
             this.btn_Position.Size = new System.Drawing.Size(160, 45);
@@ -185,7 +186,7 @@
             this.btn_Group.BackColor = System.Drawing.Color.LightBlue;
             this.btn_Group.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
             this.btn_Group.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Group.Location = new System.Drawing.Point(294, 94);
+            this.btn_Group.Location = new System.Drawing.Point(237, 94);
             this.btn_Group.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Group.Name = "btn_Group";
             this.btn_Group.Size = new System.Drawing.Size(160, 45);
@@ -200,7 +201,7 @@
             this.btn_Calendar.BackColor = System.Drawing.Color.LightBlue;
             this.btn_Calendar.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
             this.btn_Calendar.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Calendar.Location = new System.Drawing.Point(564, 94);
+            this.btn_Calendar.Location = new System.Drawing.Point(448, 94);
             this.btn_Calendar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Calendar.Name = "btn_Calendar";
             this.btn_Calendar.Size = new System.Drawing.Size(160, 45);
@@ -224,131 +225,134 @@
             this.labelX3.Text = "環境設定";
             this.labelX3.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // radioButton1
+            // rbMaintain_YearTypeJapanese
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 24);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(77, 19);
-            this.radioButton1.TabIndex = 24;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "和歴表示";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbMaintain_YearTypeJapanese.AutoSize = true;
+            this.rbMaintain_YearTypeJapanese.Checked = true;
+            this.rbMaintain_YearTypeJapanese.Location = new System.Drawing.Point(6, 24);
+            this.rbMaintain_YearTypeJapanese.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbMaintain_YearTypeJapanese.Name = "rbMaintain_YearTypeJapanese";
+            this.rbMaintain_YearTypeJapanese.Size = new System.Drawing.Size(77, 19);
+            this.rbMaintain_YearTypeJapanese.TabIndex = 24;
+            this.rbMaintain_YearTypeJapanese.TabStop = true;
+            this.rbMaintain_YearTypeJapanese.Text = "和歴表示";
+            this.rbMaintain_YearTypeJapanese.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbMaintain_YearTypeWestern
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 63);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(77, 19);
-            this.radioButton2.TabIndex = 25;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "西歴表示";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbMaintain_YearTypeWestern.AutoSize = true;
+            this.rbMaintain_YearTypeWestern.Location = new System.Drawing.Point(6, 63);
+            this.rbMaintain_YearTypeWestern.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbMaintain_YearTypeWestern.Name = "rbMaintain_YearTypeWestern";
+            this.rbMaintain_YearTypeWestern.Size = new System.Drawing.Size(77, 19);
+            this.rbMaintain_YearTypeWestern.TabIndex = 25;
+            this.rbMaintain_YearTypeWestern.Text = "西歴表示";
+            this.rbMaintain_YearTypeWestern.UseVisualStyleBackColor = true;
             // 
-            // checkBoxX1
-            // 
-            // 
-            // 
-            // 
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Location = new System.Drawing.Point(22, 19);
-            this.checkBoxX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(117, 26);
-            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX1.TabIndex = 31;
-            this.checkBoxX1.Text = "職類コード順";
-            // 
-            // checkBoxX2
+            // cbMaintain_JobType
             // 
             // 
             // 
             // 
-            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX2.Location = new System.Drawing.Point(23, 51);
-            this.checkBoxX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.checkBoxX2.Name = "checkBoxX2";
-            this.checkBoxX2.Size = new System.Drawing.Size(117, 26);
-            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX2.TabIndex = 32;
-            this.checkBoxX2.Text = "職位コード順";
+            this.cbMaintain_JobType.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbMaintain_JobType.Checked = true;
+            this.cbMaintain_JobType.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbMaintain_JobType.CheckValue = "Y";
+            this.cbMaintain_JobType.Location = new System.Drawing.Point(22, 19);
+            this.cbMaintain_JobType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbMaintain_JobType.Name = "cbMaintain_JobType";
+            this.cbMaintain_JobType.Size = new System.Drawing.Size(117, 26);
+            this.cbMaintain_JobType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbMaintain_JobType.TabIndex = 31;
+            this.cbMaintain_JobType.Text = "職類コード順";
             // 
-            // radioButton3
+            // cbMaintain_PositionType
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(40, 15);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(93, 19);
-            this.radioButton3.TabIndex = 33;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "職員コード順";
-            this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(41, 41);
-            this.radioButton4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(75, 19);
-            this.radioButton4.TabIndex = 34;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "フリガナ順";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
-            // radioButton5
+            this.cbMaintain_PositionType.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbMaintain_PositionType.Checked = true;
+            this.cbMaintain_PositionType.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbMaintain_PositionType.CheckValue = "Y";
+            this.cbMaintain_PositionType.Location = new System.Drawing.Point(23, 51);
+            this.cbMaintain_PositionType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbMaintain_PositionType.Name = "cbMaintain_PositionType";
+            this.cbMaintain_PositionType.Size = new System.Drawing.Size(117, 26);
+            this.cbMaintain_PositionType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbMaintain_PositionType.TabIndex = 32;
+            this.cbMaintain_PositionType.Text = "職位コード順";
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(41, 68);
-            this.radioButton5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(90, 19);
-            this.radioButton5.TabIndex = 35;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "生年月日順";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            // rbMaintain_StaffCodeSort
             // 
-            // radioButton6
+            this.rbMaintain_StaffCodeSort.AutoSize = true;
+            this.rbMaintain_StaffCodeSort.Checked = true;
+            this.rbMaintain_StaffCodeSort.Location = new System.Drawing.Point(40, 15);
+            this.rbMaintain_StaffCodeSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbMaintain_StaffCodeSort.Name = "rbMaintain_StaffCodeSort";
+            this.rbMaintain_StaffCodeSort.Size = new System.Drawing.Size(93, 19);
+            this.rbMaintain_StaffCodeSort.TabIndex = 33;
+            this.rbMaintain_StaffCodeSort.TabStop = true;
+            this.rbMaintain_StaffCodeSort.Text = "職員コード順";
+            this.rbMaintain_StaffCodeSort.UseVisualStyleBackColor = true;
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(41, 98);
-            this.radioButton6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(116, 19);
-            this.radioButton6.TabIndex = 36;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "就職生年月日順";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            // rbMaintain_StaffFuriganaSort
             // 
-            // radioButton7
+            this.rbMaintain_StaffFuriganaSort.AutoSize = true;
+            this.rbMaintain_StaffFuriganaSort.Location = new System.Drawing.Point(41, 41);
+            this.rbMaintain_StaffFuriganaSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbMaintain_StaffFuriganaSort.Name = "rbMaintain_StaffFuriganaSort";
+            this.rbMaintain_StaffFuriganaSort.Size = new System.Drawing.Size(75, 19);
+            this.rbMaintain_StaffFuriganaSort.TabIndex = 34;
+            this.rbMaintain_StaffFuriganaSort.Text = "フリガナ順";
+            this.rbMaintain_StaffFuriganaSort.UseVisualStyleBackColor = true;
+            this.rbMaintain_StaffFuriganaSort.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(23, 19);
-            this.radioButton7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(61, 19);
-            this.radioButton7.TabIndex = 37;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "男→女";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            // rbMaintain_StaffBirthdaySort
             // 
-            // radioButton8
+            this.rbMaintain_StaffBirthdaySort.AutoSize = true;
+            this.rbMaintain_StaffBirthdaySort.Location = new System.Drawing.Point(41, 68);
+            this.rbMaintain_StaffBirthdaySort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbMaintain_StaffBirthdaySort.Name = "rbMaintain_StaffBirthdaySort";
+            this.rbMaintain_StaffBirthdaySort.Size = new System.Drawing.Size(90, 19);
+            this.rbMaintain_StaffBirthdaySort.TabIndex = 35;
+            this.rbMaintain_StaffBirthdaySort.Text = "生年月日順";
+            this.rbMaintain_StaffBirthdaySort.UseVisualStyleBackColor = true;
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(23, 46);
-            this.radioButton8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(61, 19);
-            this.radioButton8.TabIndex = 38;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "女→男";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            // rbMaintain_StaffStartWorkSort
+            // 
+            this.rbMaintain_StaffStartWorkSort.AutoSize = true;
+            this.rbMaintain_StaffStartWorkSort.Location = new System.Drawing.Point(41, 98);
+            this.rbMaintain_StaffStartWorkSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbMaintain_StaffStartWorkSort.Name = "rbMaintain_StaffStartWorkSort";
+            this.rbMaintain_StaffStartWorkSort.Size = new System.Drawing.Size(103, 19);
+            this.rbMaintain_StaffStartWorkSort.TabIndex = 36;
+            this.rbMaintain_StaffStartWorkSort.Text = "就職年月日順";
+            this.rbMaintain_StaffStartWorkSort.UseVisualStyleBackColor = true;
+            // 
+            // rbMaintain_StaffMtoWSort
+            // 
+            this.rbMaintain_StaffMtoWSort.AutoSize = true;
+            this.rbMaintain_StaffMtoWSort.Checked = true;
+            this.rbMaintain_StaffMtoWSort.Location = new System.Drawing.Point(23, 19);
+            this.rbMaintain_StaffMtoWSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbMaintain_StaffMtoWSort.Name = "rbMaintain_StaffMtoWSort";
+            this.rbMaintain_StaffMtoWSort.Size = new System.Drawing.Size(61, 19);
+            this.rbMaintain_StaffMtoWSort.TabIndex = 37;
+            this.rbMaintain_StaffMtoWSort.TabStop = true;
+            this.rbMaintain_StaffMtoWSort.Text = "男→女";
+            this.rbMaintain_StaffMtoWSort.UseVisualStyleBackColor = true;
+            // 
+            // rbMaintain_StaffWtoMSort
+            // 
+            this.rbMaintain_StaffWtoMSort.AutoSize = true;
+            this.rbMaintain_StaffWtoMSort.Location = new System.Drawing.Point(23, 46);
+            this.rbMaintain_StaffWtoMSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbMaintain_StaffWtoMSort.Name = "rbMaintain_StaffWtoMSort";
+            this.rbMaintain_StaffWtoMSort.Size = new System.Drawing.Size(61, 19);
+            this.rbMaintain_StaffWtoMSort.TabIndex = 38;
+            this.rbMaintain_StaffWtoMSort.Text = "女→男";
+            this.rbMaintain_StaffWtoMSort.UseVisualStyleBackColor = true;
             // 
             // radioButton9
             // 
@@ -382,7 +386,7 @@
             this.btn_Vacation.BackColor = System.Drawing.Color.LightBlue;
             this.btn_Vacation.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
             this.btn_Vacation.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Vacation.Location = new System.Drawing.Point(793, 94);
+            this.btn_Vacation.Location = new System.Drawing.Point(652, 94);
             this.btn_Vacation.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Vacation.Name = "btn_Vacation";
             this.btn_Vacation.Size = new System.Drawing.Size(160, 45);
@@ -406,6 +410,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonX1);
             this.groupBox2.Controls.Add(this.btn_Calendar);
             this.groupBox2.Controls.Add(this.btn_Vacation);
             this.groupBox2.Controls.Add(this.btn_StaffType);
@@ -426,8 +431,8 @@
             // 
             // grpBoxMaintain_YearType
             // 
-            this.grpBoxMaintain_YearType.Controls.Add(this.radioButton1);
-            this.grpBoxMaintain_YearType.Controls.Add(this.radioButton2);
+            this.grpBoxMaintain_YearType.Controls.Add(this.rbMaintain_YearTypeJapanese);
+            this.grpBoxMaintain_YearType.Controls.Add(this.rbMaintain_YearTypeWestern);
             this.grpBoxMaintain_YearType.Location = new System.Drawing.Point(105, 307);
             this.grpBoxMaintain_YearType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grpBoxMaintain_YearType.Name = "grpBoxMaintain_YearType";
@@ -440,7 +445,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.groupBox7);
-            this.groupBox4.Controls.Add(this.groupBox6);
+            this.groupBox4.Controls.Add(this.grbxMaintain_StaffSort);
             this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Location = new System.Drawing.Point(293, 307);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -453,9 +458,9 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.radioButton10);
-            this.groupBox7.Controls.Add(this.radioButton7);
-            this.groupBox7.Controls.Add(this.radioButton8);
+            this.groupBox7.Controls.Add(this.rbMaintain_StaffMWSort);
+            this.groupBox7.Controls.Add(this.rbMaintain_StaffMtoWSort);
+            this.groupBox7.Controls.Add(this.rbMaintain_StaffWtoMSort);
             this.groupBox7.Location = new System.Drawing.Point(504, 24);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox7.Name = "groupBox7";
@@ -464,36 +469,35 @@
             this.groupBox7.TabIndex = 0;
             this.groupBox7.TabStop = false;
             // 
-            // radioButton10
+            // rbMaintain_StaffMWSort
             // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(23, 75);
-            this.radioButton10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(77, 19);
-            this.radioButton10.TabIndex = 39;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "男女混合";
-            this.radioButton10.UseVisualStyleBackColor = true;
+            this.rbMaintain_StaffMWSort.AutoSize = true;
+            this.rbMaintain_StaffMWSort.Location = new System.Drawing.Point(23, 75);
+            this.rbMaintain_StaffMWSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbMaintain_StaffMWSort.Name = "rbMaintain_StaffMWSort";
+            this.rbMaintain_StaffMWSort.Size = new System.Drawing.Size(77, 19);
+            this.rbMaintain_StaffMWSort.TabIndex = 39;
+            this.rbMaintain_StaffMWSort.Text = "男女混合";
+            this.rbMaintain_StaffMWSort.UseVisualStyleBackColor = true;
             // 
-            // groupBox6
+            // grbxMaintain_StaffSort
             // 
-            this.groupBox6.Controls.Add(this.radioButton3);
-            this.groupBox6.Controls.Add(this.radioButton4);
-            this.groupBox6.Controls.Add(this.radioButton5);
-            this.groupBox6.Controls.Add(this.radioButton6);
-            this.groupBox6.Location = new System.Drawing.Point(225, 24);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox6.Size = new System.Drawing.Size(233, 122);
-            this.groupBox6.TabIndex = 0;
-            this.groupBox6.TabStop = false;
+            this.grbxMaintain_StaffSort.Controls.Add(this.rbMaintain_StaffCodeSort);
+            this.grbxMaintain_StaffSort.Controls.Add(this.rbMaintain_StaffFuriganaSort);
+            this.grbxMaintain_StaffSort.Controls.Add(this.rbMaintain_StaffBirthdaySort);
+            this.grbxMaintain_StaffSort.Controls.Add(this.rbMaintain_StaffStartWorkSort);
+            this.grbxMaintain_StaffSort.Location = new System.Drawing.Point(225, 24);
+            this.grbxMaintain_StaffSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grbxMaintain_StaffSort.Name = "grbxMaintain_StaffSort";
+            this.grbxMaintain_StaffSort.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grbxMaintain_StaffSort.Size = new System.Drawing.Size(233, 122);
+            this.grbxMaintain_StaffSort.TabIndex = 0;
+            this.grbxMaintain_StaffSort.TabStop = false;
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.checkBoxX1);
-            this.groupBox5.Controls.Add(this.checkBoxX2);
+            this.groupBox5.Controls.Add(this.cbMaintain_JobType);
+            this.groupBox5.Controls.Add(this.cbMaintain_PositionType);
             this.groupBox5.Location = new System.Drawing.Point(28, 24);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox5.Name = "groupBox5";
@@ -567,6 +571,20 @@
             this.btnMaintain_Save.Text = "登録";
             this.btnMaintain_Save.Click += new System.EventHandler(this.btnMaintain_Save_Click);
             // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.BackColor = System.Drawing.Color.LightBlue;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
+            this.buttonX1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonX1.Location = new System.Drawing.Point(844, 32);
+            this.buttonX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(160, 45);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.TabIndex = 58;
+            this.buttonX1.Text = "就職制限マスタ";
+            // 
             // FrmMaintain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -588,6 +606,7 @@
             this.Name = "FrmMaintain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "保守画面";
+            this.Load += new System.EventHandler(this.FrmMaintain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.grpBoxMaintain_YearType.ResumeLayout(false);
@@ -595,8 +614,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.grbxMaintain_StaffSort.ResumeLayout(false);
+            this.grbxMaintain_StaffSort.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -616,16 +635,16 @@
         private DevComponents.DotNetBar.ButtonX btn_Group;
         private DevComponents.DotNetBar.ButtonX btn_Calendar;
         private DevComponents.DotNetBar.LabelX labelX3;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton8;
+        private System.Windows.Forms.RadioButton rbMaintain_YearTypeJapanese;
+        private System.Windows.Forms.RadioButton rbMaintain_YearTypeWestern;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbMaintain_JobType;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbMaintain_PositionType;
+        private System.Windows.Forms.RadioButton rbMaintain_StaffCodeSort;
+        private System.Windows.Forms.RadioButton rbMaintain_StaffFuriganaSort;
+        private System.Windows.Forms.RadioButton rbMaintain_StaffBirthdaySort;
+        private System.Windows.Forms.RadioButton rbMaintain_StaffStartWorkSort;
+        private System.Windows.Forms.RadioButton rbMaintain_StaffMtoWSort;
+        private System.Windows.Forms.RadioButton rbMaintain_StaffWtoMSort;
         private System.Windows.Forms.RadioButton radioButton9;
         private DevComponents.DotNetBar.ButtonX btn_Back;
         private DevComponents.DotNetBar.ButtonX btn_Vacation;
@@ -634,13 +653,14 @@
         private System.Windows.Forms.GroupBox grpBoxMaintain_YearType;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox grbxMaintain_StaffSort;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.RadioButton radioButton10;
+        private System.Windows.Forms.RadioButton rbMaintain_StaffMWSort;
         private System.Windows.Forms.GroupBox groupBox8;
         private DevComponents.DotNetBar.ButtonX btnMaintain_Save;
         private DevComponents.DotNetBar.ButtonX buttonX2;
         private DevComponents.DotNetBar.Controls.TextBoxX tbxStaff_Code;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
     }
 }

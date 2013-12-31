@@ -30,6 +30,16 @@ namespace Chapy
         public string Name2 { get; set; }
         public Nullable<System.DateTime> beginJob { get; set; }
         public Nullable<byte> jobType { get; set; }
+        public string PostCode { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string HomePage { get; set; }
+        public string Tel { get; set; }
+        public string Mobile { get; set; }
+        public string Email { get; set; }
+        public string EmerencyAddress1 { get; set; }
+        public string EmerencyAddress2 { get; set; }
+        public string EmerencyTel { get; set; }
     
         public virtual CpPosition CpPosition { get; set; }
         public virtual CpSchool CpSchool { get; set; }
