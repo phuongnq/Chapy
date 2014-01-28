@@ -20,9 +20,12 @@ namespace Chapy
         }
     
         public int Id { get; set; }
+        public int TermID { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
+        public Nullable<int> Chosen { get; set; }
     
+        public virtual CpTerm CpTerm { get; set; }
         public virtual ICollection<CpScheduleDetail> CpScheduleDetails { get; set; }
     }
 }

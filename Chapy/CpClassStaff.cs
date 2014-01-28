@@ -23,10 +23,11 @@ namespace Chapy
         public Nullable<int> StaffId5 { get; set; }
         public Nullable<int> StaffId6 { get; set; }
         public Nullable<int> NumberOfStaff { get; set; }
-        public int TanninId { get; set; }
+        public int TermId { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
     
         public virtual CpClass CpClass { get; set; }
+        public virtual CpTerm CpTerm { get; set; }
     }
 }

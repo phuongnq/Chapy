@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace Chapy
 {
     public partial class FrmStaffTypeList : Form
     {
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
 
         public FrmStaffTypeList()
         {
@@ -27,7 +28,7 @@ namespace Chapy
             #region load datagriview
             dataGridViewX1.Rows.Clear();
             int school_id = VariableGlobal.school_id;
-            var list_staff_types = from st in db.CpStaffTypes where st.SchoolId == school_id select st;
+            var list_staff_types = from st in db.CpStaffTypes orderby st.Code where st.SchoolId == school_id select st;
 
             if (list_staff_types.Any())
             {
@@ -102,10 +103,23 @@ namespace Chapy
 
         private void btn_Back_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FrmMaintain main_tain = new FrmMaintain();
-            main_tain.Show();
+            this._btnBackClick();
+        }
 
+        private void _btnBackClick()
+        {         
+
+            Thread thread = new Thread(new ThreadStart(ShowMainTain)); //Tạo luồng mới
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start(); //Khởi chạy luồng
+            this.Close(); //đóng Form hiện tại. (Form1)
+        }
+
+        private void ShowMainTain()
+        {
+            
+            FrmMaintain main_tain = new FrmMaintain();
+            main_tain.ShowDialog();
         }
     }
 }

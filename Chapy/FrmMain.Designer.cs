@@ -39,6 +39,8 @@
             this.btn_MakeBack = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.btnSwitchSchool = new DevComponents.DotNetBar.ButtonX();
+            this.lblSchool = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_MakeShift
@@ -71,6 +73,7 @@
             this.btn_MakeTimeZone.Symbol = "";
             this.btn_MakeTimeZone.TabIndex = 1;
             this.btn_MakeTimeZone.Text = "シフト確認／編集";
+            this.btn_MakeTimeZone.Click += new System.EventHandler(this.btn_MakeTimeZone_Click);
             // 
             // btn_MakeStaff
             // 
@@ -101,7 +104,7 @@
             this.btn_MakeHolidays.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btn_MakeHolidays.Symbol = "";
             this.btn_MakeHolidays.TabIndex = 3;
-            this.btn_MakeHolidays.Text = "勤務形態組合せ";
+            this.btn_MakeHolidays.Text = "シフト制限設定";
             // 
             // btnStaff_register
             // 
@@ -189,12 +192,40 @@
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX2.TabIndex = 9;
             // 
+            // btnSwitchSchool
+            // 
+            this.btnSwitchSchool.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSwitchSchool.BackColor = System.Drawing.Color.LightBlue;
+            this.btnSwitchSchool.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
+            this.btnSwitchSchool.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSwitchSchool.Location = new System.Drawing.Point(489, 408);
+            this.btnSwitchSchool.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSwitchSchool.Name = "btnSwitchSchool";
+            this.btnSwitchSchool.Size = new System.Drawing.Size(230, 60);
+            this.btnSwitchSchool.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSwitchSchool.Symbol = "";
+            this.btnSwitchSchool.TabIndex = 10;
+            this.btnSwitchSchool.Text = "勤務切り替え";
+            this.btnSwitchSchool.Click += new System.EventHandler(this.btnSwitchSchool_Click);
+            // 
+            // lblSchool
+            // 
+            this.lblSchool.AutoSize = true;
+            this.lblSchool.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSchool.Location = new System.Drawing.Point(320, 9);
+            this.lblSchool.Name = "lblSchool";
+            this.lblSchool.Size = new System.Drawing.Size(107, 40);
+            this.lblSchool.TabIndex = 11;
+            this.lblSchool.Text = "施設：";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightYellow;
             this.ClientSize = new System.Drawing.Size(1054, 562);
+            this.Controls.Add(this.lblSchool);
+            this.Controls.Add(this.btnSwitchSchool);
             this.Controls.Add(this.buttonX2);
             this.Controls.Add(this.buttonX1);
             this.Controls.Add(this.btn_MakeBack);
@@ -209,8 +240,10 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "チャッピ";
+            this.Text = "チャッピー";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -226,5 +259,7 @@
         private DevComponents.DotNetBar.ButtonX btn_MakeBack;
         private DevComponents.DotNetBar.ButtonX buttonX1;
         private DevComponents.DotNetBar.ButtonX buttonX2;
+        private DevComponents.DotNetBar.ButtonX btnSwitchSchool;
+        private System.Windows.Forms.Label lblSchool;
     }
 }

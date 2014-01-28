@@ -12,7 +12,7 @@ namespace Chapy
 {
     public partial class Staffs : Form
     {
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
         public Staffs()
         {
             InitializeComponent();

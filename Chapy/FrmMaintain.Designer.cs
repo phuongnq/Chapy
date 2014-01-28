@@ -32,7 +32,6 @@
             this.btn_CreatSchool = new DevComponents.DotNetBar.ButtonX();
             this.btn_TermList = new DevComponents.DotNetBar.ButtonX();
             this.btn_Building = new DevComponents.DotNetBar.ButtonX();
-            this.btn_TanninMaster = new DevComponents.DotNetBar.ButtonX();
             this.btn_StaffType = new DevComponents.DotNetBar.ButtonX();
             this.btn_Position = new DevComponents.DotNetBar.ButtonX();
             this.btn_Group = new DevComponents.DotNetBar.ButtonX();
@@ -53,6 +52,7 @@
             this.btn_Vacation = new DevComponents.DotNetBar.ButtonX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.grpBoxMaintain_YearType = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -64,7 +64,6 @@
             this.tbxStaff_Code = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.btnMaintain_Save = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.grpBoxMaintain_YearType.SuspendLayout();
@@ -135,28 +134,13 @@
             this.btn_Building.Text = "場所マスタ";
             this.btn_Building.Click += new System.EventHandler(this.btn_Building_Click);
             // 
-            // btn_TanninMaster
-            // 
-            this.btn_TanninMaster.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btn_TanninMaster.BackColor = System.Drawing.Color.LightBlue;
-            this.btn_TanninMaster.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
-            this.btn_TanninMaster.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_TanninMaster.Location = new System.Drawing.Point(237, 32);
-            this.btn_TanninMaster.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_TanninMaster.Name = "btn_TanninMaster";
-            this.btn_TanninMaster.Size = new System.Drawing.Size(160, 45);
-            this.btn_TanninMaster.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btn_TanninMaster.TabIndex = 14;
-            this.btn_TanninMaster.Text = "担任マスタ";
-            this.btn_TanninMaster.Click += new System.EventHandler(this.btn_TanninMaster_Click);
-            // 
             // btn_StaffType
             // 
             this.btn_StaffType.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_StaffType.BackColor = System.Drawing.Color.LightBlue;
             this.btn_StaffType.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
             this.btn_StaffType.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_StaffType.Location = new System.Drawing.Point(448, 32);
+            this.btn_StaffType.Location = new System.Drawing.Point(237, 32);
             this.btn_StaffType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_StaffType.Name = "btn_StaffType";
             this.btn_StaffType.Size = new System.Drawing.Size(160, 45);
@@ -171,7 +155,7 @@
             this.btn_Position.BackColor = System.Drawing.Color.LightBlue;
             this.btn_Position.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
             this.btn_Position.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Position.Location = new System.Drawing.Point(652, 32);
+            this.btn_Position.Location = new System.Drawing.Point(448, 32);
             this.btn_Position.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Position.Name = "btn_Position";
             this.btn_Position.Size = new System.Drawing.Size(160, 45);
@@ -232,7 +216,7 @@
             this.rbMaintain_YearTypeJapanese.Location = new System.Drawing.Point(6, 24);
             this.rbMaintain_YearTypeJapanese.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbMaintain_YearTypeJapanese.Name = "rbMaintain_YearTypeJapanese";
-            this.rbMaintain_YearTypeJapanese.Size = new System.Drawing.Size(77, 19);
+            this.rbMaintain_YearTypeJapanese.Size = new System.Drawing.Size(73, 19);
             this.rbMaintain_YearTypeJapanese.TabIndex = 24;
             this.rbMaintain_YearTypeJapanese.TabStop = true;
             this.rbMaintain_YearTypeJapanese.Text = "和歴表示";
@@ -244,7 +228,7 @@
             this.rbMaintain_YearTypeWestern.Location = new System.Drawing.Point(6, 63);
             this.rbMaintain_YearTypeWestern.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbMaintain_YearTypeWestern.Name = "rbMaintain_YearTypeWestern";
-            this.rbMaintain_YearTypeWestern.Size = new System.Drawing.Size(77, 19);
+            this.rbMaintain_YearTypeWestern.Size = new System.Drawing.Size(73, 19);
             this.rbMaintain_YearTypeWestern.TabIndex = 25;
             this.rbMaintain_YearTypeWestern.Text = "西歴表示";
             this.rbMaintain_YearTypeWestern.UseVisualStyleBackColor = true;
@@ -264,7 +248,7 @@
             this.cbMaintain_JobType.Size = new System.Drawing.Size(117, 26);
             this.cbMaintain_JobType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbMaintain_JobType.TabIndex = 31;
-            this.cbMaintain_JobType.Text = "職類コード順";
+            this.cbMaintain_JobType.Text = "職種コード順";
             // 
             // cbMaintain_PositionType
             // 
@@ -290,7 +274,7 @@
             this.rbMaintain_StaffCodeSort.Location = new System.Drawing.Point(40, 15);
             this.rbMaintain_StaffCodeSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbMaintain_StaffCodeSort.Name = "rbMaintain_StaffCodeSort";
-            this.rbMaintain_StaffCodeSort.Size = new System.Drawing.Size(93, 19);
+            this.rbMaintain_StaffCodeSort.Size = new System.Drawing.Size(97, 19);
             this.rbMaintain_StaffCodeSort.TabIndex = 33;
             this.rbMaintain_StaffCodeSort.TabStop = true;
             this.rbMaintain_StaffCodeSort.Text = "職員コード順";
@@ -302,7 +286,7 @@
             this.rbMaintain_StaffFuriganaSort.Location = new System.Drawing.Point(41, 41);
             this.rbMaintain_StaffFuriganaSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbMaintain_StaffFuriganaSort.Name = "rbMaintain_StaffFuriganaSort";
-            this.rbMaintain_StaffFuriganaSort.Size = new System.Drawing.Size(75, 19);
+            this.rbMaintain_StaffFuriganaSort.Size = new System.Drawing.Size(85, 19);
             this.rbMaintain_StaffFuriganaSort.TabIndex = 34;
             this.rbMaintain_StaffFuriganaSort.Text = "フリガナ順";
             this.rbMaintain_StaffFuriganaSort.UseVisualStyleBackColor = true;
@@ -314,7 +298,7 @@
             this.rbMaintain_StaffBirthdaySort.Location = new System.Drawing.Point(41, 68);
             this.rbMaintain_StaffBirthdaySort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbMaintain_StaffBirthdaySort.Name = "rbMaintain_StaffBirthdaySort";
-            this.rbMaintain_StaffBirthdaySort.Size = new System.Drawing.Size(90, 19);
+            this.rbMaintain_StaffBirthdaySort.Size = new System.Drawing.Size(85, 19);
             this.rbMaintain_StaffBirthdaySort.TabIndex = 35;
             this.rbMaintain_StaffBirthdaySort.Text = "生年月日順";
             this.rbMaintain_StaffBirthdaySort.UseVisualStyleBackColor = true;
@@ -325,7 +309,7 @@
             this.rbMaintain_StaffStartWorkSort.Location = new System.Drawing.Point(41, 98);
             this.rbMaintain_StaffStartWorkSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbMaintain_StaffStartWorkSort.Name = "rbMaintain_StaffStartWorkSort";
-            this.rbMaintain_StaffStartWorkSort.Size = new System.Drawing.Size(103, 19);
+            this.rbMaintain_StaffStartWorkSort.Size = new System.Drawing.Size(97, 19);
             this.rbMaintain_StaffStartWorkSort.TabIndex = 36;
             this.rbMaintain_StaffStartWorkSort.Text = "就職年月日順";
             this.rbMaintain_StaffStartWorkSort.UseVisualStyleBackColor = true;
@@ -337,7 +321,7 @@
             this.rbMaintain_StaffMtoWSort.Location = new System.Drawing.Point(23, 19);
             this.rbMaintain_StaffMtoWSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbMaintain_StaffMtoWSort.Name = "rbMaintain_StaffMtoWSort";
-            this.rbMaintain_StaffMtoWSort.Size = new System.Drawing.Size(61, 19);
+            this.rbMaintain_StaffMtoWSort.Size = new System.Drawing.Size(59, 19);
             this.rbMaintain_StaffMtoWSort.TabIndex = 37;
             this.rbMaintain_StaffMtoWSort.TabStop = true;
             this.rbMaintain_StaffMtoWSort.Text = "男→女";
@@ -349,7 +333,7 @@
             this.rbMaintain_StaffWtoMSort.Location = new System.Drawing.Point(23, 46);
             this.rbMaintain_StaffWtoMSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbMaintain_StaffWtoMSort.Name = "rbMaintain_StaffWtoMSort";
-            this.rbMaintain_StaffWtoMSort.Size = new System.Drawing.Size(61, 19);
+            this.rbMaintain_StaffWtoMSort.Size = new System.Drawing.Size(59, 19);
             this.rbMaintain_StaffWtoMSort.TabIndex = 38;
             this.rbMaintain_StaffWtoMSort.Text = "女→男";
             this.rbMaintain_StaffWtoMSort.UseVisualStyleBackColor = true;
@@ -360,7 +344,7 @@
             this.radioButton9.Location = new System.Drawing.Point(967, 564);
             this.radioButton9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(77, 19);
+            this.radioButton9.Size = new System.Drawing.Size(73, 19);
             this.radioButton9.TabIndex = 39;
             this.radioButton9.TabStop = true;
             this.radioButton9.Text = "男女混合";
@@ -371,7 +355,7 @@
             this.btn_Back.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_Back.BackColor = System.Drawing.Color.LightBlue;
             this.btn_Back.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
-            this.btn_Back.Location = new System.Drawing.Point(881, 497);
+            this.btn_Back.Location = new System.Drawing.Point(800, 497);
             this.btn_Back.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Back.Name = "btn_Back";
             this.btn_Back.Size = new System.Drawing.Size(100, 45);
@@ -393,6 +377,7 @@
             this.btn_Vacation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btn_Vacation.TabIndex = 57;
             this.btn_Vacation.Text = "休暇マスタ";
+            this.btn_Vacation.Click += new System.EventHandler(this.btn_Vacation_Click);
             // 
             // groupBox1
             // 
@@ -403,7 +388,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(1015, 82);
+            this.groupBox1.Size = new System.Drawing.Size(873, 82);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "法人共通マスタ";
@@ -416,7 +401,6 @@
             this.groupBox2.Controls.Add(this.btn_StaffType);
             this.groupBox2.Controls.Add(this.btn_Position);
             this.groupBox2.Controls.Add(this.btn_Building);
-            this.groupBox2.Controls.Add(this.btn_TanninMaster);
             this.groupBox2.Controls.Add(this.btn_Group);
             this.groupBox2.Controls.Add(this.btn_TermList);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -424,10 +408,25 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(1015, 162);
+            this.groupBox2.Size = new System.Drawing.Size(873, 162);
             this.groupBox2.TabIndex = 58;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "各施設マスタ";
+            // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.BackColor = System.Drawing.Color.LightBlue;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
+            this.buttonX1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonX1.Location = new System.Drawing.Point(652, 32);
+            this.buttonX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(160, 45);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.TabIndex = 58;
+            this.buttonX1.Text = "就職制限マスタ";
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
             // grpBoxMaintain_YearType
             // 
@@ -441,6 +440,7 @@
             this.grpBoxMaintain_YearType.TabIndex = 59;
             this.grpBoxMaintain_YearType.TabStop = false;
             this.grpBoxMaintain_YearType.Text = "年号表示";
+            this.grpBoxMaintain_YearType.Enter += new System.EventHandler(this.grpBoxMaintain_YearType_Enter);
             // 
             // groupBox4
             // 
@@ -451,7 +451,7 @@
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox4.Size = new System.Drawing.Size(749, 151);
+            this.groupBox4.Size = new System.Drawing.Size(607, 151);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "職員表示順";
@@ -461,7 +461,7 @@
             this.groupBox7.Controls.Add(this.rbMaintain_StaffMWSort);
             this.groupBox7.Controls.Add(this.rbMaintain_StaffMtoWSort);
             this.groupBox7.Controls.Add(this.rbMaintain_StaffWtoMSort);
-            this.groupBox7.Location = new System.Drawing.Point(504, 24);
+            this.groupBox7.Location = new System.Drawing.Point(455, 24);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -475,7 +475,7 @@
             this.rbMaintain_StaffMWSort.Location = new System.Drawing.Point(23, 75);
             this.rbMaintain_StaffMWSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbMaintain_StaffMWSort.Name = "rbMaintain_StaffMWSort";
-            this.rbMaintain_StaffMWSort.Size = new System.Drawing.Size(77, 19);
+            this.rbMaintain_StaffMWSort.Size = new System.Drawing.Size(73, 19);
             this.rbMaintain_StaffMWSort.TabIndex = 39;
             this.rbMaintain_StaffMWSort.Text = "男女混合";
             this.rbMaintain_StaffMWSort.UseVisualStyleBackColor = true;
@@ -486,7 +486,7 @@
             this.grbxMaintain_StaffSort.Controls.Add(this.rbMaintain_StaffFuriganaSort);
             this.grbxMaintain_StaffSort.Controls.Add(this.rbMaintain_StaffBirthdaySort);
             this.grbxMaintain_StaffSort.Controls.Add(this.rbMaintain_StaffStartWorkSort);
-            this.grbxMaintain_StaffSort.Location = new System.Drawing.Point(225, 24);
+            this.grbxMaintain_StaffSort.Location = new System.Drawing.Point(205, 24);
             this.grbxMaintain_StaffSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grbxMaintain_StaffSort.Name = "grbxMaintain_StaffSort";
             this.grbxMaintain_StaffSort.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -562,7 +562,7 @@
             this.btnMaintain_Save.AccessibleRole = System.Windows.Forms.AccessibleRole.ButtonDropDown;
             this.btnMaintain_Save.BackColor = System.Drawing.Color.LightBlue;
             this.btnMaintain_Save.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
-            this.btnMaintain_Save.Location = new System.Drawing.Point(748, 497);
+            this.btnMaintain_Save.Location = new System.Drawing.Point(669, 497);
             this.btnMaintain_Save.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnMaintain_Save.Name = "btnMaintain_Save";
             this.btnMaintain_Save.Size = new System.Drawing.Size(100, 45);
@@ -571,26 +571,12 @@
             this.btnMaintain_Save.Text = "登録";
             this.btnMaintain_Save.Click += new System.EventHandler(this.btnMaintain_Save_Click);
             // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.BackColor = System.Drawing.Color.LightBlue;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
-            this.buttonX1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonX1.Location = new System.Drawing.Point(844, 32);
-            this.buttonX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(160, 45);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 58;
-            this.buttonX1.Text = "就職制限マスタ";
-            // 
             // FrmMaintain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1054, 562);
+            this.ClientSize = new System.Drawing.Size(909, 562);
             this.Controls.Add(this.btnMaintain_Save);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox10);
@@ -629,7 +615,6 @@
         private DevComponents.DotNetBar.ButtonX btn_CreatSchool;
         private DevComponents.DotNetBar.ButtonX btn_TermList;
         private DevComponents.DotNetBar.ButtonX btn_Building;
-        private DevComponents.DotNetBar.ButtonX btn_TanninMaster;
         private DevComponents.DotNetBar.ButtonX btn_StaffType;
         private DevComponents.DotNetBar.ButtonX btn_Position;
         private DevComponents.DotNetBar.ButtonX btn_Group;

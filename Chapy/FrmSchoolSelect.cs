@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using System.Threading;
 
 
 namespace Chapy
 {
     public partial class FrmSchoolSelect : Form
     {
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
         public FrmSchoolSelect()
         {
             InitializeComponent();
@@ -22,23 +23,27 @@ namespace Chapy
 
         private void btn_GoToMain_Click(object sender, EventArgs e)
         {
-            this.Hide();
+           
             VariableGlobal.school_id = Convert.ToInt32(cbb_List_School.SelectedValue);
             int school_id = VariableGlobal.school_id;
             var obi_school = (from s in db.CpSchools where s.Id == school_id select s).Single();
             VariableGlobal.school_name = obi_school.Name;
 
-            FrmMain main = new FrmMain();
-            main.Show();
+            Thread thread = new Thread(new ThreadStart(ShowFormMain)); //Tạo luồng mới
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start(); //Khởi chạy luồng
+            this.Close(); //đóng Form hiện tại. (Form1)
+           
         }
 
         private void FrmSchoolSelect_Load(object sender, EventArgs e)
         {
+            
             #region load combox School
             Dictionary<int, string> obj_schools = new Dictionary<int, string>();
 
             var list_schools = from s in db.CpSchools select s;
-
+            
             if (list_schools.Any())
             {
                 foreach (var list_school in list_schools)
@@ -56,6 +61,19 @@ namespace Chapy
             VariableGlobal.Sexs.Clear();
             VariableGlobal.Birthdays.Clear();
             VariableGlobal.StaffIds.Clear();
+            if (VariableGlobal.school_id > 0)
+            {
+                cbb_List_School.SelectedValue = VariableGlobal.school_id;
+            }
+        }
+
+        /// <summary>
+        /// function oepn form main in thread
+        /// </summary>
+        public void ShowFormMain()
+        {
+            FrmMain frmMain = new FrmMain();
+            frmMain.ShowDialog();
         }
     }
 
@@ -91,5 +109,6 @@ namespace Chapy
         public static bool staffWotMSort = false;       //sort from Woman to Man
         public static bool staffMWSort = false;         //sort mixed Man and Woman
 
+        public static string connectionString = "";
     }
 }

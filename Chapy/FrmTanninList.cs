@@ -94,8 +94,9 @@ namespace Chapy
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            FrmMain main = new FrmMain();
-            main.Show();
+
+            FrmMaintain mainTain = new FrmMaintain();
+            mainTain.Show();
             this.Close();
         }
 
@@ -122,7 +123,7 @@ namespace Chapy
                 {
                     if (DAT_GRI_VIW[e.ColumnIndex, e.RowIndex].EditedFormattedValue.ToString() == "True")
                     {
-                        D_INX_TAN = Convert.ToInt32(DAT_GRI_VIW[1, e.RowIndex].Value);
+                        D_INX_TAN = Convert.ToInt32(DAT_GRI_VIW[3, e.RowIndex].Value);
                         for (int i = 0; i < DAT_GRI_VIW.RowCount; i++)
                         {
                             if (i != e.RowIndex)
@@ -142,8 +143,9 @@ namespace Chapy
 
         private void loadTannin()
         {
+            
             //get all tannin in db
-            var tannins = (from t in db.CpTannins select t).ToArray();
+            var tannins = (from t in db.CpTannins where t.SchoolId == VariableGlobal.school_id select t).ToArray();
 
             DAT_GRI_VIW.Rows.Clear();
             //insert min 15row in tannins de view cho dep
@@ -160,12 +162,18 @@ namespace Chapy
             int i = 0;
             foreach (var item in tannins)
             {
-                DAT_GRI_VIW[1, i].Value = item.Id;
-                DAT_GRI_VIW[2, i].Value = item.Name;
+                DAT_GRI_VIW[1, i].Value = item.Code.Trim();
+                DAT_GRI_VIW[2, i].Value = item.Name.Trim();
+                DAT_GRI_VIW[3, i].Value = item.Id;
                 i++;
             }
 
             D_INX_TAN_MAX = i > 0 ? i - 1 : 0;
+        }
+
+        private void FrmTanninList_Load(object sender, EventArgs e)
+        {
+
         }
 
     }

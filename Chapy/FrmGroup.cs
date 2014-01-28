@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 using System.Web.Script.Serialization;
+using System.Threading;
 
 namespace Chapy
 {
     public partial class FrmGroup : Form
     {
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
         public FrmGroup()
         {
             InitializeComponent();
@@ -36,7 +37,7 @@ namespace Chapy
 
         private void loadGroupEdit()
         {
-            var obi_group = (from g in db.CpGroups where g.Id == VariableGlobal.groupe_id select g).Single();
+            var obi_group = (from g in db.CpGroups where g.Id == VariableGlobal.groupe_id && g.SchoolId == VariableGlobal.school_id select g).Single();
             if (obi_group != null)
             {
                 txt_Code.Text = obi_group.Code.ToString();
@@ -54,7 +55,7 @@ namespace Chapy
                         string code = VariableGlobal.Codes[j] as string;
                         string name = VariableGlobal.Names[j] as string;
                         string sex = VariableGlobal.Sexs[j] as string;
-                      //  string bithday = VariableGlobal.Birthdays[j] as string;
+                        //  string bithday = VariableGlobal.Birthdays[j] as string;
 
                         dataGridViewX1.Rows.Add(code, name, sex);
 
@@ -88,7 +89,7 @@ namespace Chapy
                     }
                 }
 
-                
+
 
             }
         }
@@ -161,13 +162,13 @@ namespace Chapy
                         string code = VariableGlobal.Codes[j] as string;
                         if (code == item.Cells[0].Value)
                         {
-                           // string name = VariableGlobal.Names[j] as string;
+                            // string name = VariableGlobal.Names[j] as string;
                             VariableGlobal.Codes.Remove(VariableGlobal.Codes[j]);
                             VariableGlobal.Names.Remove(VariableGlobal.Names[j]);
                             VariableGlobal.Sexs.Remove(VariableGlobal.Sexs[j]);
-                          //  VariableGlobal.Birthdays.Remove(VariableGlobal.Birthdays[j]);
+                            //  VariableGlobal.Birthdays.Remove(VariableGlobal.Birthdays[j]);
                             VariableGlobal.StaffIds.Remove(VariableGlobal.StaffIds[j]);
-                           
+
                             dataGridViewX1.Rows.RemoveAt(item.Index);
                         }
                     }
@@ -178,9 +179,19 @@ namespace Chapy
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             resetDataGlobal();
-            this.Hide();
+
+            Thread thread = new Thread(new ThreadStart(ShowGroupList)); //Tạo luồng mới
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start(); //Khởi chạy luồng
+            this.Close(); //đóng Form hiện tại. (Form1)
+        }
+
+        private void ShowGroupList()
+        {
+
             FrmGroupList group_list = new FrmGroupList();
-            group_list.Show();
+            group_list.ShowDialog();
+
         }
 
         private void btn_Register_Click(object sender, EventArgs e)
@@ -191,7 +202,7 @@ namespace Chapy
 
                 //check data exit in database?
                 string code = txt_Code.Text;
-                var cp_group = (from p in db.CpGroups where p.Code == code select p).SingleOrDefault();
+                var cp_group = (from p in db.CpGroups where p.Code == code && p.SchoolId == VariableGlobal.school_id select p).SingleOrDefault();
                 if (cp_group == null)
                 {
                     CpGroup cp_group_new = new CpGroup();
@@ -200,7 +211,7 @@ namespace Chapy
                     cp_group_new.Name = txt_Name.Text;
                     cp_group_new.Abbreviation = txt_Abbreviation.Text;
 
-                   
+
                     if (VariableGlobal.StaffIds.Count > 0)
                     {
                         //xu ly add them id cua staff vao DB.
@@ -235,7 +246,7 @@ namespace Chapy
                         foreach (int staff_id in VariableGlobal.StaffIds)
                         {
                             incre_up++;
-                            data_staff.Add(Convert.ToString(incre_up),Convert.ToString( staff_id));
+                            data_staff.Add(Convert.ToString(incre_up), Convert.ToString(staff_id));
 
                         }
 
@@ -269,7 +280,7 @@ namespace Chapy
             txt_Code.Text = "";
             txt_Name.Text = "";
             txt_Abbreviation.Text = "";
-            
+
         }
 
         private void resetDataGlobal()
@@ -277,7 +288,7 @@ namespace Chapy
             VariableGlobal.Codes.Clear();
             VariableGlobal.Names.Clear();
             VariableGlobal.Sexs.Clear();
-           // VariableGlobal.Birthdays.Clear();
+            // VariableGlobal.Birthdays.Clear();
             VariableGlobal.StaffIds.Clear();
 
             VariableGlobalGroup.Group_Code = "";
@@ -332,7 +343,7 @@ namespace Chapy
             {
                 //check db school_code is exits?
                 string code = txt_Code.Text;
-                var cp_buidings = (from bd in db.CpGroups where bd.Code == code select bd).SingleOrDefault();
+                var cp_buidings = (from bd in db.CpGroups where bd.Code == code && bd.SchoolId == VariableGlobal.school_id select bd).SingleOrDefault();
                 if (cp_buidings != null)
                 {
                     // txt_Code.Text = cp_buidings.Code.ToString();
@@ -364,6 +375,43 @@ namespace Chapy
                 txt_Abbreviation.BackColor = System.Drawing.Color.White;
             }
         }
+
+        private void FrmGroup_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == System.Windows.Forms.Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void txt_Code_Leave(object sender, EventArgs e)
+        {
+            txt_Code.Text = makeCodeParam(txt_Code.Text.Trim());
+        }
+
+        string makeCodeParam(string code)
+        {
+            while (code.Length < 2)
+            {
+                code = "0" + code;
+            }
+            return code;
+        }
+
+        private void txt_Code_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keypress = e.KeyChar;
+            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 13)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("You Can Only Enter A Number!");
+                e.Handled = true;
+            }
+        }
+
 
     }
 

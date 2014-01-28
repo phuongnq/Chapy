@@ -16,9 +16,15 @@ namespace Chapy
     {
         public CpSchool()
         {
+            this.CpClasses = new HashSet<CpClass>();
+            this.CpGroups = new HashSet<CpGroup>();
+            this.CpHolidays = new HashSet<CpHoliday>();
+            this.CpPositions = new HashSet<CpPosition>();
             this.CpStaffs = new HashSet<CpStaff>();
+            this.CpStaffTypes = new HashSet<CpStaffType>();
             this.CpStartEndDates = new HashSet<CpStartEndDate>();
-            this.CpTannins = new HashSet<CpTannin>();
+            this.CpTerms = new HashSet<CpTerm>();
+            this.CpTimeZones = new HashSet<CpTimeZone>();
         }
     
         public int Id { get; set; }
@@ -37,11 +43,19 @@ namespace Chapy
         public string HomePage { get; set; }
         public Nullable<byte> UsePass { get; set; }
         public string Password { get; set; }
+        public Nullable<int> LimitHour { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
     
+        public virtual ICollection<CpClass> CpClasses { get; set; }
+        public virtual CpCorporation CpCorporation { get; set; }
+        public virtual ICollection<CpGroup> CpGroups { get; set; }
+        public virtual ICollection<CpHoliday> CpHolidays { get; set; }
+        public virtual ICollection<CpPosition> CpPositions { get; set; }
         public virtual ICollection<CpStaff> CpStaffs { get; set; }
+        public virtual ICollection<CpStaffType> CpStaffTypes { get; set; }
         public virtual ICollection<CpStartEndDate> CpStartEndDates { get; set; }
-        public virtual ICollection<CpTannin> CpTannins { get; set; }
+        public virtual ICollection<CpTerm> CpTerms { get; set; }
+        public virtual ICollection<CpTimeZone> CpTimeZones { get; set; }
     }
 }

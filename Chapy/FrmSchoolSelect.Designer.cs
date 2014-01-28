@@ -114,7 +114,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmSchoolSelect";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "チャッピ";
+            this.Text = "チャッピー";
             this.Load += new System.EventHandler(this.FrmSchoolSelect_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

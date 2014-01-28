@@ -72,7 +72,7 @@
             this.advTree1.NodeStyle = this.elementStyle1;
             this.advTree1.PathSeparator = ";";
             this.advTree1.SelectionBox = false;
-            this.advTree1.Size = new System.Drawing.Size(260, 349);
+            this.advTree1.Size = new System.Drawing.Size(108, 349);
             this.advTree1.Styles.Add(this.elementStyle1);
             this.advTree1.TabIndex = 0;
             this.advTree1.Text = "advTree1";
@@ -110,11 +110,11 @@
             // 
             this.groupBox1.Controls.Add(this.calendarView);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(266, 75);
+            this.groupBox1.Location = new System.Drawing.Point(114, 75);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(957, 666);
+            this.groupBox1.Size = new System.Drawing.Size(894, 587);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "カレンダー";
@@ -134,7 +134,7 @@
             this.calendarView.MultiUserTabHeight = 19;
             this.calendarView.Name = "calendarView";
             this.calendarView.SelectedView = DevComponents.DotNetBar.Schedule.eCalendarView.Year;
-            this.calendarView.Size = new System.Drawing.Size(951, 642);
+            this.calendarView.Size = new System.Drawing.Size(888, 563);
             this.calendarView.TabIndex = 0;
             this.calendarView.Text = "calendarView";
             this.calendarView.TimeIndicator.BorderColor = System.Drawing.Color.Empty;
@@ -152,7 +152,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(266, 666);
+            this.groupBox2.Size = new System.Drawing.Size(114, 587);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             // 
@@ -169,7 +169,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(1223, 75);
+            this.groupBox3.Size = new System.Drawing.Size(1008, 75);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             // 
@@ -179,10 +179,10 @@
             // 
             // 
             this.lb_Name.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lb_Name.Location = new System.Drawing.Point(689, 32);
+            this.lb_Name.Location = new System.Drawing.Point(551, 27);
             this.lb_Name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lb_Name.Name = "lb_Name";
-            this.lb_Name.Size = new System.Drawing.Size(92, 26);
+            this.lb_Name.Size = new System.Drawing.Size(42, 26);
             this.lb_Name.TabIndex = 11;
             this.lb_Name.Text = "休日名";
             // 
@@ -194,7 +194,7 @@
             this.txt_Name.Border.Class = "TextBoxBorder";
             this.txt_Name.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txt_Name.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.txt_Name.Location = new System.Drawing.Point(820, 32);
+            this.txt_Name.Location = new System.Drawing.Point(599, 30);
             this.txt_Name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Name.MaxLength = 40;
             this.txt_Name.Name = "txt_Name";
@@ -205,24 +205,26 @@
             // 
             this.btn_Finish.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_Finish.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btn_Finish.Location = new System.Drawing.Point(1087, 22);
+            this.btn_Finish.Location = new System.Drawing.Point(889, 26);
             this.btn_Finish.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Finish.Name = "btn_Finish";
-            this.btn_Finish.Size = new System.Drawing.Size(96, 42);
+            this.btn_Finish.Size = new System.Drawing.Size(90, 27);
             this.btn_Finish.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btn_Finish.Symbol = "";
             this.btn_Finish.TabIndex = 6;
-            this.btn_Finish.Text = "閉じる";
+            this.btn_Finish.Text = "戻る";
             this.btn_Finish.Click += new System.EventHandler(this.btn_Finish_Click);
             // 
             // btn_Save
             // 
             this.btn_Save.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_Save.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btn_Save.Location = new System.Drawing.Point(976, 22);
+            this.btn_Save.Location = new System.Drawing.Point(759, 24);
             this.btn_Save.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(89, 42);
+            this.btn_Save.Size = new System.Drawing.Size(89, 29);
             this.btn_Save.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btn_Save.Symbol = "";
             this.btn_Save.TabIndex = 5;
             this.btn_Save.Text = "保存";
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
@@ -251,7 +253,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1223, 741);
+            this.ClientSize = new System.Drawing.Size(1008, 662);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);

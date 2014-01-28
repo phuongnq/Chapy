@@ -18,11 +18,12 @@ namespace Chapy
         public int ScheduleID { get; set; }
         public int ClassID { get; set; }
         public int StaffID { get; set; }
-        public System.DateTime Date { get; set; }
-        public int TimezoneID { get; set; }
+        public int Date { get; set; }
+        public Nullable<int> TimezoneID { get; set; }
     
-        public virtual CpScheduleDetail CpScheduleDetail1 { get; set; }
-        public virtual CpScheduleDetail CpScheduleDetail2 { get; set; }
+        public virtual CpClass CpClass { get; set; }
         public virtual CpSchedule CpSchedule { get; set; }
+        public virtual CpStaff CpStaff { get; set; }
+        public virtual CpTimeZone CpTimeZone { get; set; }
     }
 }

@@ -17,18 +17,18 @@ namespace Chapy
     public partial class FrmWorkArrangementDetail : Form
     {
         String wACode = null;
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
         String[] Weekdays = { "月", "火", "水", "木", "金", "土", "日" };
+        int termID;
 
         Boolean[] isClass = new Boolean[100];
+        int[] classIDs = new int[100];
         FrmWorkArrangement frmlst;
         public FrmWorkArrangementDetail(FrmWorkArrangement frmlst, String codeId)
         {
             InitializeComponent();
             this.frmlst = frmlst;
             if (codeId != null) this.wACode = codeId.Trim();
-
-            tbCode.KeyDown += tbCode_KeyDown;
 
             initFormData();
         }
@@ -39,6 +39,11 @@ namespace Chapy
             if (e.KeyCode == Keys.Enter)
             {
                 //enter key is down
+                tbCode.Text = tbCode.Text.Trim();
+                while (tbCode.Text.Length < 4)
+                {
+                    tbCode.Text = "0" + tbCode.Text;
+                }
                 wACode = tbCode.Text.Trim();
                 clearForm();
                 initFormData();
@@ -51,6 +56,9 @@ namespace Chapy
             //school id
             int school_id = VariableGlobal.school_id;
 
+            //termid
+            this.termID = this.frmlst.getTermID();
+
             Hashtable applyCl = null;
             if (wACode != null)
             {
@@ -59,66 +67,73 @@ namespace Chapy
                 //read timezone
                 var wt = (from p in db.CpTimeZones where wACode == p.Code.Trim() && p.SchoolId == school_id
                           select p).FirstOrDefault();
-                if (wt == null) return;
+                if (wt != null)
+                {
 
-                txtName.Text = wt.Name;
-                txtShortName.Text = wt.Abbreviation;
-                btnColor.BackColor = System.Drawing.ColorTranslator.FromHtml(wt.Color);
+                    txtName.Text = wt.Name;
+                    txtShortName.Text = wt.Abbreviation;
+                    btnColor.BackColor = System.Drawing.ColorTranslator.FromHtml(wt.Color);
 
-                for (int i = 0; i < wt.DayOfWeeks.Length && i < 7; i++) if (wt.DayOfWeeks[i] == '1')
-                    {
-                        CheckBox cb = (CheckBox)this.Controls.Find("cbWday" + i, true)[0];
-                        cb.Checked = true;
-                    }
+                    for (int i = 0; i < wt.DayOfWeeks.Length && i < 7; i++) if (wt.DayOfWeeks[i] == '1')
+                        {
+                            CheckBox cb = (CheckBox)this.Controls.Find("cbWday" + i, true)[0];
+                            cb.Checked = true;
+                        }
 
-                //WorkTime
-                txtStartTimeh.Text = ((DateTime)wt.StartTime).ToString("HH");
-                txtStartTimem.Text = ((DateTime)wt.StartTime).ToString("mm");
+                    //WorkTime
+                    txtStartTimeh.Text = ((DateTime)wt.StartTime).ToString("HH");
+                    txtStartTimem.Text = ((DateTime)wt.StartTime).ToString("mm");
 
-                txtEndTimeh.Text = ((DateTime)wt.EndTime).ToString("HH");
-                txtEndTimem.Text = ((DateTime)wt.EndTime).ToString("mm");
+                    txtEndTimeh.Text = ((DateTime)wt.EndTime).ToString("HH");
+                    txtEndTimem.Text = ((DateTime)wt.EndTime).ToString("mm");
 
-                //RestTime 1
-                txtSRtimeh1.Text = ((DateTime)wt.RestStartTime1).ToString("HH");
-                txtSRtimem1.Text = ((DateTime)wt.RestStartTime1).ToString("mm");
+                    //RestTime 1
+                    txtSRtimeh1.Text = ((DateTime)wt.RestStartTime1).ToString("HH");
+                    txtSRtimem1.Text = ((DateTime)wt.RestStartTime1).ToString("mm");
 
-                txtERtimeh1.Text = ((DateTime)wt.RestEndTime1).ToString("HH");
-                txtERtimem1.Text = ((DateTime)wt.RestEndTime1).ToString("mm");
+                    txtERtimeh1.Text = ((DateTime)wt.RestEndTime1).ToString("HH");
+                    txtERtimem1.Text = ((DateTime)wt.RestEndTime1).ToString("mm");
 
-                //RestTime 2
-                txtSRtimeh2.Text = ((DateTime)wt.RestStartTime2).ToString("HH");
-                txtSRtimem2.Text = ((DateTime)wt.RestStartTime2).ToString("mm");
+                    //RestTime 2
+                    txtSRtimeh2.Text = ((DateTime)wt.RestStartTime2).ToString("HH");
+                    txtSRtimem2.Text = ((DateTime)wt.RestStartTime2).ToString("mm");
 
-                txtERtimeh2.Text = ((DateTime)wt.RestEndTime2).ToString("HH");
-                txtERtimem2.Text = ((DateTime)wt.RestEndTime2).ToString("mm");
+                    txtERtimeh2.Text = ((DateTime)wt.RestEndTime2).ToString("HH");
+                    txtERtimem2.Text = ((DateTime)wt.RestEndTime2).ToString("mm");
 
-                //read class
-                applyCl = new Hashtable();
-                foreach (String cl in ((String)wt.ApplyClassed).Split(',')) if (cl != "")
-                    {
-                        String[] a = cl.Split(':');
-                        applyCl.Add(a[0], a[1]);
-                    }
+                    //read class
+                    applyCl = new Hashtable();
+                    foreach (String cl in ((String)wt.ApplyClassed).Split(',')) if (cl != "")
+                        {
+                            String[] a = cl.Split(':');
+                            applyCl.Add(a[0], a[1]);
+                        }
+                }
             }
             
-
-            for (int i = 0; i < 100; i++) isClass[i] = false;
-            var GradeCodes = from p in db.CpGradeCodes select p;
+            // Khoi tao tat ca cac dong cua grid -1
+            for (int i = 0; i < 100; i++) classIDs[i] = -1;
+            var GradeCodes = from p in db.CpGradeCodes where p.TermId == this.termID select p;
             dgvClassList.Rows.Add(false, "全学年クラス");
             foreach (var gc in GradeCodes)
             {
-                dgvClassList.Rows.Add(false,"     " + gc.Code.Trim() + " " + gc.Name + " 全クラス");
+                
                 var classes = from p in db.CpClasses where p.GradeCodeId == gc.Id && p.SchoolId == school_id select p;
-                foreach (var cl in classes)
+                if (classes.Any())
                 {
-                    String code = cl.Code.Trim();
-                    int ind = dgvClassList.Rows.Add(false, "          " + code + " " + cl.Name);
-                    isClass[ind] = true;
-
-                    if (applyCl != null && applyCl.ContainsKey(code))
+                    dgvClassList.Rows.Add(false, "     " + gc.Code.Trim() + " " + gc.Name + " 全クラス");
+                    foreach (var cl in classes)
                     {
-                        ((DataGridViewCheckBoxCell)dgvClassList[0, ind]).Value = true;
-                        ((DataGridViewComboBoxExCell)dgvClassList[2, ind]).Value = applyCl[code];
+                        String code = cl.Code.Trim();
+                        int ind = dgvClassList.Rows.Add(false, "          " + code + " " + cl.Name);
+                        classIDs[ind] = cl.Id;
+
+                        String key = "" + cl.Id;
+                        if (applyCl != null && applyCl.ContainsKey(key))
+                        {
+                            ((DataGridViewCheckBoxCell)dgvClassList[0, ind]).Value = true;
+                            ((DataGridViewComboBoxExCell)dgvClassList[2, ind]).Value = applyCl[key];
+                        }
                     }
                 }
             }
@@ -129,12 +144,27 @@ namespace Chapy
         {
             dgvClassList.DataSource = null;
             dgvClassList.Rows.Clear();
+
+            foreach (var c in this.groupBox1.Controls)
+            {
+                //MessageBox.Show(c.GetType().ToString());
+                if (c is TextBox)
+                {
+
+                    ((TextBox)c).Text = String.Empty;
+                }
+                else if (c is CheckBox)
+                {
+                    ((CheckBox)c).Checked = false;
+                }
+            }
+
         }
 
         //Code change
         private void tbCode_TextChanged(object sender, EventArgs e)
         {
-            wACode = tbCode.Text.Trim();
+            //wACode = tbCode.Text.Trim();
         }
 
         /*
@@ -143,6 +173,8 @@ namespace Chapy
         private void buttonX3_Click(object sender, EventArgs e)
         {
             clearForm();
+            wACode = null;
+            initFormData();
         }
 
         // Save to DB - Insert/Update
@@ -171,14 +203,12 @@ namespace Chapy
 
             //Apply Classes
             String applyClasses = "";
-            for (int i = 0; i < dgvClassList.RowCount; i++) if (isClass[i])
+            for (int i = 0; i < dgvClassList.RowCount; i++) if (classIDs[i] > -1)
                 {
-                    String strClass = ((String)dgvClassList[1, i].Value).Trim();
-                    String classCode = strClass.Split(' ')[0];
                     int number = Convert.ToInt16(dgvClassList[2, i].Value);
                     if (number > 0)
                     {
-                        applyClasses += classCode + ":" + number + ",";
+                        applyClasses += classIDs[i] + ":" + number + ",";
                     }
                 }
 
@@ -201,6 +231,7 @@ namespace Chapy
                 wa.RestEndTime2 = ertime2;
                 wa.ApplyClassed = applyClasses;
                 wa.SchoolId = VariableGlobal.school_id;
+                wa.TermID = this.termID;
 
                 db.CpTimeZones.Add(wa);
             }
@@ -219,6 +250,7 @@ namespace Chapy
                 wt.RestEndTime2 = ertime2;
                 wt.ApplyClassed = applyClasses;
                 wt.SchoolId = VariableGlobal.school_id;
+                wt.TermID = this.termID;
             }
 
             try
@@ -254,6 +286,17 @@ namespace Chapy
         {
             (new FrmWorkArrangement()).Show();
             this.Dispose();
+        }
+
+        // khi roi khoi tbCode tu dong add them do dai
+        private void tbCode_Leave(object sender, EventArgs e)
+        {
+            tbCode.Text = tbCode.Text.Trim();
+            while (tbCode.Text.Length < 4)
+            {
+                tbCode.Text = "0" + tbCode.Text;
+            }
+            wACode = tbCode.Text.Trim();
         }
 
     }

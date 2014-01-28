@@ -17,6 +17,7 @@ namespace Chapy
         public CpClass()
         {
             this.CpClassStaffs = new HashSet<CpClassStaff>();
+            this.CpScheduleDetails = new HashSet<CpScheduleDetail>();
         }
     
         public int Id { get; set; }
@@ -29,6 +30,9 @@ namespace Chapy
         public Nullable<System.DateTime> UpdatedAt { get; set; }
     
         public virtual CpGradeCode CpGradeCode { get; set; }
+        public virtual CpSchool CpSchool { get; set; }
+        public virtual CpTerm CpTerm { get; set; }
         public virtual ICollection<CpClassStaff> CpClassStaffs { get; set; }
+        public virtual ICollection<CpScheduleDetail> CpScheduleDetails { get; set; }
     }
 }

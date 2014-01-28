@@ -18,5 +18,7 @@ namespace Chapy
         public Nullable<int> SchoolId { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public string Reason { get; set; }
+    
+        public virtual CpSchool CpSchool { get; set; }
     }
 }

@@ -12,6 +12,7 @@ using DevComponents.DotNetBar;
 using DevComponents.Schedule.Model;
 using System.Net;
 using System.Xml.Linq;
+using System.Threading;
 
 
 namespace Chapy
@@ -20,14 +21,14 @@ namespace Chapy
     {
         private Int32 D_SCHOOL_ID = 0;
         static List<DateTime> listHolidays;
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
         public FrmHoliday()
         {
             InitializeComponent();
             #region khoi tao combobox
             int year_now = DateTime.Now.Year;
             Dictionary<int, string> dataSource = new Dictionary<int, string>();
-            dataSource.Add(0, "-----------------");
+            //dataSource.Add(0, "-----------------");
             dataSource.Add((year_now - 2), (year_now - 2).ToString());
             dataSource.Add((year_now - 1), (year_now - 1).ToString());
             dataSource.Add(year_now, year_now.ToString());
@@ -38,6 +39,9 @@ namespace Chapy
             cb_year.DisplayMember = "Value";
             cb_year.ValueMember = "Key";
 
+            int year = ((KeyValuePair<int, string>)cb_year.SelectedItem).Key;
+            calendarView.YearViewStartDate = new DateTime(year_now, 01, 01);
+            calendarView.YearViewEndDate = new DateTime(year_now, 12, 31);
             #endregion
             D_SCHOOL_ID = VariableGlobal.school_id;
         }
@@ -76,7 +80,7 @@ namespace Chapy
                             holiday.Reason = "Saturday";
                             holiday.SchoolId = D_SCHOOL_ID;
                             db.CpHolidays.Add(holiday);
-                            db.SaveChanges();
+                            //db.SaveChanges();
                             count++;
                         }
 
@@ -88,11 +92,12 @@ namespace Chapy
                             holiday.Reason = "Sunday";
                             holiday.SchoolId = D_SCHOOL_ID;
                             db.CpHolidays.Add(holiday);
-                            db.SaveChanges();
+                            
                             count++;
                         }
 
                     }
+                    db.SaveChanges();
 
 
                 } if (e.Node.Name == "holiday")
@@ -113,11 +118,13 @@ namespace Chapy
                             new_holiday.Reason = holiday.Name;
                             new_holiday.SchoolId = D_SCHOOL_ID;
                             db.CpHolidays.Add(new_holiday);
-                            db.SaveChanges();
+                          
                             c++;
                         }
 
                     }
+
+                    db.SaveChanges();
 
                 }
 
@@ -209,9 +216,10 @@ namespace Chapy
         private void FrmHoliday_Load(object sender, EventArgs e)
         {
             int year_now = DateTime.Now.Year;
-
+            
             calendarView.YearViewStartDate = new DateTime(year_now, 01, 01);
             calendarView.YearViewEndDate = new DateTime(year_now, 12, 31);
+            cb_year.SelectedValue = year_now;
 
             var holidays = (from h in db.CpHolidays where h.Date.Value.Year == year_now select h).ToList();
 
@@ -225,12 +233,12 @@ namespace Chapy
 
         private void cb_year_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cb_year.SelectedIndex > 0)
-            {
+            //if (cb_year.SelectedIndex > 0)
+            //{
                 int year = ((KeyValuePair<int, string>)cb_year.SelectedItem).Key;
                 calendarView.YearViewStartDate = new DateTime(year, 01, 01);
                 calendarView.YearViewEndDate = new DateTime(year, 12, 31);
-            }
+            //}
         }
 
         private void calendarView_ItemClick(object sender, EventArgs e)
@@ -272,9 +280,9 @@ namespace Chapy
                         holiday.Reason = txt_Name.Text;
 
                         db.CpHolidays.Add(holiday);
-                        db.SaveChanges();
+                       
 
-                        
+
                         insert++;
 
                     }
@@ -290,6 +298,7 @@ namespace Chapy
                 }
                 if (insert > 0)
                 {
+                    db.SaveChanges();
                     MessageBox.Show("Create holiday successfull");
                     txt_Name.Text = "";
                 }
@@ -304,11 +313,18 @@ namespace Chapy
 
         private void btn_Finish_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure to close this form! Data will be loose ??", "Confirm Close!!", MessageBoxButtons.YesNo);
-            if (confirmResult == DialogResult.Yes)
-            {
-                this.Close();
-            }
+           
+            Thread thread = new Thread(new ThreadStart(ShowFormMainTain)); //Tạo luồng mới
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start(); //Khởi chạy luồng
+            this.Close(); //đóng Form hiện tại. (Form1)
+        }
+
+        private void ShowFormMainTain()
+        {
+            FrmMaintain main = new FrmMaintain();
+            main.ShowDialog();
+           
         }
 
     }

@@ -10,31 +10,74 @@ using System.Windows.Forms;
 
 using DevComponents.DotNetBar.Controls;
 using DevComponents.DotNetBar;
+using System.Threading;
 
 namespace Chapy
 {
     public partial class FrmWorkArrangement : Form
     {
         //database access
-        chapyEntities db = new chapyEntities();
-        String[] Weekdays = {"月", "火", "水", "木", "金", "土", "日"};
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
+        String[] Weekdays = { "月", "火", "水", "木", "金", "土", "日" };
+        int termID;
+
+        int ok;
 
         public FrmWorkArrangement()
         {
             InitializeComponent();
-            initForm();
+            ok = initForm();
 
             //event handler
             wArgtGridView.CellClick += wArgtGridView_CellClick;
             wArgtGridView.CellMouseEnter += wArgtGridView_CellMouseEnter;
         }
 
-        void initForm()
+        private void FrmWorkArrangement_Load(object sender, EventArgs e)
+        {
+            if (ok != 0)
+            {
+                this.Dispose();
+                (new FrmMain()).Show();
+            }
+        }
+
+        public int getTermID()
+        {
+            return this.termID;
+        }
+
+        int initForm()
         {
             //school name
             int school_id = VariableGlobal.school_id;
             var school = (from p in db.CpSchools where p.Id == school_id select p).SingleOrDefault();
+            if (school == null)
+            {
+                MessageBox.Show("施設を設定してから選択してください");
+                return 1;
+            }
             this.lblSchoolName.Text = school.Code.Trim() + ". " + school.Name;
+
+            // load schedule trong hoc ky nay
+            Dictionary<int, string> objterm = new Dictionary<int, string>();
+            var terms = from p in db.CpTerms where p.SchoolId == school_id select p;
+            if (terms.Any())
+            {
+                foreach (var term in terms)
+                {
+                    objterm.Add(term.Id, term.Name);
+                    //cmbTanin.Items.Add(new { Value = tanin.Name, Key = tanin.Id });
+                }
+                cmbTerm.DataSource = new BindingSource(objterm, null);
+                cmbTerm.DisplayMember = "Value";
+                cmbTerm.ValueMember = "Key";
+            }
+            else
+            {
+                MessageBox.Show("Dang ky term truoc di");
+                return 1;
+            }
 
             wArgtGridView.Columns[2].HeaderText = "勤務形態\n名前";
             wArgtGridView.Columns[6].HeaderText = "勤務時間\n開始／終了";
@@ -47,12 +90,22 @@ namespace Chapy
             }
 
             //read staffType
-            var stafftype = from p in db.CpStaffTypes select p;
-            cmbStaffType.DisplayMember = "Text";
-            cmbStaffType.ValueMember = "Value";
-            foreach (var type in stafftype)
+            Dictionary<int, string> objtype = new Dictionary<int, string>();
+            var stafftype = from p in db.CpStaffTypes where p.SchoolId == school_id select p;
+            if (stafftype.Any())
             {
-                cmbStaffType.Items.Add(new { Text = type.Name, Value = type.Id });
+                foreach (var type in stafftype)
+                {
+                    objtype.Add(type.Id, type.Name);
+                }
+                cmbStaffType.DataSource = new BindingSource(objtype, null);
+                cmbStaffType.DisplayMember = "Value";
+                cmbStaffType.ValueMember = "Key";
+            }
+            else
+            {
+                MessageBox.Show("Dang ky staff type truoc di");
+                return 1;
             }
 
             //this.wArgtGridView.Rows.Add("five", "six", "seven", "eight"); this.wArgtGridView.Rows.Insert(0, "one", "two", "three", "four");
@@ -73,11 +126,13 @@ namespace Chapy
                 //Weekday
                 String weekdays = "";
                 for (int i = 0; i < 7 && i < wt.DayOfWeeks.Length; i++) if (wt.DayOfWeeks[i] == '1')
-                {
-                    weekdays += Weekdays[i] + " / ";
-                }
+                    {
+                        weekdays += Weekdays[i] + " / ";
+                    }
                 wArgtGridView.Rows[ind].Cells[5].Value = weekdays;
             }
+
+            return 0;
         }
 
         void wArgtGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
@@ -92,6 +147,7 @@ namespace Chapy
             if (e.ColumnIndex == 0)
             {   // Go to edit
                 DataGridViewTextBoxCell codeCell = (DataGridViewTextBoxCell)wArgtGridView[1, e.RowIndex];
+                this.termID = (int)cmbTerm.SelectedValue;
                 (new FrmWorkArrangementDetail(this, (String)codeCell.Value)).Show();
                 this.Dispose();
             }
@@ -100,11 +156,12 @@ namespace Chapy
             {   // Color
                 wArgtGridView.ClearSelection();
             }
-            
+
         }
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
+            this.termID = (int)cmbTerm.SelectedValue;
             (new FrmWorkArrangementDetail(this, null)).Show();
             this.Dispose();
         }
@@ -124,7 +181,19 @@ namespace Chapy
         //Delete
         private void buttonX2_Click(object sender, EventArgs e)
         {
+            //Neu chua chon show message
+            if (wArgtGridView.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("勤務形態を選択してください");
+                return;
+            }
+
             int ind = wArgtGridView.SelectedCells[0].RowIndex;
+            if (MessageBox.Show("削除してよろしでしょうか " + ind, "Validate", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                return;
+            }
+
             if (ind < 0 || ind >= wArgtGridView.RowCount - 1) return;
 
             String code = ((String)wArgtGridView[1, ind].Value).Trim();
@@ -151,9 +220,19 @@ namespace Chapy
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            (new FrmMain()).Show();
-            this.Dispose();
+
+            Thread thread = new Thread(new ThreadStart(ShowFormMain)); //Tạo luồng mới
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start(); //Khởi chạy luồng
+            this.Close(); //đóng Form hiện tại. (Form1)
         }
+
+        private void ShowFormMain()
+        {
+            (new FrmMain()).Show();
+        }
+
+
 
     }
 }

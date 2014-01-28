@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace Chapy
 {
     public partial class FrmStaffGroupSelect : Form
     {
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
 
         public FrmStaffGroupSelect()
         {
@@ -21,9 +22,18 @@ namespace Chapy
 
         private void btn_Back_Click(object sender, EventArgs e)
         {
-            this.Hide();
+
+            Thread thread = new Thread(new ThreadStart(ShowGroup)); //Tạo luồng mới
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start(); //Khởi chạy luồng
+            this.Close(); //đóng Form hiện tại. (Form1)
+        }
+
+        private void ShowGroup()
+        {
             FrmGroup group = new FrmGroup();
-            group.Show();
+            group.ShowDialog();
+
         }
 
         private void FrmStaffGroupSelect_Load(object sender, EventArgs e)
@@ -60,7 +70,7 @@ namespace Chapy
                     i++;
                 }
             }
-            
+
             #endregion
         }
 
@@ -86,7 +96,7 @@ namespace Chapy
                 {
                 }
             }
-           
+
         }
     }
 }

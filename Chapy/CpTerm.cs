@@ -14,6 +14,15 @@ namespace Chapy
     
     public partial class CpTerm
     {
+        public CpTerm()
+        {
+            this.CpClasses = new HashSet<CpClass>();
+            this.CpClassStaffs = new HashSet<CpClassStaff>();
+            this.CpGradeCodes = new HashSet<CpGradeCode>();
+            this.CpSchedules = new HashSet<CpSchedule>();
+            this.CpTimeZones = new HashSet<CpTimeZone>();
+        }
+    
         public int Id { get; set; }
         public string Code { get; set; }
         public int SchoolId { get; set; }
@@ -21,5 +30,12 @@ namespace Chapy
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
         public int Year { get; set; }
+    
+        public virtual ICollection<CpClass> CpClasses { get; set; }
+        public virtual ICollection<CpClassStaff> CpClassStaffs { get; set; }
+        public virtual ICollection<CpGradeCode> CpGradeCodes { get; set; }
+        public virtual ICollection<CpSchedule> CpSchedules { get; set; }
+        public virtual CpSchool CpSchool { get; set; }
+        public virtual ICollection<CpTimeZone> CpTimeZones { get; set; }
     }
 }

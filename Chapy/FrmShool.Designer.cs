@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lb_limitHour = new DevComponents.DotNetBar.LabelX();
+            this.txtLimitHour = new System.Windows.Forms.TextBox();
+            this.labelX21 = new DevComponents.DotNetBar.LabelX();
+            this.labelX20 = new DevComponents.DotNetBar.LabelX();
+            this.labelX19 = new DevComponents.DotNetBar.LabelX();
+            this.labelX18 = new DevComponents.DotNetBar.LabelX();
+            this.labelX11 = new DevComponents.DotNetBar.LabelX();
+            this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.lb_PassLength = new DevComponents.DotNetBar.LabelX();
             this.lb_EmailNotCorrect = new DevComponents.DotNetBar.LabelX();
@@ -84,6 +92,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lb_limitHour);
+            this.groupBox1.Controls.Add(this.txtLimitHour);
+            this.groupBox1.Controls.Add(this.labelX21);
+            this.groupBox1.Controls.Add(this.labelX20);
+            this.groupBox1.Controls.Add(this.labelX19);
+            this.groupBox1.Controls.Add(this.labelX18);
+            this.groupBox1.Controls.Add(this.labelX11);
+            this.groupBox1.Controls.Add(this.labelX10);
             this.groupBox1.Controls.Add(this.buttonX2);
             this.groupBox1.Controls.Add(this.lb_PassLength);
             this.groupBox1.Controls.Add(this.lb_EmailNotCorrect);
@@ -133,10 +149,139 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox1.Size = new System.Drawing.Size(813, 454);
+            this.groupBox1.Size = new System.Drawing.Size(813, 481);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "施設マスタ";
+            // 
+            // lb_limitHour
+            // 
+            // 
+            // 
+            // 
+            this.lb_limitHour.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lb_limitHour.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_limitHour.Location = new System.Drawing.Point(41, 338);
+            this.lb_limitHour.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lb_limitHour.Name = "lb_limitHour";
+            this.lb_limitHour.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lb_limitHour.Size = new System.Drawing.Size(87, 26);
+            this.lb_limitHour.TabIndex = 54;
+            this.lb_limitHour.Text = "時間制限";
+            this.lb_limitHour.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // txtLimitHour
+            // 
+            this.txtLimitHour.Location = new System.Drawing.Point(150, 338);
+            this.txtLimitHour.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtLimitHour.MaxLength = 40;
+            this.txtLimitHour.Name = "txtLimitHour";
+            this.txtLimitHour.Size = new System.Drawing.Size(61, 23);
+            this.txtLimitHour.TabIndex = 55;
+            this.txtLimitHour.Text = "40";
+            this.txtLimitHour.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // labelX21
+            // 
+            // 
+            // 
+            // 
+            this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX21.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX21.ForeColor = System.Drawing.Color.Red;
+            this.labelX21.Location = new System.Drawing.Point(128, 241);
+            this.labelX21.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX21.Name = "labelX21";
+            this.labelX21.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelX21.Size = new System.Drawing.Size(17, 26);
+            this.labelX21.TabIndex = 53;
+            this.labelX21.Text = "*";
+            this.labelX21.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // labelX20
+            // 
+            // 
+            // 
+            // 
+            this.labelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX20.ForeColor = System.Drawing.Color.Red;
+            this.labelX20.Location = new System.Drawing.Point(128, 207);
+            this.labelX20.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX20.Name = "labelX20";
+            this.labelX20.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelX20.Size = new System.Drawing.Size(17, 26);
+            this.labelX20.TabIndex = 52;
+            this.labelX20.Text = "*";
+            this.labelX20.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // labelX19
+            // 
+            // 
+            // 
+            // 
+            this.labelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX19.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX19.ForeColor = System.Drawing.Color.Red;
+            this.labelX19.Location = new System.Drawing.Point(128, 120);
+            this.labelX19.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX19.Name = "labelX19";
+            this.labelX19.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelX19.Size = new System.Drawing.Size(17, 26);
+            this.labelX19.TabIndex = 51;
+            this.labelX19.Text = "*";
+            this.labelX19.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // labelX18
+            // 
+            // 
+            // 
+            // 
+            this.labelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX18.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX18.ForeColor = System.Drawing.Color.Red;
+            this.labelX18.Location = new System.Drawing.Point(128, 86);
+            this.labelX18.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX18.Name = "labelX18";
+            this.labelX18.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelX18.Size = new System.Drawing.Size(17, 26);
+            this.labelX18.TabIndex = 50;
+            this.labelX18.Text = "*";
+            this.labelX18.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // labelX11
+            // 
+            // 
+            // 
+            // 
+            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX11.ForeColor = System.Drawing.Color.Red;
+            this.labelX11.Location = new System.Drawing.Point(128, 52);
+            this.labelX11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX11.Name = "labelX11";
+            this.labelX11.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelX11.Size = new System.Drawing.Size(17, 26);
+            this.labelX11.TabIndex = 49;
+            this.labelX11.Text = "*";
+            this.labelX11.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // labelX10
+            // 
+            // 
+            // 
+            // 
+            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX10.ForeColor = System.Drawing.Color.Red;
+            this.labelX10.Location = new System.Drawing.Point(128, 22);
+            this.labelX10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX10.Name = "labelX10";
+            this.labelX10.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelX10.Size = new System.Drawing.Size(17, 26);
+            this.labelX10.TabIndex = 48;
+            this.labelX10.Text = "*";
+            this.labelX10.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // buttonX2
             // 
@@ -157,7 +302,7 @@
             this.lb_PassLength.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lb_PassLength.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lb_PassLength.ForeColor = System.Drawing.Color.Red;
-            this.lb_PassLength.Location = new System.Drawing.Point(366, 373);
+            this.lb_PassLength.Location = new System.Drawing.Point(366, 402);
             this.lb_PassLength.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lb_PassLength.Name = "lb_PassLength";
             this.lb_PassLength.Size = new System.Drawing.Size(159, 26);
@@ -191,7 +336,7 @@
             this.lb_PassNotCorrect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lb_PassNotCorrect.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lb_PassNotCorrect.ForeColor = System.Drawing.Color.Red;
-            this.lb_PassNotCorrect.Location = new System.Drawing.Point(369, 407);
+            this.lb_PassNotCorrect.Location = new System.Drawing.Point(369, 436);
             this.lb_PassNotCorrect.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lb_PassNotCorrect.Name = "lb_PassNotCorrect";
             this.lb_PassNotCorrect.Size = new System.Drawing.Size(118, 26);
@@ -307,7 +452,7 @@
             this.buttonX1.BackColor = System.Drawing.Color.LightBlue;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
             this.buttonX1.Enabled = false;
-            this.buttonX1.Location = new System.Drawing.Point(230, 343);
+            this.buttonX1.Location = new System.Drawing.Point(230, 372);
             this.buttonX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Size = new System.Drawing.Size(70, 26);
@@ -320,7 +465,7 @@
             this.btn_Register.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_Register.BackColor = System.Drawing.Color.LightBlue;
             this.btn_Register.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
-            this.btn_Register.Location = new System.Drawing.Point(675, 407);
+            this.btn_Register.Location = new System.Drawing.Point(675, 436);
             this.btn_Register.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Register.Name = "btn_Register";
             this.btn_Register.Size = new System.Drawing.Size(103, 38);
@@ -337,7 +482,7 @@
             // 
             this.lb_pw2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lb_pw2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lb_pw2.Location = new System.Drawing.Point(134, 407);
+            this.lb_pw2.Location = new System.Drawing.Point(134, 436);
             this.lb_pw2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lb_pw2.Name = "lb_pw2";
             this.lb_pw2.Size = new System.Drawing.Size(112, 26);
@@ -349,7 +494,7 @@
             // txt_Pass2
             // 
             this.txt_Pass2.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_Pass2.Location = new System.Drawing.Point(251, 411);
+            this.txt_Pass2.Location = new System.Drawing.Point(251, 440);
             this.txt_Pass2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Pass2.MaxLength = 12;
             this.txt_Pass2.Name = "txt_Pass2";
@@ -365,7 +510,7 @@
             // 
             this.lb_pw1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lb_pw1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lb_pw1.Location = new System.Drawing.Point(134, 373);
+            this.lb_pw1.Location = new System.Drawing.Point(134, 402);
             this.lb_pw1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lb_pw1.Name = "lb_pw1";
             this.lb_pw1.Size = new System.Drawing.Size(87, 26);
@@ -377,7 +522,7 @@
             // txt_Pass1
             // 
             this.txt_Pass1.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_Pass1.Location = new System.Drawing.Point(251, 377);
+            this.txt_Pass1.Location = new System.Drawing.Point(251, 406);
             this.txt_Pass1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Pass1.MaxLength = 12;
             this.txt_Pass1.Name = "txt_Pass1";
@@ -390,7 +535,7 @@
             // 
             this.rdb_NotPass.AutoSize = true;
             this.rdb_NotPass.Checked = true;
-            this.rdb_NotPass.Location = new System.Drawing.Point(359, 347);
+            this.rdb_NotPass.Location = new System.Drawing.Point(359, 376);
             this.rdb_NotPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rdb_NotPass.Name = "rdb_NotPass";
             this.rdb_NotPass.Size = new System.Drawing.Size(85, 19);
@@ -403,7 +548,7 @@
             // rdb_HasPass
             // 
             this.rdb_HasPass.AutoSize = true;
-            this.rdb_HasPass.Location = new System.Drawing.Point(150, 347);
+            this.rdb_HasPass.Location = new System.Drawing.Point(150, 376);
             this.rdb_HasPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rdb_HasPass.Name = "rdb_HasPass";
             this.rdb_HasPass.Size = new System.Drawing.Size(73, 19);
@@ -497,7 +642,7 @@
             // 
             this.txt_Address2.Location = new System.Drawing.Point(150, 179);
             this.txt_Address2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_Address2.MaxLength = 255;
+            this.txt_Address2.MaxLength = 100;
             this.txt_Address2.Name = "txt_Address2";
             this.txt_Address2.Size = new System.Drawing.Size(368, 23);
             this.txt_Address2.TabIndex = 9;
@@ -507,7 +652,7 @@
             // 
             this.txt_Address1.Location = new System.Drawing.Point(150, 148);
             this.txt_Address1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_Address1.MaxLength = 255;
+            this.txt_Address1.MaxLength = 100;
             this.txt_Address1.Name = "txt_Address1";
             this.txt_Address1.Size = new System.Drawing.Size(368, 23);
             this.txt_Address1.TabIndex = 8;
@@ -556,7 +701,7 @@
             // 
             this.txt_ShcoolName.Location = new System.Drawing.Point(150, 55);
             this.txt_ShcoolName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_ShcoolName.MaxLength = 255;
+            this.txt_ShcoolName.MaxLength = 20;
             this.txt_ShcoolName.Name = "txt_ShcoolName";
             this.txt_ShcoolName.Size = new System.Drawing.Size(280, 23);
             this.txt_ShcoolName.TabIndex = 3;
@@ -667,7 +812,7 @@
             // 
             this.txt_Email.Location = new System.Drawing.Point(150, 275);
             this.txt_Email.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_Email.MaxLength = 255;
+            this.txt_Email.MaxLength = 40;
             this.txt_Email.Name = "txt_Email";
             this.txt_Email.Size = new System.Drawing.Size(368, 23);
             this.txt_Email.TabIndex = 16;
@@ -693,7 +838,7 @@
             // 
             this.txt_URL.Location = new System.Drawing.Point(150, 309);
             this.txt_URL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_URL.MaxLength = 255;
+            this.txt_URL.MaxLength = 40;
             this.txt_URL.Name = "txt_URL";
             this.txt_URL.Size = new System.Drawing.Size(368, 23);
             this.txt_URL.TabIndex = 17;
@@ -706,7 +851,7 @@
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX1.Location = new System.Drawing.Point(10, 343);
+            this.labelX1.Location = new System.Drawing.Point(10, 372);
             this.labelX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX1.Name = "labelX1";
             this.labelX1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -722,7 +867,7 @@
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX2.Location = new System.Drawing.Point(41, 30);
+            this.labelX2.Location = new System.Drawing.Point(41, 23);
             this.labelX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX2.Name = "labelX2";
             this.labelX2.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -736,16 +881,18 @@
             this.txt_SchoolCode.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_SchoolCode.Location = new System.Drawing.Point(150, 24);
             this.txt_SchoolCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_SchoolCode.MaxLength = 4;
+            this.txt_SchoolCode.MaxLength = 5;
             this.txt_SchoolCode.Name = "txt_SchoolCode";
             this.txt_SchoolCode.Size = new System.Drawing.Size(61, 23);
             this.txt_SchoolCode.TabIndex = 2;
             this.txt_SchoolCode.TextChanged += new System.EventHandler(this.txt_SchoolCode_TextChanged);
+            this.txt_SchoolCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_SchoolCode_KeyPress);
+            this.txt_SchoolCode.Leave += new System.EventHandler(this.txt_SchoolCode_Leave);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lv_School);
-            this.groupBox2.Location = new System.Drawing.Point(160, 492);
+            this.groupBox2.Location = new System.Drawing.Point(176, 519);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -779,7 +926,7 @@
             // 
             this.No.Text = "Code";
             this.No.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.No.Width = 46;
+            this.No.Width = 70;
             // 
             // shcoolcode
             // 
@@ -792,7 +939,7 @@
             this.btn_Back.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_Back.BackColor = System.Drawing.Color.LightBlue;
             this.btn_Back.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
-            this.btn_Back.Location = new System.Drawing.Point(701, 620);
+            this.btn_Back.Location = new System.Drawing.Point(717, 647);
             this.btn_Back.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Back.Name = "btn_Back";
             this.btn_Back.Size = new System.Drawing.Size(103, 38);
@@ -806,17 +953,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 665);
+            this.ClientSize = new System.Drawing.Size(868, 684);
             this.Controls.Add(this.btn_Back);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmShool";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmShool";
             this.Load += new System.EventHandler(this.loadListViewSchool);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmShool_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -876,5 +1025,13 @@
         private DevComponents.DotNetBar.LabelX lb_EmailNotCorrect;
         private DevComponents.DotNetBar.LabelX lb_PassLength;
         private DevComponents.DotNetBar.ButtonX buttonX2;
+        private DevComponents.DotNetBar.LabelX labelX21;
+        private DevComponents.DotNetBar.LabelX labelX20;
+        private DevComponents.DotNetBar.LabelX labelX19;
+        private DevComponents.DotNetBar.LabelX labelX18;
+        private DevComponents.DotNetBar.LabelX labelX11;
+        private DevComponents.DotNetBar.LabelX labelX10;
+        private DevComponents.DotNetBar.LabelX lb_limitHour;
+        private System.Windows.Forms.TextBox txtLimitHour;
     }
 }

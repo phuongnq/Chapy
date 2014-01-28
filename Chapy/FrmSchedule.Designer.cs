@@ -31,6 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbTimeRange = new DevComponents.DotNetBar.LabelX();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnEdit = new DevComponents.DotNetBar.ButtonX();
+            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.dgvTimezone = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,15 +46,14 @@
             this.lblSchoolName = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.buttonX9 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX8 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX7 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX6 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX5 = new DevComponents.DotNetBar.ButtonX();
+            this.btnBack = new DevComponents.DotNetBar.ButtonX();
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.btnYotei = new DevComponents.DotNetBar.ButtonX();
             this.dgvSchedule = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTimezone)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).BeginInit();
@@ -58,6 +61,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbTimeRange);
+            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.dgvTimezone);
             this.groupBox1.Controls.Add(this.btnMethod3);
             this.groupBox1.Controls.Add(this.btnMethod2);
@@ -68,9 +73,63 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(782, 134);
+            this.groupBox1.Size = new System.Drawing.Size(861, 134);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // lbTimeRange
+            // 
+            // 
+            // 
+            // 
+            this.lbTimeRange.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbTimeRange.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbTimeRange.Location = new System.Drawing.Point(6, 48);
+            this.lbTimeRange.Name = "lbTimeRange";
+            this.lbTimeRange.Size = new System.Drawing.Size(366, 23);
+            this.lbTimeRange.TabIndex = 9;
+            this.lbTimeRange.Text = "平成25...";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnEdit);
+            this.groupBox3.Controls.Add(this.btnCancel);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBox3.Location = new System.Drawing.Point(386, 18);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(173, 113);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
+            this.btnEdit.Font = new System.Drawing.Font("Meiryo", 10F);
+            this.btnEdit.Location = new System.Drawing.Point(6, 72);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 35);
+            this.btnEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnEdit.SubItemsExpandWidth = 10;
+            this.btnEdit.Symbol = "";
+            this.btnEdit.SymbolSize = 15F;
+            this.btnEdit.TabIndex = 2;
+            this.btnEdit.Text = "編集";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancel.Enabled = false;
+            this.btnCancel.Font = new System.Drawing.Font("Meiryo", 10F);
+            this.btnCancel.Location = new System.Drawing.Point(95, 72);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(72, 35);
+            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancel.TabIndex = 3;
+            this.btnCancel.Text = "キャンセル";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // dgvTimezone
             // 
@@ -91,11 +150,11 @@
             this.dgvTimezone.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTimezone.Dock = System.Windows.Forms.DockStyle.Right;
             this.dgvTimezone.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgvTimezone.Location = new System.Drawing.Point(485, 18);
+            this.dgvTimezone.Location = new System.Drawing.Point(559, 18);
             this.dgvTimezone.Name = "dgvTimezone";
             this.dgvTimezone.RowHeadersVisible = false;
             this.dgvTimezone.RowTemplate.Height = 21;
-            this.dgvTimezone.Size = new System.Drawing.Size(294, 113);
+            this.dgvTimezone.Size = new System.Drawing.Size(299, 113);
             this.dgvTimezone.TabIndex = 7;
             // 
             // Column3
@@ -122,9 +181,10 @@
             // btnMethod3
             // 
             this.btnMethod3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnMethod3.Location = new System.Drawing.Point(345, 96);
+            this.btnMethod3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMethod3.Location = new System.Drawing.Point(249, 87);
             this.btnMethod3.Name = "btnMethod3";
-            this.btnMethod3.Size = new System.Drawing.Size(75, 32);
+            this.btnMethod3.Size = new System.Drawing.Size(75, 41);
             this.btnMethod3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnMethod3.TabIndex = 6;
             this.btnMethod3.Text = "D パターン";
@@ -133,9 +193,10 @@
             // btnMethod2
             // 
             this.btnMethod2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnMethod2.Location = new System.Drawing.Point(237, 96);
+            this.btnMethod2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMethod2.Location = new System.Drawing.Point(168, 87);
             this.btnMethod2.Name = "btnMethod2";
-            this.btnMethod2.Size = new System.Drawing.Size(75, 32);
+            this.btnMethod2.Size = new System.Drawing.Size(75, 41);
             this.btnMethod2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnMethod2.TabIndex = 5;
             this.btnMethod2.Text = "C パターン";
@@ -144,9 +205,10 @@
             // btnMethod1
             // 
             this.btnMethod1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnMethod1.Location = new System.Drawing.Point(129, 96);
+            this.btnMethod1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMethod1.Location = new System.Drawing.Point(87, 87);
             this.btnMethod1.Name = "btnMethod1";
-            this.btnMethod1.Size = new System.Drawing.Size(75, 32);
+            this.btnMethod1.Size = new System.Drawing.Size(75, 41);
             this.btnMethod1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnMethod1.TabIndex = 4;
             this.btnMethod1.Text = "B パターン";
@@ -156,9 +218,10 @@
             // 
             this.btnMethod0.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnMethod0.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground;
-            this.btnMethod0.Location = new System.Drawing.Point(19, 96);
+            this.btnMethod0.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMethod0.Location = new System.Drawing.Point(6, 87);
             this.btnMethod0.Name = "btnMethod0";
-            this.btnMethod0.Size = new System.Drawing.Size(75, 32);
+            this.btnMethod0.Size = new System.Drawing.Size(75, 41);
             this.btnMethod0.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnMethod0.TabIndex = 3;
             this.btnMethod0.Text = "A パターン";
@@ -176,7 +239,6 @@
             this.lblSchoolName.Name = "lblSchoolName";
             this.lblSchoolName.Size = new System.Drawing.Size(154, 23);
             this.lblSchoolName.TabIndex = 2;
-            this.lblSchoolName.Text = "01. チャイルド幼稚園";
             this.lblSchoolName.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // labelX1
@@ -196,77 +258,56 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.buttonX9);
-            this.groupBox2.Controls.Add(this.buttonX8);
-            this.groupBox2.Controls.Add(this.buttonX7);
-            this.groupBox2.Controls.Add(this.buttonX6);
-            this.groupBox2.Controls.Add(this.buttonX5);
+            this.groupBox2.Controls.Add(this.btnBack);
+            this.groupBox2.Controls.Add(this.btnSave);
+            this.groupBox2.Controls.Add(this.btnYotei);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 284);
+            this.groupBox2.Location = new System.Drawing.Point(0, 296);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(782, 90);
+            this.groupBox2.Size = new System.Drawing.Size(861, 78);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
-            // buttonX9
+            // btnBack
             // 
-            this.buttonX9.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX9.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX9.Location = new System.Drawing.Point(604, 21);
-            this.buttonX9.Name = "buttonX9";
-            this.buttonX9.Size = new System.Drawing.Size(75, 42);
-            this.buttonX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX9.TabIndex = 4;
-            this.buttonX9.Text = "戻る";
-            this.buttonX9.Click += new System.EventHandler(this.buttonX9_Click);
+            this.btnBack.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnBack.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnBack.Location = new System.Drawing.Point(249, 21);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 42);
+            this.btnBack.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnBack.Symbol = "";
+            this.btnBack.TabIndex = 4;
+            this.btnBack.Text = "戻る";
+            this.btnBack.Click += new System.EventHandler(this.buttonX9_Click);
             // 
-            // buttonX8
+            // btnSave
             // 
-            this.buttonX8.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX8.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX8.Font = new System.Drawing.Font("Meiryo", 10F);
-            this.buttonX8.Location = new System.Drawing.Point(421, 21);
-            this.buttonX8.Name = "buttonX8";
-            this.buttonX8.Size = new System.Drawing.Size(75, 42);
-            this.buttonX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX8.TabIndex = 3;
-            this.buttonX8.Text = "キャンセル";
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSave.Font = new System.Drawing.Font("Meiryo", 10F);
+            this.btnSave.Location = new System.Drawing.Point(142, 21);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 42);
+            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSave.Symbol = "";
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "登録";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // buttonX7
+            // btnYotei
             // 
-            this.buttonX7.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
-            this.buttonX7.Font = new System.Drawing.Font("Meiryo", 10F);
-            this.buttonX7.Location = new System.Drawing.Point(265, 21);
-            this.buttonX7.Name = "buttonX7";
-            this.buttonX7.Size = new System.Drawing.Size(75, 42);
-            this.buttonX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX7.TabIndex = 2;
-            this.buttonX7.Text = "登録";
-            // 
-            // buttonX6
-            // 
-            this.buttonX6.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX6.Font = new System.Drawing.Font("Meiryo", 10F);
-            this.buttonX6.Location = new System.Drawing.Point(135, 21);
-            this.buttonX6.Name = "buttonX6";
-            this.buttonX6.Size = new System.Drawing.Size(75, 42);
-            this.buttonX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX6.TabIndex = 1;
-            this.buttonX6.Text = "編集";
-            // 
-            // buttonX5
-            // 
-            this.buttonX5.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX5.Font = new System.Drawing.Font("Meiryo", 10F);
-            this.buttonX5.Location = new System.Drawing.Point(12, 21);
-            this.buttonX5.Name = "buttonX5";
-            this.buttonX5.Size = new System.Drawing.Size(75, 42);
-            this.buttonX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX5.TabIndex = 0;
-            this.buttonX5.Text = "実績作成";
+            this.btnYotei.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnYotei.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnYotei.Font = new System.Drawing.Font("Meiryo", 10F);
+            this.btnYotei.Location = new System.Drawing.Point(12, 21);
+            this.btnYotei.Name = "btnYotei";
+            this.btnYotei.Size = new System.Drawing.Size(98, 42);
+            this.btnYotei.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnYotei.Symbol = "";
+            this.btnYotei.TabIndex = 0;
+            this.btnYotei.Text = "予定シフト";
+            this.btnYotei.Click += new System.EventHandler(this.btnYotei_Click);
             // 
             // dgvSchedule
             // 
@@ -274,6 +315,7 @@
             this.dgvSchedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
+            this.dgvSchedule.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
@@ -288,7 +330,7 @@
             this.dgvSchedule.Location = new System.Drawing.Point(0, 134);
             this.dgvSchedule.Name = "dgvSchedule";
             this.dgvSchedule.RowTemplate.Height = 21;
-            this.dgvSchedule.Size = new System.Drawing.Size(782, 150);
+            this.dgvSchedule.Size = new System.Drawing.Size(861, 162);
             this.dgvSchedule.TabIndex = 2;
             // 
             // Column1
@@ -305,7 +347,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 374);
+            this.ClientSize = new System.Drawing.Size(861, 374);
             this.Controls.Add(this.dgvSchedule);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -314,6 +356,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmSchedule";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTimezone)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).EndInit();
@@ -334,14 +377,16 @@
         private DevComponents.DotNetBar.ButtonX btnMethod2;
         private DevComponents.DotNetBar.ButtonX btnMethod1;
         private DevComponents.DotNetBar.ButtonX btnMethod0;
-        private DevComponents.DotNetBar.ButtonX buttonX8;
-        private DevComponents.DotNetBar.ButtonX buttonX7;
-        private DevComponents.DotNetBar.ButtonX buttonX6;
-        private DevComponents.DotNetBar.ButtonX buttonX5;
-        private DevComponents.DotNetBar.ButtonX buttonX9;
+        private DevComponents.DotNetBar.ButtonX btnCancel;
+        private DevComponents.DotNetBar.ButtonX btnEdit;
+        private DevComponents.DotNetBar.ButtonX btnSave;
+        private DevComponents.DotNetBar.ButtonX btnYotei;
+        private DevComponents.DotNetBar.ButtonX btnBack;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvTimezone;
         private System.Windows.Forms.DataGridViewButtonColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private DevComponents.DotNetBar.LabelX lbTimeRange;
     }
 }

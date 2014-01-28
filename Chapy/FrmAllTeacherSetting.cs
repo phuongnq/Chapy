@@ -17,7 +17,7 @@ namespace Chapy
     public partial class FrmAllTeacherSetting : Form
     {
         //database access
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
         Hashtable jaWeekday, staffAvaiDate;
 
         public FrmMakeShift frmMakeShift;

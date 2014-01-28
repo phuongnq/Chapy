@@ -16,5 +16,18 @@ namespace Chapy
         {
             InitializeComponent();
         }
+
+        private void FrmLawSetting_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == System.Windows.Forms.Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

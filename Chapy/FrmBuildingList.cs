@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace Chapy
 {
     public partial class FrmBuildingList : Form
     {
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
 
         public FrmBuildingList()
         {
@@ -27,7 +28,7 @@ namespace Chapy
             #region load datagriview
             dataGridViewX1.Rows.Clear();
             int school_id = VariableGlobal.school_id;
-            var list_buildings = from bd in db.CpBuildings where bd.SchoolId == school_id select bd;
+            var list_buildings = from bd in db.CpBuildings orderby bd.Code where bd.SchoolId == school_id select bd;
 
             if (list_buildings.Any())
             {
@@ -102,9 +103,17 @@ namespace Chapy
 
         private void btn_Back_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Thread thread = new Thread(new ThreadStart(ShowFormMainTain)); //Tạo luồng mới
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start(); //Khởi chạy luồng
+            this.Close(); //đóng Form hiện tại. (Form1)
+        }
+
+        private void ShowFormMainTain()
+        {
             FrmMaintain main_tain = new FrmMaintain();
-            main_tain.Show();
+            main_tain.ShowDialog();
+
         }
 
     }

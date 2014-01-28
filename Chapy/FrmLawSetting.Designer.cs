@@ -88,6 +88,7 @@
             this.btnBack.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnBack.TabIndex = 10;
             this.btnBack.Text = "戻る";
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnReset
             // 
@@ -209,9 +210,11 @@
             this.Controls.Add(this.cbSchool);
             this.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmLawSetting";
             this.Text = "法令設定";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLawSetting_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

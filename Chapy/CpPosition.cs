@@ -27,6 +27,7 @@ namespace Chapy
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
     
+        public virtual CpSchool CpSchool { get; set; }
         public virtual ICollection<CpStaff> CpStaffs { get; set; }
     }
 }

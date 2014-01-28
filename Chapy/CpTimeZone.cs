@@ -14,9 +14,15 @@ namespace Chapy
     
     public partial class CpTimeZone
     {
+        public CpTimeZone()
+        {
+            this.CpScheduleDetails = new HashSet<CpScheduleDetail>();
+        }
+    
         public int Id { get; set; }
         public string Code { get; set; }
         public int SchoolId { get; set; }
+        public int TermID { get; set; }
         public string Name { get; set; }
         public string Abbreviation { get; set; }
         public string Color { get; set; }
@@ -30,5 +36,9 @@ namespace Chapy
         public string ApplyClassed { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
+    
+        public virtual ICollection<CpScheduleDetail> CpScheduleDetails { get; set; }
+        public virtual CpSchool CpSchool { get; set; }
+        public virtual CpTerm CpTerm { get; set; }
     }
 }

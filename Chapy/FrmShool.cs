@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace Chapy
 {
     public partial class FrmShool : Form
     {
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
         public FrmShool()
         {
             InitializeComponent();
@@ -87,7 +88,7 @@ namespace Chapy
                         cp_school_new.UsePass = 0;
                         cp_school_new.Password = "";
                     }
-
+                    cp_school_new.LimitHour = int.Parse(txtLimitHour.Text);
                     db.CpSchools.Add(cp_school_new);
                 }
                 else
@@ -115,6 +116,7 @@ namespace Chapy
                         cp_school.UsePass = 0;
                         cp_school.Password = "";
                     }
+                    cp_school.LimitHour = int.Parse(txtLimitHour.Text);
                 }
 
                 //update or insert data into db.
@@ -206,7 +208,7 @@ namespace Chapy
                 txt_Address4.BackColor = System.Drawing.Color.Red;
             }
             * */
-
+            /*
             if (isNullString(txt_Email.Text))
             {
                 validate = false;
@@ -225,7 +227,7 @@ namespace Chapy
                     lb_EmailNotCorrect.Visible = false;
                 }
             }
-
+            */
             if (isNullString(txt_NumberFax1.Text))
             {
                 validate = false;
@@ -233,7 +235,7 @@ namespace Chapy
             }
             else
             {
-                if (txt_NumberFax1.Text.Length < 3)
+                if (txt_NumberFax1.Text.Length < 2)
                 {
                     validate = false;
                     txt_NumberFax1.BackColor = System.Drawing.Color.Red;
@@ -275,7 +277,7 @@ namespace Chapy
             }
             else
             {
-                if (txt_NumberPhone1.Text.Length < 3)
+                if (txt_NumberPhone1.Text.Length < 2)
                 {
                     validate = false;
                     txt_NumberPhone1.BackColor = System.Drawing.Color.Red;
@@ -309,13 +311,13 @@ namespace Chapy
                     txt_NumberPhone3.BackColor = System.Drawing.Color.Red;
                 }
             }
-
+            /*
             if (isNullString(txt_URL.Text))
             {
                 validate = false;
                 txt_URL.BackColor = System.Drawing.Color.Red;
             }
-
+            */
             if (rdb_HasPass.Checked == true)
             {
                 if (isNullString(txt_Pass1.Text))
@@ -487,7 +489,7 @@ namespace Chapy
             var cp_school = (from s in db.CpSchools where s.Id == Id select s).SingleOrDefault();
             if (cp_school != null)
             {
-                txt_SchoolCode.Text = cp_school.Code.ToString();
+                txt_SchoolCode.Text = cp_school.Code.Trim().ToString();
                 txt_ShcoolName.Text = cp_school.Name;
                 txt_PrinceName1.Text = cp_school.PrinceName1;
                 txt_PrinceName2.Text = cp_school.PrinceName2;
@@ -501,21 +503,35 @@ namespace Chapy
                 txt_Address1.Text = cp_school.Address1;
                 txt_Address2.Text = cp_school.Address2;
 
-                if (cp_school.Tel.Length >= 10)
+                if (cp_school.Tel.Length == 10)
+                {
+                    txt_NumberPhone1.Text = cp_school.Tel.Substring(0, 2);
+                    txt_NumberPhone2.Text = cp_school.Tel.Substring(2, 4);
+                    txt_NumberPhone3.Text = cp_school.Tel.Substring(6, cp_school.Tel.Length - 6);
+                }
+                else
                 {
                     txt_NumberPhone1.Text = cp_school.Tel.Substring(0, 3);
                     txt_NumberPhone2.Text = cp_school.Tel.Substring(3, 4);
                     txt_NumberPhone3.Text = cp_school.Tel.Substring(7, cp_school.Tel.Length - 7);
+
                 }
-                if (cp_school.Fax.Length >= 10)
+                if (cp_school.Fax.Length == 10)
+                {
+                    txt_NumberFax1.Text = cp_school.Fax.Substring(0, 2);
+                    txt_NumberFax2.Text = cp_school.Fax.Substring(2, 4);
+                    txt_NumberFax3.Text = cp_school.Fax.Substring(6, cp_school.Fax.Length - 6);
+                }
+                else
                 {
                     txt_NumberFax1.Text = cp_school.Fax.Substring(0, 3);
                     txt_NumberFax2.Text = cp_school.Fax.Substring(3, 4);
                     txt_NumberFax3.Text = cp_school.Fax.Substring(7, cp_school.Fax.Length - 7);
+                   
                 }
                 txt_Email.Text = cp_school.Email;
                 txt_URL.Text = cp_school.HomePage;
-
+                txtLimitHour.Text = cp_school.LimitHour.ToString();
                 if (cp_school.UsePass == 1)
                 {
                     lb_PassLength.Visible = true;
@@ -644,7 +660,7 @@ namespace Chapy
 
         private void txt_Email_TextChanged(object sender, EventArgs e)
         {
-            if (txt_Email.Text.Length > 0 && txt_Email.BackColor == System.Drawing.Color.Red)
+           /* if (txt_Email.Text.Length > 0 && txt_Email.BackColor == System.Drawing.Color.Red)
             {
                 txt_Email.BackColor = System.Drawing.Color.White;
             }
@@ -656,16 +672,17 @@ namespace Chapy
             {
                 lb_EmailNotCorrect.Visible = false;
             }
+            * */
 
         }
 
         private void txt_URL_TextChanged(object sender, EventArgs e)
         {
-            if (txt_URL.Text.Length > 0 && txt_URL.BackColor == System.Drawing.Color.Red)
+            /*if (txt_URL.Text.Length > 0 && txt_URL.BackColor == System.Drawing.Color.Red)
             {
                 txt_URL.BackColor = System.Drawing.Color.White;
             }
-
+            */
         }
 
         private void txt_Pass1_TextChanged(object sender, EventArgs e)
@@ -792,7 +809,7 @@ namespace Chapy
         private void txt_PostCode1_KeyPress(object sender, KeyPressEventArgs e)
         {
             char keypress = e.KeyChar;
-            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back))
+            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 13)
             {
 
             }
@@ -806,7 +823,7 @@ namespace Chapy
         private void txt_PostCode2_KeyPress(object sender, KeyPressEventArgs e)
         {
             char keypress = e.KeyChar;
-            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back))
+            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 13)
             {
 
             }
@@ -820,7 +837,7 @@ namespace Chapy
         private void txt_NumberPhone1_KeyPress(object sender, KeyPressEventArgs e)
         {
             char keypress = e.KeyChar;
-            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back))
+            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 13)
             {
 
             }
@@ -834,7 +851,7 @@ namespace Chapy
         private void txt_NumberPhone2_KeyPress(object sender, KeyPressEventArgs e)
         {
             char keypress = e.KeyChar;
-            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back))
+            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 13)
             {
 
             }
@@ -848,7 +865,7 @@ namespace Chapy
         private void txt_NumberPhone3_KeyPress(object sender, KeyPressEventArgs e)
         {
             char keypress = e.KeyChar;
-            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back))
+            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 13)
             {
 
             }
@@ -862,7 +879,7 @@ namespace Chapy
         private void txt_NumberFax1_KeyPress(object sender, KeyPressEventArgs e)
         {
             char keypress = e.KeyChar;
-            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back))
+            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 13)
             {
 
             }
@@ -876,7 +893,7 @@ namespace Chapy
         private void txt_NumberFax2_KeyPress(object sender, KeyPressEventArgs e)
         {
             char keypress = e.KeyChar;
-            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back))
+            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 13)
             {
 
             }
@@ -890,7 +907,7 @@ namespace Chapy
         private void txt_NumberFax3_KeyPress(object sender, KeyPressEventArgs e)
         {
             char keypress = e.KeyChar;
-            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back))
+            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 13)
             {
 
             }
@@ -967,9 +984,18 @@ namespace Chapy
 
         private void btn_Back_Click(object sender, EventArgs e)
         {
-            this.Hide();
+          
+
+            Thread thread = new Thread(new ThreadStart(ShowMainTain)); //Tạo luồng mới
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start(); //Khởi chạy luồng
+            this.Close(); //đóng Form hiện tại. (Form1)
+        }
+
+        private void ShowMainTain()
+        {
             FrmMaintain maintain = new FrmMaintain();
-            maintain.Show();
+            maintain.ShowDialog();
         }
 
         private void labelX6_Click(object sender, EventArgs e)
@@ -1005,6 +1031,56 @@ namespace Chapy
         private void labelX16_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FrmShool_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == System.Windows.Forms.Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void txt_SchoolCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keypress = e.KeyChar;
+            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 13)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("You Can Only Enter A Number!");
+                e.Handled = true;
+            }
+        }
+
+        private void txt_SchoolCode_Leave(object sender, EventArgs e)
+        {
+            txt_SchoolCode.Text = makeCodeParam(txt_SchoolCode.Text.Trim());
+        }
+
+        string makeCodeParam(string code)
+        {
+            while (code.Length < 4)
+            {
+                code = "0" + code;
+            }
+            return code;
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keypress = e.KeyChar;
+            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 13)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("You Can Only Enter A Number!");
+                e.Handled = true;
+            }
         }
 
     }

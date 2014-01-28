@@ -8,9 +8,24 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Chapy</RootNamespace>
-    <AssemblyName>Chapy</AssemblyName>
+    <AssemblyName>勤務割</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -20,7 +35,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>2</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,12 +46,56 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>2</WarningLevel>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>2</WarningLevel>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar.Schedule, Version=11.2.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar2, Version=11.2.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -47,6 +106,7 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -114,9 +174,6 @@
     <Compile Include="CpStartEndDate.cs">
       <DependentUpon>ChapyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="CpTannin.cs">
-      <DependentUpon>ChapyModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="CpTerm.cs">
       <DependentUpon>ChapyModel.tt</DependentUpon>
     </Compile>
@@ -124,6 +181,18 @@
       <DependentUpon>ChapyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CreateSchedule.cs" />
+    <Compile Include="DsPrint.cs">
+      <DependentUpon>DsPrint.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DsPrint.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsPrint.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>ChapyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="FrmEachTeacherSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,17 +283,35 @@
     <Compile Include="FrmPrinter.Designer.cs">
       <DependentUpon>FrmPrinter.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPrintMonth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrintMonth.Designer.cs">
+      <DependentUpon>FrmPrintMonth.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmSchedule.Designer.cs">
       <DependentUpon>FrmSchedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmScheduleEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmScheduleEdit.Designer.cs">
+      <DependentUpon>FrmScheduleEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSchoolSelect.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmSchoolSelect.Designer.cs">
       <DependentUpon>FrmSchoolSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmShiftYotei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShiftYotei.Designer.cs">
+      <DependentUpon>FrmShiftYotei.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmShool.cs">
       <SubType>Form</SubType>
@@ -268,18 +355,6 @@
     <Compile Include="FrmStaffTypeList.Designer.cs">
       <DependentUpon>FrmStaffTypeList.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTannin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmTannin.Designer.cs">
-      <DependentUpon>FrmTannin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmTanninList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmTanninList.Designer.cs">
-      <DependentUpon>FrmTanninList.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmTerm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,14 +385,12 @@
     <Compile Include="MakeSchedule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingleApplication.cs" />
     <Compile Include="Staffs.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Staffs.Designer.cs">
       <DependentUpon>Staffs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>ChapyModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FrmAllTeacherSetting.resx">
       <DependentUpon>FrmAllTeacherSetting.cs</DependentUpon>
@@ -364,11 +437,20 @@
     <EmbeddedResource Include="FrmPrinter.resx">
       <DependentUpon>FrmPrinter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrintMonth.resx">
+      <DependentUpon>FrmPrintMonth.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSchedule.resx">
       <DependentUpon>FrmSchedule.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmScheduleEdit.resx">
+      <DependentUpon>FrmScheduleEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSchoolSelect.resx">
       <DependentUpon>FrmSchoolSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmShiftYotei.resx">
+      <DependentUpon>FrmShiftYotei.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmShool.resx">
       <DependentUpon>FrmShool.cs</DependentUpon>
@@ -391,12 +473,6 @@
     <EmbeddedResource Include="FrmStaffTypeList.resx">
       <DependentUpon>FrmStaffTypeList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmTannin.resx">
-      <DependentUpon>FrmTannin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmTanninList.resx">
-      <DependentUpon>FrmTanninList.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmTerm.resx">
       <DependentUpon>FrmTerm.cs</DependentUpon>
     </EmbeddedResource>
@@ -418,6 +494,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="Report2.rdlc" />
+    <EmbeddedResource Include="Schedule.rdlc" />
     <EmbeddedResource Include="Staffs.resx">
       <DependentUpon>Staffs.cs</DependentUpon>
     </EmbeddedResource>
@@ -437,6 +516,17 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ChapyModel.edmx</DependentUpon>
       <LastGenOutput>ChapyModel.cs</LastGenOutput>
+    </None>
+    <None Include="DsPrint.xsc">
+      <DependentUpon>DsPrint.xsd</DependentUpon>
+    </None>
+    <None Include="DsPrint.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsPrint.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DsPrint.xss">
+      <DependentUpon>DsPrint.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -459,6 +549,23 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

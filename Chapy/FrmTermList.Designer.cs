@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.gridViewTermList = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.radioBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,23 +59,28 @@
             // 
             // gridViewTermList
             // 
+            this.gridViewTermList.AllowUserToAddRows = false;
+            this.gridViewTermList.AllowUserToDeleteRows = false;
             this.gridViewTermList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridViewTermList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.radioBox,
             this.No,
             this.Column1});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridViewTermList.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridViewTermList.DefaultCellStyle = dataGridViewCellStyle1;
             this.gridViewTermList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.gridViewTermList.HighlightSelectedColumnHeaders = false;
             this.gridViewTermList.Location = new System.Drawing.Point(33, 48);
             this.gridViewTermList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridViewTermList.Name = "gridViewTermList";
+            this.gridViewTermList.ReadOnly = true;
+            this.gridViewTermList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridViewTermList.Size = new System.Drawing.Size(466, 303);
             this.gridViewTermList.TabIndex = 2;
             this.gridViewTermList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewTermList_CellContentClick);
@@ -84,18 +89,21 @@
             // 
             this.radioBox.HeaderText = "No.";
             this.radioBox.Name = "radioBox";
-            this.radioBox.Width = 50;
+            this.radioBox.ReadOnly = true;
+            this.radioBox.Width = 60;
             // 
             // No
             // 
             this.No.HeaderText = "学年クラスマスタ";
             this.No.Name = "No";
+            this.No.ReadOnly = true;
             this.No.Width = 350;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Width = 20;
             // 
             // btTerm_Delete
@@ -126,7 +134,7 @@
             this.btnTerm_Create.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnTerm_Create.Symbol = "";
             this.btnTerm_Create.TabIndex = 34;
-            this.btnTerm_Create.Text = "新規作成";
+            this.btnTerm_Create.Text = "追加";
             this.btnTerm_Create.Click += new System.EventHandler(this.btnTerm_Create_Click);
             // 
             // btnTerm_Edit
@@ -188,12 +196,12 @@
 
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.Controls.DataGridViewX gridViewTermList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn radioBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn No;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private DevComponents.DotNetBar.ButtonX btTerm_Delete;
         private DevComponents.DotNetBar.ButtonX btnTerm_Create;
         private DevComponents.DotNetBar.ButtonX btnTerm_Edit;
         private DevComponents.DotNetBar.ButtonX btnTerm_Back;
+        private System.Windows.Forms.DataGridViewTextBoxColumn radioBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn No;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -185,7 +185,7 @@
             this.checkBox8.Location = new System.Drawing.Point(26, 31);
             this.checkBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(74, 19);
+            this.checkBox8.Size = new System.Drawing.Size(73, 19);
             this.checkBox8.TabIndex = 19;
             this.checkBox8.Text = "バス当番";
             this.checkBox8.UseVisualStyleBackColor = true;
@@ -514,7 +514,7 @@
             this.cbWday6.Location = new System.Drawing.Point(449, 195);
             this.cbWday6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbWday6.Name = "cbWday6";
-            this.cbWday6.Size = new System.Drawing.Size(38, 19);
+            this.cbWday6.Size = new System.Drawing.Size(39, 19);
             this.cbWday6.TabIndex = 24;
             this.cbWday6.Text = "日";
             this.cbWday6.UseVisualStyleBackColor = true;
@@ -525,7 +525,7 @@
             this.cbWday5.Location = new System.Drawing.Point(397, 195);
             this.cbWday5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbWday5.Name = "cbWday5";
-            this.cbWday5.Size = new System.Drawing.Size(38, 19);
+            this.cbWday5.Size = new System.Drawing.Size(39, 19);
             this.cbWday5.TabIndex = 23;
             this.cbWday5.Text = "土";
             this.cbWday5.UseVisualStyleBackColor = true;
@@ -536,7 +536,7 @@
             this.cbWday4.Location = new System.Drawing.Point(344, 195);
             this.cbWday4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbWday4.Name = "cbWday4";
-            this.cbWday4.Size = new System.Drawing.Size(38, 19);
+            this.cbWday4.Size = new System.Drawing.Size(39, 19);
             this.cbWday4.TabIndex = 22;
             this.cbWday4.Text = "金";
             this.cbWday4.UseVisualStyleBackColor = true;
@@ -547,7 +547,7 @@
             this.cbWday3.Location = new System.Drawing.Point(292, 195);
             this.cbWday3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbWday3.Name = "cbWday3";
-            this.cbWday3.Size = new System.Drawing.Size(38, 19);
+            this.cbWday3.Size = new System.Drawing.Size(39, 19);
             this.cbWday3.TabIndex = 21;
             this.cbWday3.Text = "木";
             this.cbWday3.UseVisualStyleBackColor = true;
@@ -558,7 +558,7 @@
             this.cbWday2.Location = new System.Drawing.Point(239, 195);
             this.cbWday2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbWday2.Name = "cbWday2";
-            this.cbWday2.Size = new System.Drawing.Size(38, 19);
+            this.cbWday2.Size = new System.Drawing.Size(39, 19);
             this.cbWday2.TabIndex = 20;
             this.cbWday2.Text = "水";
             this.cbWday2.UseVisualStyleBackColor = true;
@@ -569,7 +569,7 @@
             this.cbWday1.Location = new System.Drawing.Point(187, 195);
             this.cbWday1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbWday1.Name = "cbWday1";
-            this.cbWday1.Size = new System.Drawing.Size(38, 19);
+            this.cbWday1.Size = new System.Drawing.Size(39, 19);
             this.cbWday1.TabIndex = 19;
             this.cbWday1.Text = "火";
             this.cbWday1.UseVisualStyleBackColor = true;
@@ -580,7 +580,7 @@
             this.cbWday0.Location = new System.Drawing.Point(134, 195);
             this.cbWday0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbWday0.Name = "cbWday0";
-            this.cbWday0.Size = new System.Drawing.Size(38, 19);
+            this.cbWday0.Size = new System.Drawing.Size(39, 19);
             this.cbWday0.TabIndex = 18;
             this.cbWday0.Text = "月";
             this.cbWday0.UseVisualStyleBackColor = true;
@@ -680,6 +680,8 @@
             this.tbCode.Size = new System.Drawing.Size(116, 23);
             this.tbCode.TabIndex = 10;
             this.tbCode.TextChanged += new System.EventHandler(this.tbCode_TextChanged);
+            this.tbCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbCode_KeyDown);
+            this.tbCode.Leave += new System.EventHandler(this.tbCode_Leave);
             // 
             // labelX3
             // 
@@ -726,9 +728,9 @@
             // 
             this.btnBack.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnBack.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnBack.Location = new System.Drawing.Point(580, 165);
+            this.btnBack.Location = new System.Drawing.Point(580, 23);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 30);
+            this.btnBack.Size = new System.Drawing.Size(75, 50);
             this.btnBack.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnBack.TabIndex = 1;
             this.btnBack.Text = "戻る";
@@ -738,9 +740,9 @@
             // 
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(499, 165);
+            this.btnSave.Location = new System.Drawing.Point(499, 23);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 30);
+            this.btnSave.Size = new System.Drawing.Size(75, 50);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "登録";
@@ -766,9 +768,9 @@
             // 
             this.buttonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX3.Location = new System.Drawing.Point(697, 165);
+            this.buttonX3.Location = new System.Drawing.Point(697, 23);
             this.buttonX3.Name = "buttonX3";
-            this.buttonX3.Size = new System.Drawing.Size(75, 30);
+            this.buttonX3.Size = new System.Drawing.Size(75, 50);
             this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX3.TabIndex = 2;
             this.buttonX3.Text = "クリア";
@@ -782,14 +784,14 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvClassList.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvClassList.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvClassList.Dock = System.Windows.Forms.DockStyle.Left;
             this.dgvClassList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvClassList.Location = new System.Drawing.Point(3, 20);
@@ -807,7 +809,7 @@
             // 
             // Column2
             // 
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column2.HeaderText = "学年クラス";
             this.Column2.Name = "Column2";
             this.Column2.Width = 300;

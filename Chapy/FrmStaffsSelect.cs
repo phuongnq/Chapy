@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using System.Threading;
 
 namespace Chapy
 {
     
     public partial class FrmStaffsSelect : Form
     {
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
         public FrmStaffsSelect()
         {
             InitializeComponent();
@@ -65,11 +66,19 @@ namespace Chapy
         }
 
         private void btn_Back_Click(object sender, EventArgs e)
+        {       
+
+            Thread thread = new Thread(new ThreadStart(ShowGroup)); //Tạo luồng mới
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start(); //Khởi chạy luồng
+            this.Close(); //đóng Form hiện tại. (Form1)
+        }
+
+        private void ShowGroup()
         {
-            this.Hide();
-           // VariableGlobal.building_id = Convert.ToInt32(item.Cells[3].Value.ToString());
+            
             FrmGroup group = new FrmGroup();
-            group.Show();
+            group.ShowDialog();
         }
 
         private void dataGridViewX1_Click(object sender, EventArgs e)

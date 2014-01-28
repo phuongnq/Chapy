@@ -3,6 +3,5 @@
   <Profiles>
     <Profile Name="(Default)" />
   </Profiles>
-  <requestedExecutionLevel level="asInvoker|highestAvailable|requireAdministrator" uiAccess="false"/>
   <Settings />
 </SettingsFile>

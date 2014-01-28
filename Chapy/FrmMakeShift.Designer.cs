@@ -35,7 +35,7 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.lblSchoolName = new DevComponents.DotNetBar.LabelX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbTerm = new System.Windows.Forms.ComboBox();
             this.buttonX7 = new DevComponents.DotNetBar.ButtonX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.tbTDay = new System.Windows.Forms.TextBox();
@@ -122,7 +122,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.cmbTerm);
             this.groupBox1.Controls.Add(this.buttonX7);
             this.groupBox1.Controls.Add(this.labelX7);
             this.groupBox1.Controls.Add(this.tbTDay);
@@ -146,19 +146,19 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
-            // comboBox2
+            // cmbTerm
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(96, 50);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(54, 23);
-            this.comboBox2.TabIndex = 16;
+            this.cmbTerm.FormattingEnabled = true;
+            this.cmbTerm.Location = new System.Drawing.Point(389, 17);
+            this.cmbTerm.Name = "cmbTerm";
+            this.cmbTerm.Size = new System.Drawing.Size(184, 23);
+            this.cmbTerm.TabIndex = 16;
             // 
             // buttonX7
             // 
             this.buttonX7.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX7.Location = new System.Drawing.Point(688, 49);
+            this.buttonX7.Location = new System.Drawing.Point(606, 48);
             this.buttonX7.Name = "buttonX7";
             this.buttonX7.Size = new System.Drawing.Size(60, 33);
             this.buttonX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -172,7 +172,7 @@
             // 
             // 
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(636, 50);
+            this.labelX7.Location = new System.Drawing.Point(533, 52);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(40, 23);
             this.labelX7.TabIndex = 14;
@@ -181,7 +181,7 @@
             // 
             // tbTDay
             // 
-            this.tbTDay.Location = new System.Drawing.Point(589, 52);
+            this.tbTDay.Location = new System.Drawing.Point(486, 52);
             this.tbTDay.Name = "tbTDay";
             this.tbTDay.Size = new System.Drawing.Size(41, 23);
             this.tbTDay.TabIndex = 13;
@@ -192,7 +192,7 @@
             // 
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(556, 50);
+            this.labelX8.Location = new System.Drawing.Point(453, 50);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(27, 23);
             this.labelX8.TabIndex = 12;
@@ -201,7 +201,7 @@
             // 
             // tbTMonth
             // 
-            this.tbTMonth.Location = new System.Drawing.Point(509, 52);
+            this.tbTMonth.Location = new System.Drawing.Point(406, 52);
             this.tbTMonth.Name = "tbTMonth";
             this.tbTMonth.Size = new System.Drawing.Size(41, 23);
             this.tbTMonth.TabIndex = 11;
@@ -212,7 +212,7 @@
             // 
             // 
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(476, 51);
+            this.labelX9.Location = new System.Drawing.Point(373, 51);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(27, 23);
             this.labelX9.TabIndex = 10;
@@ -221,7 +221,7 @@
             // 
             // tbTYear
             // 
-            this.tbTYear.Location = new System.Drawing.Point(419, 51);
+            this.tbTYear.Location = new System.Drawing.Point(316, 51);
             this.tbTYear.Name = "tbTYear";
             this.tbTYear.Size = new System.Drawing.Size(51, 23);
             this.tbTYear.TabIndex = 9;
@@ -232,7 +232,7 @@
             // 
             // 
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(373, 49);
+            this.labelX6.Location = new System.Drawing.Point(270, 52);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(40, 23);
             this.labelX6.TabIndex = 8;
@@ -241,7 +241,7 @@
             // 
             // tbFDay
             // 
-            this.tbFDay.Location = new System.Drawing.Point(326, 51);
+            this.tbFDay.Location = new System.Drawing.Point(223, 51);
             this.tbFDay.Name = "tbFDay";
             this.tbFDay.Size = new System.Drawing.Size(41, 23);
             this.tbFDay.TabIndex = 7;
@@ -252,7 +252,7 @@
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(293, 49);
+            this.labelX5.Location = new System.Drawing.Point(190, 51);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(27, 23);
             this.labelX5.TabIndex = 6;
@@ -261,7 +261,7 @@
             // 
             // tbFMonth
             // 
-            this.tbFMonth.Location = new System.Drawing.Point(246, 51);
+            this.tbFMonth.Location = new System.Drawing.Point(143, 51);
             this.tbFMonth.Name = "tbFMonth";
             this.tbFMonth.Size = new System.Drawing.Size(41, 23);
             this.tbFMonth.TabIndex = 5;
@@ -272,7 +272,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(213, 50);
+            this.labelX4.Location = new System.Drawing.Point(110, 52);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(27, 23);
             this.labelX4.TabIndex = 4;
@@ -281,7 +281,7 @@
             // 
             // tbFYear
             // 
-            this.tbFYear.Location = new System.Drawing.Point(156, 50);
+            this.tbFYear.Location = new System.Drawing.Point(53, 50);
             this.tbFYear.Name = "tbFYear";
             this.tbFYear.Size = new System.Drawing.Size(51, 23);
             this.tbFYear.TabIndex = 3;
@@ -292,11 +292,11 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(27, 49);
+            this.labelX3.Location = new System.Drawing.Point(287, 16);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(63, 23);
+            this.labelX3.Size = new System.Drawing.Size(97, 23);
             this.labelX3.TabIndex = 2;
-            this.labelX3.Text = "期間入力";
+            this.labelX3.Text = "学年クラスマスタ";
             this.labelX3.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // groupBox2
@@ -698,7 +698,7 @@
         private DevComponents.DotNetBar.ButtonX btnMakeSchedule;
         private DevComponents.DotNetBar.ButtonX btnBack;
         private DevComponents.DotNetBar.ButtonX buttonX7;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbTerm;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
         private DevComponents.DotNetBar.Controls.DataGridViewLabelXColumn Column4;
     }

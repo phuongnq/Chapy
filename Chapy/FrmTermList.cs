@@ -8,15 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Chapy
 {
     public partial class FrmTermList : Form
     {
         //school id
-        public static int schoolId { get; set;}
+        public static int schoolId { get; set; }
         //database access
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
 
         public FrmTermList()
         {
@@ -28,12 +29,20 @@ namespace Chapy
         {
 
         }
-        
+
         private void btnTerm_Back_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FrmMain main = new FrmMain();
-            main.Show();
+            Thread thread = new Thread(new ThreadStart(ShowMainTain)); //Tạo luồng mới
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start(); //Khởi chạy luồng
+            this.Close(); //đóng Form hiện tại. (Form1)
+        }
+
+        private void ShowMainTain()
+        {
+            FrmMaintain main = new FrmMaintain();
+            main.ShowDialog();
+           
         }
 
         /**
@@ -78,7 +87,7 @@ namespace Chapy
             var index = gridViewTermList.CurrentRow.Index;
             DataGridViewRow row = (DataGridViewRow)gridViewTermList.Rows[index];
             if (row.Cells[0].Value == null) return null;
-            return row.Cells[0].Value.ToString();
+            return row.Cells[0].Value.ToString().Trim();
         }
 
         /**
@@ -89,7 +98,7 @@ namespace Chapy
             var index = gridViewTermList.CurrentRow.Index;
             DataGridViewRow row = (DataGridViewRow)gridViewTermList.Rows[index];
             if (row.Cells[0].Value == null) return null;
-            return row.Cells[1].Value.ToString();
+            return row.Cells[1].Value.ToString().Trim();
         }
 
         /**
@@ -104,10 +113,7 @@ namespace Chapy
             if (!termList.Any()) return;
             foreach (var term in termList)
             {
-                DataGridViewRow row = (DataGridViewRow)gridViewTermList.Rows[0].Clone();
-                row.Cells[0].Value = term.Code;
-                row.Cells[1].Value = term.Name;
-                gridViewTermList.Rows.Add(row);
+                gridViewTermList.Rows.Add(term.Code, term.Name);
             }
         }
 
@@ -127,7 +133,8 @@ namespace Chapy
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                //MessageBox.Show(e.Message);
+                Debug.WriteLine(e.Message);
                 return false;
             }
             return true;
@@ -140,7 +147,7 @@ namespace Chapy
         private bool deleteClass(int termId)
         {
             var classList = (from c in db.CpClasses where c.TermId == termId select c);
-            foreach(var c in classList)
+            foreach (var c in classList)
             {
                 try
                 {
@@ -149,7 +156,8 @@ namespace Chapy
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message);
+                    //MessageBox.Show(e.Message);
+                    Debug.WriteLine(e.Message);
                     return false;
                 }
             }
@@ -166,7 +174,7 @@ namespace Chapy
         private void btnTerm_Edit_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FrmTerm edit_Term = new FrmTerm(getCurrentTermCode(),getCurrentTermName());
+            FrmTerm edit_Term = new FrmTerm(getCurrentTermCode(), getCurrentTermName());
             edit_Term.Show();
         }
     }

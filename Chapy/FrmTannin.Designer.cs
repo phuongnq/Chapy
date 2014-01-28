@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt_Name = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txt_Code = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -86,7 +86,7 @@
             this.txt_Name.MaxLength = 40;
             this.txt_Name.Name = "txt_Name";
             this.txt_Name.Size = new System.Drawing.Size(147, 23);
-            this.txt_Name.TabIndex = 22;
+            this.txt_Name.TabIndex = 3;
             // 
             // txt_Code
             // 
@@ -101,7 +101,7 @@
             this.txt_Code.MaxLength = 4;
             this.txt_Code.Name = "txt_Code";
             this.txt_Code.Size = new System.Drawing.Size(40, 23);
-            this.txt_Code.TabIndex = 20;
+            this.txt_Code.TabIndex = 1;
             this.txt_Code.Leave += new System.EventHandler(this.txt_Code_Leave);
             // 
             // groupBox1
@@ -117,7 +117,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
             this.groupBox1.Size = new System.Drawing.Size(1003, 479);
-            this.groupBox1.TabIndex = 24;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
             // cb_Term
@@ -131,7 +131,7 @@
             this.cb_Term.Name = "cb_Term";
             this.cb_Term.Size = new System.Drawing.Size(140, 23);
             this.cb_Term.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cb_Term.TabIndex = 25;
+            this.cb_Term.TabIndex = 2;
             this.cb_Term.SelectedValueChanged += new System.EventHandler(this.cb_Term_SelectedValueChanged);
             // 
             // DAT_GRI_VIW
@@ -157,21 +157,21 @@
             this.staffId4,
             this.staffId5,
             this.staffId6});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DAT_GRI_VIW.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DAT_GRI_VIW.DefaultCellStyle = dataGridViewCellStyle1;
             this.DAT_GRI_VIW.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DAT_GRI_VIW.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.DAT_GRI_VIW.Location = new System.Drawing.Point(0, 130);
             this.DAT_GRI_VIW.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DAT_GRI_VIW.Name = "DAT_GRI_VIW";
             this.DAT_GRI_VIW.Size = new System.Drawing.Size(1003, 349);
-            this.DAT_GRI_VIW.TabIndex = 23;
+            this.DAT_GRI_VIW.TabIndex = 4;
             this.DAT_GRI_VIW.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DAT_GRI_VIW_CellDoubleClick);
             // 
             // chk
@@ -421,7 +421,6 @@
             this.cbb_Schools.DisplayMember = "Text";
             this.cbb_Schools.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbb_Schools.DropDownHeight = 90;
-            this.cbb_Schools.Enabled = false;
             this.cbb_Schools.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbb_Schools.FormattingEnabled = true;
             this.cbb_Schools.IntegralHeight = false;
@@ -431,7 +430,8 @@
             this.cbb_Schools.Name = "cbb_Schools";
             this.cbb_Schools.Size = new System.Drawing.Size(193, 24);
             this.cbb_Schools.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbb_Schools.TabIndex = 27;
+            this.cbb_Schools.TabIndex = 1;
+            this.cbb_Schools.SelectedValueChanged += new System.EventHandler(this.cbb_Schools_SelectedValueChanged);
             // 
             // FrmTannin
             // 
@@ -445,10 +445,13 @@
             this.Controls.Add(this.BtnInsert);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmTannin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmTannins";
+            this.Load += new System.EventHandler(this.FrmTannin_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmTannin_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DAT_GRI_VIW)).EndInit();

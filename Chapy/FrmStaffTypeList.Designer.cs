@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_Delete = new DevComponents.DotNetBar.ButtonX();
             this.btn_Creat = new DevComponents.DotNetBar.ButtonX();
             this.btn_Edit = new DevComponents.DotNetBar.ButtonX();
             this.btn_Back = new DevComponents.DotNetBar.ButtonX();
             this.cbb_Schools = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,57 +50,30 @@
             this.Column3,
             this.Column4,
             this.Id});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(41, 64);
+            this.dataGridViewX1.Location = new System.Drawing.Point(44, 64);
             this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowTemplate.Height = 21;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(514, 358);
+            this.dataGridViewX1.Size = new System.Drawing.Size(518, 358);
             this.dataGridViewX1.TabIndex = 1;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Code";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 40;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "職種名";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 320;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "略名";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 10;
             // 
             // btn_Delete
             // 
             this.btn_Delete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_Delete.BackColor = System.Drawing.Color.LightBlue;
             this.btn_Delete.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
-            this.btn_Delete.Location = new System.Drawing.Point(483, 430);
+            this.btn_Delete.Location = new System.Drawing.Point(490, 430);
             this.btn_Delete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(72, 25);
@@ -145,7 +118,7 @@
             this.btn_Back.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_Back.BackColor = System.Drawing.Color.LightBlue;
             this.btn_Back.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
-            this.btn_Back.Location = new System.Drawing.Point(483, 480);
+            this.btn_Back.Location = new System.Drawing.Point(490, 480);
             this.btn_Back.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Back.Name = "btn_Back";
             this.btn_Back.Size = new System.Drawing.Size(100, 32);
@@ -172,12 +145,45 @@
             this.cbb_Schools.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbb_Schools.TabIndex = 11;
             // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Code";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column2.Width = 70;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "職種名";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column3.Width = 294;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "略名";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column4.Width = 110;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Id.Visible = false;
+            this.Id.Width = 10;
+            // 
             // FrmStaffTypeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.BurlyWood;
-            this.ClientSize = new System.Drawing.Size(644, 542);
+            this.ClientSize = new System.Drawing.Size(618, 542);
             this.Controls.Add(this.cbb_Schools);
             this.Controls.Add(this.btn_Back);
             this.Controls.Add(this.btn_Edit);
@@ -188,7 +194,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmStaffTypeList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "職類マスタ";
+            this.Text = "職種マスタ";
             this.Load += new System.EventHandler(this.FrmStaffTypeList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);

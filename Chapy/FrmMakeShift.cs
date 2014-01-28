@@ -14,7 +14,7 @@ namespace Chapy
     public partial class FrmMakeShift : Form
     {
         //database access
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
         String[] Weekdays = { "月", "火", "水", "木", "金", "土", "日" };
 
         public FrmAllTeacherSetting frmallst = null;
@@ -23,11 +23,17 @@ namespace Chapy
         public int[] staffId = new int[100];
         int[] timezoneID = new int[100];
         int[] selectedStaffId, selectedTzId;
+        int termID;
         public string[] staffName = new String[200];
 
         DateTime fromDate, toDate;
 
         public Hashtable staffAvaiDate;    // Store available day for (chosen)teachers
+
+        public int getTermID()
+        {
+            return termID;
+        }
 
         public int[] getSelectedStaffId()
         {
@@ -65,6 +71,26 @@ namespace Chapy
             var school = (from p in db.CpSchools where p.Id == school_id select p).SingleOrDefault();
             this.lblSchoolName.Text = school.Code.Trim() + ". " + school.Name;
 
+            // load schedule trong hoc ky nay
+            Dictionary<int, string> objterm = new Dictionary<int, string>();
+            var terms = from p in db.CpTerms where p.SchoolId == school_id select p;
+            if (terms.Any())
+            {
+                foreach (var term in terms)
+                {
+                    objterm.Add(term.Id, term.Name);
+                    //cmbTanin.Items.Add(new { Value = tanin.Name, Key = tanin.Id });
+                }
+                cmbTerm.DataSource = new BindingSource(objterm, null);
+                cmbTerm.DisplayMember = "Value";
+                cmbTerm.ValueMember = "Key";
+            }
+            else
+            {
+                MessageBox.Show("Dang ky term truoc di");
+                return;
+            }
+
             // init date
             DateTime today = DateTime.Today;
             tbFYear.Text = "" + today.Year;
@@ -96,8 +122,11 @@ namespace Chapy
                 staffName[staff.Id] = staff.Name;
             }
 
+            //termid
+            this.termID = (int)cmbTerm.SelectedValue;
+
             //Read Work Arrangment (timezone)
-            var was = from p in db.CpTimeZones where p.SchoolId == school_id select p;
+            var was = from p in db.CpTimeZones where p.SchoolId == school_id && p.TermID == this.termID select p;
             foreach (var wa in was)
             {
                 int ind = dgvWA.Rows.Add(false, wa.Name);
@@ -165,6 +194,9 @@ namespace Chapy
 
         private void btnMakeSchedule_Click(object sender, EventArgs e)
         {
+            // Dang chon hoc ky nao
+            termID = (int)cmbTerm.SelectedValue;
+
             //Selected Staff ID
             int count = 0;
             for (int i = 0; i < dgvStaff.RowCount; i++)
@@ -214,7 +246,7 @@ namespace Chapy
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
             (new FrmMain()).Show();
         }
 

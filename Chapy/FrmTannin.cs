@@ -30,7 +30,7 @@ namespace Chapy
             //txt_TanninId.Text = D_Tan_Nin_ID.ToString();
             D_SCHOOL_ID = VariableGlobal.school_id;
 
-            load_combobox_school();
+           
             staffSelected = new List<int>();
             loadContent();
             load_term();
@@ -41,14 +41,31 @@ namespace Chapy
 
         private void load_combobox_school()
         {
-            #region load combox school
+            //#region load combox school
+            //Dictionary<int, string> obj_schools = new Dictionary<int, string>();
+            //obj_schools.Add(VariableGlobal.school_id, VariableGlobal.school_name);
+
+            //cbb_Schools.DataSource = new BindingSource(obj_schools, null);
+            //cbb_Schools.DisplayMember = "Value";
+            //cbb_Schools.ValueMember = "Key";
+
+            //#endregion
+
+            #region load combox School
             Dictionary<int, string> obj_schools = new Dictionary<int, string>();
-            obj_schools.Add(VariableGlobal.school_id, VariableGlobal.school_name);
 
-            cbb_Schools.DataSource = new BindingSource(obj_schools, null);
-            cbb_Schools.DisplayMember = "Value";
-            cbb_Schools.ValueMember = "Key";
+            var list_schools = from s in db.CpSchools select s;
 
+            if (list_schools.Any())
+            {
+                foreach (var list_school in list_schools)
+                {
+                    obj_schools.Add(list_school.Id, list_school.Name);
+                }
+                cbb_Schools.DataSource = new BindingSource(obj_schools, null);
+                cbb_Schools.DisplayMember = "Value";
+                cbb_Schools.ValueMember = "Key";
+            }
             #endregion
         }
 
@@ -59,7 +76,7 @@ namespace Chapy
                               select
                                   new
                                   {
-                                      Key = t.Id,
+                                      Key = t.Year,
                                       Value = t.Name
                                   }).ToArray();
 
@@ -260,6 +277,7 @@ namespace Chapy
                     tannin.Name = txt_Name.Text;
                     db.CpTannins.Add(tannin);
                     db.SaveChanges();
+                   
                 }
                 else
                 {
@@ -295,7 +313,8 @@ namespace Chapy
                             MOD = "A";
                         }
                         cpClassStaff.ClassId = int.Parse(classId);
-                        cpClassStaff.TanninId = D_INX_TAN_REC;
+                        //cpClassStaff.TanninId = D_INX_TAN_REC;
+                        cpClassStaff.TanninId = tannin.Id;
                         if (staffId1 != "")
                         {
                             cpClassStaff.StaffId1 = int.Parse(staffId1);
@@ -385,11 +404,14 @@ namespace Chapy
                 txt_Name.BackColor = System.Drawing.Color.Red;
             }
 
-            var checkTannin = (from t in db.CpTannins where t.Code == txt_Code.Text select t).FirstOrDefault();
-            if (checkTannin != null)
+            if (D_MOD == "A")
             {
-                validate = false;
-                txt_Code.BackColor = System.Drawing.Color.Red;
+                var checkTannin = (from t in db.CpTannins where t.Code == txt_Code.Text select t).FirstOrDefault();
+                if (checkTannin != null)
+                {
+                    validate = false;
+                    txt_Code.BackColor = System.Drawing.Color.Red;
+                }
             }
             return validate;
         }
@@ -401,16 +423,65 @@ namespace Chapy
 
         private void cb_Term_SelectedValueChanged(object sender, EventArgs e)
         {
-            txt_Name.Text = "2013 年度　担任";
+            var year = cb_Term.SelectedValue;
+            txt_Name.Text = year.ToString() + " 年度　担任";
         }
 
         private void txt_Code_Leave(object sender, EventArgs e)
         {
-            var checkTannin = (from t in db.CpTannins where t.Code == txt_Code.Text select t).FirstOrDefault();
-            if (checkTannin != null)
+            if (D_MOD == "A")
             {
-                MessageBox.Show("Code exist");
+                var checkTannin = (from t in db.CpTannins where t.Code == txt_Code.Text select t).FirstOrDefault();
+                if (checkTannin != null)
+                {
+                    MessageBox.Show("Code exist");
+                }
+
+                txt_Code.Text = makeCodeParam(txt_Code.Text.Trim());
             }
+          
+        }
+
+        private void FrmTannin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == System.Windows.Forms.Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void cbb_Schools_SelectedValueChanged(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    KeyValuePair<int,string> school_selected =  (KeyValuePair<int, string>)cbb_Schools.SelectedItem;
+
+            //    VariableGlobal.school_id = school_selected.Key;
+            //    VariableGlobal.school_name = school_selected.Value;
+         
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    throw;
+            //}
+            
+        }
+
+        private void FrmTannin_Load(object sender, EventArgs e)
+        {
+            load_combobox_school();
+            cbb_Schools.SelectedValue = D_SCHOOL_ID;
+
+            cbb_Schools.Enabled = false;
+        }
+        string makeCodeParam(string code)
+        {
+            while (code.Length < 5)
+            {
+                code = "0" + code;
+            }
+            return code;
         }
     }
 }

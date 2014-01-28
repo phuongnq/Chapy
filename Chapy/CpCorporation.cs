@@ -14,6 +14,11 @@ namespace Chapy
     
     public partial class CpCorporation
     {
+        public CpCorporation()
+        {
+            this.CpSchools = new HashSet<CpSchool>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string ChairManFirstName { get; set; }
@@ -27,5 +32,7 @@ namespace Chapy
         public string HomePage { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
+    
+        public virtual ICollection<CpSchool> CpSchools { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace Chapy
 {
     public partial class FrmPosition : Form
     {
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
         public FrmPosition()
         {
             InitializeComponent();
@@ -50,7 +51,7 @@ namespace Chapy
             {
                 //check data exit in database?
                 string code = txt_Code.Text;
-                var cp_position = (from p in db.CpPositions where p.Code == code select p).SingleOrDefault();
+                var cp_position = (from p in db.CpPositions where p.Code == code && p.SchoolId == VariableGlobal.school_id select p).SingleOrDefault();
                 if (cp_position == null)
                 {
                     CpPosition cp_position_new = new CpPosition();
@@ -139,7 +140,7 @@ namespace Chapy
             {
                 //check db school_code is exits?
                 string code = txt_Code.Text;
-                var cp_buidings = (from bd in db.CpPositions where bd.Code == code select bd).SingleOrDefault();
+                var cp_buidings = (from bd in db.CpPositions where bd.Code == code && bd.SchoolId == VariableGlobal.school_id select bd).SingleOrDefault();
                 if (cp_buidings != null)
                 {
                     // txt_Code.Text = cp_buidings.Code.ToString();
@@ -175,7 +176,7 @@ namespace Chapy
         private void txt_Code_KeyPress(object sender, KeyPressEventArgs e)
         {
             char keypress = e.KeyChar;
-            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back))
+            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 13)
             {
 
             }
@@ -188,14 +189,24 @@ namespace Chapy
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            this.Hide();
+          
+
+            Thread thread = new Thread(new ThreadStart(ShowPositionList)); //Tạo luồng mới
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start(); //Khởi chạy luồng
+            this.Close(); //đóng Form hiện tại. (Form1)
+        }
+
+        private void ShowPositionList()
+        {
+          
             FrmPositionList position_list = new FrmPositionList();
-            position_list.Show();
+            position_list.ShowDialog();
         }
 
         private void loadPositionEdit()
         {
-            var obi_position = (from p in db.CpPositions where p.Id == VariableGlobal.position_id select p).Single();
+            var obi_position = (from p in db.CpPositions where p.Id == VariableGlobal.position_id && p.SchoolId == VariableGlobal.school_id select p).Single();
             if (obi_position != null)
             {
                 txt_Code.Text = obi_position.Code.ToString();
@@ -203,6 +214,28 @@ namespace Chapy
                 txt_Abbreviation.Text = obi_position.Abbreviation;
                 txt_Code.Enabled = false;
             }
+        }
+
+        private void FrmPosition_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == System.Windows.Forms.Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void txt_Code_Leave(object sender, EventArgs e)
+        {
+            txt_Code.Text = makeCodeParam(txt_Code.Text.Trim());
+        }
+
+        string makeCodeParam(string code)
+        {
+            while (code.Length < 2)
+            {
+                code = "0" + code;
+            }
+            return code;
         }
 
 

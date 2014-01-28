@@ -8,12 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Chapy
 {
+
+    
     public partial class FrmCorporation : Form
     {
-        chapyEntities db = new chapyEntities();
+
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
+
+        //error message
+        string error = null;
 
         public FrmCorporation()
         {
@@ -31,6 +38,8 @@ namespace Chapy
             var corporation = (from c in db.CpCorporations select c).SingleOrDefault();
             //show nothing if there is no data
             if (corporation == null) return;
+
+            cbCorporation_editable.Checked = true;
 
             tbCorporation_Name.Text = corporation.Name;
             
@@ -126,7 +135,7 @@ namespace Chapy
         private bool validate()
         {
             bool validate = true;
-
+            error = "以下の項目を入力してください。\n";
             /**
              * validate corporation name
              * check null
@@ -135,6 +144,8 @@ namespace Chapy
             {
                 validate = false;
                 tbCorporation_Name.BackColor = System.Drawing.Color.Red;
+                
+                error = error + "法人名\n" ;
             }
 
             /**
@@ -145,11 +156,13 @@ namespace Chapy
             {
                 validate = false;
                 tbCorporation_ChairManFirstName.BackColor = System.Drawing.Color.Red;
+                error = error + "理事長氏\n";
             }
             if (isNullString(tbCorporation_ChairManLastName.Text))
             {
                 validate = false;
                 tbCorporation_ChairManLastName.BackColor = System.Drawing.Color.Red;
+                error = error + "理事長名\n";
             }
 
             /**
@@ -160,11 +173,13 @@ namespace Chapy
             {
                 validate = false;
                 tbCorporation_Address1.BackColor = System.Drawing.Color.Red;
+                error = error + "法人住所１\n";
             }
             if (isNullString(tbCorporation_Address2.Text))
             {
                 validate = false;
                 tbCorporation_Address2.BackColor = System.Drawing.Color.Red;
+                error = error + "法人住所２\n";
             }
 
             /**
@@ -180,6 +195,11 @@ namespace Chapy
             {
                 validate = false;
                 tbCorporation_PostCode2.BackColor = System.Drawing.Color.Red;
+            }
+
+            if (isNullString(tbCorporation_PostCode1.Text) || isNullString(tbCorporation_PostCode2.Text))
+            {
+                error = error + "法人郵便番号\n";
             }
 
             /**
@@ -202,6 +222,11 @@ namespace Chapy
                 tbCorporation_Tel3.BackColor = System.Drawing.Color.Red;
             }
 
+            if (isNullString(tbCorporation_Tel1.Text) || isNullString(tbCorporation_Tel2.Text) || isNullString(tbCorporation_Tel3.Text))
+            {
+                 error = error + "法人電話番号\n";
+            }
+
             /**
              * validate Fax
              * check number
@@ -221,6 +246,10 @@ namespace Chapy
                 validate = false;
                 tbCorporation_Fax3.BackColor = System.Drawing.Color.Red;
             }
+            if (isNullString(tbCorporation_Fax1.Text) || isNullString(tbCorporation_Fax2.Text) || isNullString(tbCorporation_Fax3.Text))
+            {
+                error = error + "法人ファックス番号\n";
+            }
 
             /**
              * validate email
@@ -230,6 +259,11 @@ namespace Chapy
             {
                 validate = false;
                 tbCorporation_Email.BackColor = System.Drawing.Color.Red;
+                //error = error + "正しいメールアドレスを入力していください。";
+            }
+            if (isNullString(tbCorporation_Email.Text)) 
+            {
+               error = error + "法人E-mailアドレス\n";
             }
 
             /**
@@ -239,8 +273,16 @@ namespace Chapy
             {
                 validate = false;
                 tbCorporation_HomePage.BackColor = System.Drawing.Color.Red;
+                error = error + "法人ホームページアドレス\n";
             }
 
+            if (error != null && validate == false)
+            {
+                MessageBox.Show(error, "法人登録エラーメッセージ");
+                error = null;
+            }
+
+            
             return validate;
         }
         /**
@@ -278,10 +320,62 @@ namespace Chapy
         }
 
         private void btCorporation_Back_Click(object sender, EventArgs e)
+        {           
+            Thread thread = new Thread(new ThreadStart(ShowMainTain)); //Tạo luồng mới
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start(); //Khởi chạy luồng
+            this.Close(); //đóng Form hiện tại. (Form1)
+        }
+
+        private void ShowMainTain()
         {
-            this.Hide();
-            FrmMain main = new FrmMain();
-            main.Show();
+            FrmMaintain main = new FrmMaintain();
+            main.ShowDialog();           
+        }
+
+        private void FrmCorporation_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == System.Windows.Forms.Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void cbCorporation_editable_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbCorporation_editable.Checked)
+            {
+                disableFields();
+            }
+            else
+            {
+                enableFields();
+            }
+        }
+
+        private void disableFields()
+        {
+            foreach (var c in this.Controls)
+            {
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Enabled = false;
+                }
+                btnCorporation_Save.Enabled = false;
+
+            }
+        }
+        private void enableFields()
+        {
+            foreach (var c in this.Controls)
+            {
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Enabled = true;
+                }
+                btnCorporation_Save.Enabled = true;
+
+            }
         }
     }
 }

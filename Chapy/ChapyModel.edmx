@@ -20,9 +20,9 @@
           <EntitySet Name="CpStaff" EntityType="chappyModel.Store.CpStaff" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CpStaffType" EntityType="chappyModel.Store.CpStaffType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CpStartEndDate" EntityType="chappyModel.Store.CpStartEndDate" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CpTannin" EntityType="chappyModel.Store.CpTannin" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CpTerm" EntityType="chappyModel.Store.CpTerm" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CpTimeZone" EntityType="chappyModel.Store.CpTimeZone" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Employees" EntityType="chappyModel.Store.Employees" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="JapanHolidays" EntityType="chappyModel.Store.JapanHolidays" store:Type="Tables" store:Schema="dbo" store:Name="JapanHolidays">
             <DefiningQuery>SELECT 
       [JapanHolidays].[Id] AS [Id], 
@@ -31,22 +31,97 @@
       [JapanHolidays].[Name] AS [Name]
       FROM [dbo].[JapanHolidays] AS [JapanHolidays]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="sysdiagrams" EntityType="chappyModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_CpClass_CpGradeCode" Association="chappyModel.Store.FK_CpClass_CpGradeCode">
+            <End Role="CpGradeCode" EntitySet="CpGradeCode" />
+            <End Role="CpClass" EntitySet="CpClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpClass_CpSchools" Association="chappyModel.Store.FK_CpClass_CpSchools">
+            <End Role="CpSchools" EntitySet="CpSchools" />
+            <End Role="CpClass" EntitySet="CpClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpClass_CpTerm" Association="chappyModel.Store.FK_CpClass_CpTerm">
+            <End Role="CpTerm" EntitySet="CpTerm" />
+            <End Role="CpClass" EntitySet="CpClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpClassStaff_CpClass" Association="chappyModel.Store.FK_CpClassStaff_CpClass">
+            <End Role="CpClass" EntitySet="CpClass" />
+            <End Role="CpClassStaff" EntitySet="CpClassStaff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpClassStaff_CpTerm" Association="chappyModel.Store.FK_CpClassStaff_CpTerm">
+            <End Role="CpTerm" EntitySet="CpTerm" />
+            <End Role="CpClassStaff" EntitySet="CpClassStaff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpGradeCode_CpTerm" Association="chappyModel.Store.FK_CpGradeCode_CpTerm">
+            <End Role="CpTerm" EntitySet="CpTerm" />
+            <End Role="CpGradeCode" EntitySet="CpGradeCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpGroup_CpSchools" Association="chappyModel.Store.FK_CpGroup_CpSchools">
+            <End Role="CpSchools" EntitySet="CpSchools" />
+            <End Role="CpGroup" EntitySet="CpGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpHoliday_CpSchools" Association="chappyModel.Store.FK_CpHoliday_CpSchools">
+            <End Role="CpSchools" EntitySet="CpSchools" />
+            <End Role="CpHoliday" EntitySet="CpHoliday" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpPosition_CpSchools" Association="chappyModel.Store.FK_CpPosition_CpSchools">
+            <End Role="CpSchools" EntitySet="CpSchools" />
+            <End Role="CpPosition" EntitySet="CpPosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpSchedule_CpTerm" Association="chappyModel.Store.FK_CpSchedule_CpTerm">
+            <End Role="CpTerm" EntitySet="CpTerm" />
+            <End Role="CpSchedule" EntitySet="CpSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpScheduleDetail_CpClass" Association="chappyModel.Store.FK_CpScheduleDetail_CpClass">
+            <End Role="CpClass" EntitySet="CpClass" />
+            <End Role="CpScheduleDetail" EntitySet="CpScheduleDetail" />
+          </AssociationSet>
           <AssociationSet Name="FK_CpScheduleDetail_CpSchedule" Association="chappyModel.Store.FK_CpScheduleDetail_CpSchedule">
             <End Role="CpSchedule" EntitySet="CpSchedule" />
             <End Role="CpScheduleDetail" EntitySet="CpScheduleDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK_CpScheduleDetail_CpScheduleDetail" Association="chappyModel.Store.FK_CpScheduleDetail_CpScheduleDetail">
+          <AssociationSet Name="FK_CpScheduleDetail_CpStaff" Association="chappyModel.Store.FK_CpScheduleDetail_CpStaff">
+            <End Role="CpStaff" EntitySet="CpStaff" />
             <End Role="CpScheduleDetail" EntitySet="CpScheduleDetail" />
-            <End Role="CpScheduleDetail1" EntitySet="CpScheduleDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpScheduleDetail_CpTimeZone" Association="chappyModel.Store.FK_CpScheduleDetail_CpTimeZone">
+            <End Role="CpTimeZone" EntitySet="CpTimeZone" />
+            <End Role="CpScheduleDetail" EntitySet="CpScheduleDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpSchools_CpCorporation" Association="chappyModel.Store.FK_CpSchools_CpCorporation">
+            <End Role="CpCorporation" EntitySet="CpCorporation" />
+            <End Role="CpSchools" EntitySet="CpSchools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpStaff_CpPosition" Association="chappyModel.Store.FK_CpStaff_CpPosition">
+            <End Role="CpPosition" EntitySet="CpPosition" />
+            <End Role="CpStaff" EntitySet="CpStaff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpStaff_CpSchools" Association="chappyModel.Store.FK_CpStaff_CpSchools">
+            <End Role="CpSchools" EntitySet="CpSchools" />
+            <End Role="CpStaff" EntitySet="CpStaff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpStaff_CpStaffType" Association="chappyModel.Store.FK_CpStaff_CpStaffType">
+            <End Role="CpStaffType" EntitySet="CpStaffType" />
+            <End Role="CpStaff" EntitySet="CpStaff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpStaffType_CpSchools" Association="chappyModel.Store.FK_CpStaffType_CpSchools">
+            <End Role="CpSchools" EntitySet="CpSchools" />
+            <End Role="CpStaffType" EntitySet="CpStaffType" />
           </AssociationSet>
           <AssociationSet Name="FK_CpStartEndDate_CpSchools" Association="chappyModel.Store.FK_CpStartEndDate_CpSchools">
             <End Role="CpSchools" EntitySet="CpSchools" />
             <End Role="CpStartEndDate" EntitySet="CpStartEndDate" />
           </AssociationSet>
-          <AssociationSet Name="FK_CpTannin_CpSchools" Association="chappyModel.Store.FK_CpTannin_CpSchools">
+          <AssociationSet Name="FK_CpTerm_CpSchools" Association="chappyModel.Store.FK_CpTerm_CpSchools">
             <End Role="CpSchools" EntitySet="CpSchools" />
-            <End Role="CpTannin" EntitySet="CpTannin" />
+            <End Role="CpTerm" EntitySet="CpTerm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpTimeZone_CpSchools" Association="chappyModel.Store.FK_CpTimeZone_CpSchools">
+            <End Role="CpSchools" EntitySet="CpSchools" />
+            <End Role="CpTimeZone" EntitySet="CpTimeZone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpTimeZone_CpTerm" Association="chappyModel.Store.FK_CpTimeZone_CpTerm">
+            <End Role="CpTerm" EntitySet="CpTerm" />
+            <End Role="CpTimeZone" EntitySet="CpTimeZone" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="CpBuildings">
@@ -87,7 +162,7 @@
           <Property Name="StaffId5" Type="int" />
           <Property Name="StaffId6" Type="int" />
           <Property Name="NumberOfStaff" Type="int" />
-          <Property Name="TanninId" Type="int" Nullable="false" />
+          <Property Name="TermId" Type="int" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" />
           <Property Name="UpdatedAt" Type="datetime" />
         </EntityType>
@@ -158,20 +233,22 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TermID" Type="int" Nullable="false" />
           <Property Name="StartDate" Type="date" />
           <Property Name="EndDate" Type="date" />
+          <Property Name="Chosen" Type="int" />
         </EntityType>
         <EntityType Name="CpScheduleDetail">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ScheduleID" Type="int" Nullable="false" />
           <Property Name="ClassID" Type="int" Nullable="false" />
           <Property Name="StaffID" Type="int" Nullable="false" />
-          <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="TimezoneID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="int" Nullable="false" />
+          <Property Name="TimezoneID" Type="int" />
         </EntityType>
         <EntityType Name="CpSchools">
           <Key>
@@ -193,6 +270,7 @@
           <Property Name="HomePage" Type="text" />
           <Property Name="UsePass" Type="tinyint" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="LimitHour" Type="int" />
           <Property Name="CreatedAt" Type="datetime" />
           <Property Name="UpdatedAt" Type="datetime" />
         </EntityType>
@@ -226,6 +304,12 @@
           <Property Name="EmerencyAddress1" Type="nvarchar" MaxLength="255" />
           <Property Name="EmerencyAddress2" Type="nvarchar" MaxLength="255" />
           <Property Name="EmerencyTel" Type="varchar" MaxLength="16" />
+          <Property Name="experienceYears" Type="int" />
+          <Property Name="experienceType" Type="nvarchar" MaxLength="255" />
+          <Property Name="useBus" Type="tinyint" />
+          <Property Name="holidayFrom" Type="datetime" />
+          <Property Name="hodidayNumber" Type="int" />
+          <Property Name="notCombiStaffs" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="CpStaffType">
           <Key>
@@ -250,17 +334,6 @@
           <Property Name="CreatedAt" Type="datetime" />
           <Property Name="UpdatedAt" Type="datetime" />
         </EntityType>
-        <EntityType Name="CpTannin">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="SchoolId" Type="int" Nullable="false" />
-          <Property Name="Code" Type="nchar" Nullable="false" MaxLength="10" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
-          <Property Name="CreatedAt" Type="datetime" />
-          <Property Name="UpdatedAt" Type="datetime" />
-        </EntityType>
         <EntityType Name="CpTerm">
           <Key>
             <PropertyRef Name="Id" />
@@ -280,6 +353,7 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Code" Type="nchar" Nullable="false" MaxLength="10" />
           <Property Name="SchoolId" Type="int" Nullable="false" />
+          <Property Name="TermID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
           <Property Name="Abbreviation" Type="nvarchar" Nullable="false" MaxLength="64" />
           <Property Name="Color" Type="varchar" Nullable="false" MaxLength="16" />
@@ -294,28 +368,158 @@
           <Property Name="CreatedAt" Type="datetime" />
           <Property Name="UpdatedAt" Type="datetime" />
         </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="char" Nullable="false" MaxLength="30" />
+          <Property Name="Rsvp" Type="int" />
+          <Property Name="Requests" Type="nvarchar" />
+        </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'chapy.dbo.JapanHolidays' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'chappy_tung_19_1_10pm.dbo.JapanHolidays' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="JapanHolidays">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Year" Type="int" />
           <Property Name="Date" Type="date" />
           <Property Name="Name" Type="nvarchar" MaxLength="500" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
+        <Association Name="FK_CpClass_CpGradeCode">
+          <End Role="CpGradeCode" Type="chappyModel.Store.CpGradeCode" Multiplicity="1" />
+          <End Role="CpClass" Type="chappyModel.Store.CpClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpGradeCode">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpClass">
+              <PropertyRef Name="GradeCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpClass_CpSchools">
+          <End Role="CpSchools" Type="chappyModel.Store.CpSchools" Multiplicity="1" />
+          <End Role="CpClass" Type="chappyModel.Store.CpClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpSchools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpClass">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpClass_CpTerm">
+          <End Role="CpTerm" Type="chappyModel.Store.CpTerm" Multiplicity="1" />
+          <End Role="CpClass" Type="chappyModel.Store.CpClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpTerm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpClass">
+              <PropertyRef Name="TermId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpClassStaff_CpClass">
+          <End Role="CpClass" Type="chappyModel.Store.CpClass" Multiplicity="1" />
+          <End Role="CpClassStaff" Type="chappyModel.Store.CpClassStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpClass">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpClassStaff">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpClassStaff_CpTerm">
+          <End Role="CpTerm" Type="chappyModel.Store.CpTerm" Multiplicity="1" />
+          <End Role="CpClassStaff" Type="chappyModel.Store.CpClassStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpTerm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpClassStaff">
+              <PropertyRef Name="TermId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpGradeCode_CpTerm">
+          <End Role="CpTerm" Type="chappyModel.Store.CpTerm" Multiplicity="1" />
+          <End Role="CpGradeCode" Type="chappyModel.Store.CpGradeCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpTerm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpGradeCode">
+              <PropertyRef Name="TermId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpGroup_CpSchools">
+          <End Role="CpSchools" Type="chappyModel.Store.CpSchools" Multiplicity="0..1" />
+          <End Role="CpGroup" Type="chappyModel.Store.CpGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpSchools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpGroup">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpHoliday_CpSchools">
+          <End Role="CpSchools" Type="chappyModel.Store.CpSchools" Multiplicity="0..1" />
+          <End Role="CpHoliday" Type="chappyModel.Store.CpHoliday" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpSchools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpHoliday">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpPosition_CpSchools">
+          <End Role="CpSchools" Type="chappyModel.Store.CpSchools" Multiplicity="0..1" />
+          <End Role="CpPosition" Type="chappyModel.Store.CpPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpSchools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpPosition">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpSchedule_CpTerm">
+          <End Role="CpTerm" Type="chappyModel.Store.CpTerm" Multiplicity="1" />
+          <End Role="CpSchedule" Type="chappyModel.Store.CpSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpTerm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpSchedule">
+              <PropertyRef Name="TermID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpScheduleDetail_CpClass">
+          <End Role="CpClass" Type="chappyModel.Store.CpClass" Multiplicity="1" />
+          <End Role="CpScheduleDetail" Type="chappyModel.Store.CpScheduleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpClass">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpScheduleDetail">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CpScheduleDetail_CpSchedule">
           <End Role="CpSchedule" Type="chappyModel.Store.CpSchedule" Multiplicity="1" />
           <End Role="CpScheduleDetail" Type="chappyModel.Store.CpScheduleDetail" Multiplicity="*" />
@@ -328,15 +532,87 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CpScheduleDetail_CpScheduleDetail">
-          <End Role="CpScheduleDetail" Type="chappyModel.Store.CpScheduleDetail" Multiplicity="1" />
-          <End Role="CpScheduleDetail1" Type="chappyModel.Store.CpScheduleDetail" Multiplicity="0..1" />
+        <Association Name="FK_CpScheduleDetail_CpStaff">
+          <End Role="CpStaff" Type="chappyModel.Store.CpStaff" Multiplicity="1" />
+          <End Role="CpScheduleDetail" Type="chappyModel.Store.CpScheduleDetail" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CpScheduleDetail">
+            <Principal Role="CpStaff">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="CpScheduleDetail1">
+            <Dependent Role="CpScheduleDetail">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpScheduleDetail_CpTimeZone">
+          <End Role="CpTimeZone" Type="chappyModel.Store.CpTimeZone" Multiplicity="0..1" />
+          <End Role="CpScheduleDetail" Type="chappyModel.Store.CpScheduleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpTimeZone">
               <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpScheduleDetail">
+              <PropertyRef Name="TimezoneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpSchools_CpCorporation">
+          <End Role="CpCorporation" Type="chappyModel.Store.CpCorporation" Multiplicity="0..1" />
+          <End Role="CpSchools" Type="chappyModel.Store.CpSchools" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpCorporation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpSchools">
+              <PropertyRef Name="CorporationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpStaff_CpPosition">
+          <End Role="CpPosition" Type="chappyModel.Store.CpPosition" Multiplicity="1" />
+          <End Role="CpStaff" Type="chappyModel.Store.CpStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpPosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpStaff">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpStaff_CpSchools">
+          <End Role="CpSchools" Type="chappyModel.Store.CpSchools" Multiplicity="1" />
+          <End Role="CpStaff" Type="chappyModel.Store.CpStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpSchools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpStaff">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpStaff_CpStaffType">
+          <End Role="CpStaffType" Type="chappyModel.Store.CpStaffType" Multiplicity="1" />
+          <End Role="CpStaff" Type="chappyModel.Store.CpStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpStaffType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpStaff">
+              <PropertyRef Name="StaffTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpStaffType_CpSchools">
+          <End Role="CpSchools" Type="chappyModel.Store.CpSchools" Multiplicity="0..1" />
+          <End Role="CpStaffType" Type="chappyModel.Store.CpStaffType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpSchools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpStaffType">
+              <PropertyRef Name="SchoolId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -352,15 +628,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CpTannin_CpSchools">
+        <Association Name="FK_CpTerm_CpSchools">
           <End Role="CpSchools" Type="chappyModel.Store.CpSchools" Multiplicity="1" />
-          <End Role="CpTannin" Type="chappyModel.Store.CpTannin" Multiplicity="*" />
+          <End Role="CpTerm" Type="chappyModel.Store.CpTerm" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CpSchools">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="CpTannin">
+            <Dependent Role="CpTerm">
               <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpTimeZone_CpSchools">
+          <End Role="CpSchools" Type="chappyModel.Store.CpSchools" Multiplicity="1" />
+          <End Role="CpTimeZone" Type="chappyModel.Store.CpTimeZone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpSchools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpTimeZone">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpTimeZone_CpTerm">
+          <End Role="CpTerm" Type="chappyModel.Store.CpTerm" Multiplicity="1" />
+          <End Role="CpTimeZone" Type="chappyModel.Store.CpTimeZone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpTerm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpTimeZone">
+              <PropertyRef Name="TermID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -369,6 +669,36 @@
     <edmx:ConceptualModels>
       <Schema Namespace="chappyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="chapyEntities" p1:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="CpBuildings" EntityType="chappyModel.CpBuilding" />
           <EntitySet Name="CpClasses" EntityType="chappyModel.CpClass" />
           <EntitySet Name="CpClassStaffs" EntityType="chappyModel.CpClassStaff" />
@@ -377,54 +707,109 @@
           <EntitySet Name="CpGroups" EntityType="chappyModel.CpGroup" />
           <EntitySet Name="CpHolidays" EntityType="chappyModel.CpHoliday" />
           <EntitySet Name="CpPositions" EntityType="chappyModel.CpPosition" />
+          <EntitySet Name="CpSchedules" EntityType="chappyModel.CpSchedule" />
+          <EntitySet Name="CpScheduleDetails" EntityType="chappyModel.CpScheduleDetail" />
           <EntitySet Name="CpSchools" EntityType="chappyModel.CpSchool" />
           <EntitySet Name="CpStaffs" EntityType="chappyModel.CpStaff" />
           <EntitySet Name="CpStaffTypes" EntityType="chappyModel.CpStaffType" />
           <EntitySet Name="CpStartEndDates" EntityType="chappyModel.CpStartEndDate" />
-          <EntitySet Name="CpTannins" EntityType="chappyModel.CpTannin" />
           <EntitySet Name="CpTerms" EntityType="chappyModel.CpTerm" />
           <EntitySet Name="CpTimeZones" EntityType="chappyModel.CpTimeZone" />
+          <EntitySet Name="Employees" EntityType="chappyModel.Employee" />
           <EntitySet Name="JapanHolidays" EntityType="chappyModel.JapanHoliday" />
-          <EntitySet Name="sysdiagrams" EntityType="chappyModel.sysdiagram" />
           <AssociationSet Name="FK_CpClass_CpGradeCode" Association="chappyModel.FK_CpClass_CpGradeCode">
             <End Role="CpGradeCode" EntitySet="CpGradeCodes" />
+            <End Role="CpClass" EntitySet="CpClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpClass_CpSchools" Association="chappyModel.FK_CpClass_CpSchools">
+            <End Role="CpSchool" EntitySet="CpSchools" />
+            <End Role="CpClass" EntitySet="CpClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpClass_CpTerm" Association="chappyModel.FK_CpClass_CpTerm">
+            <End Role="CpTerm" EntitySet="CpTerms" />
             <End Role="CpClass" EntitySet="CpClasses" />
           </AssociationSet>
           <AssociationSet Name="FK_CpClassStaff_CpClass" Association="chappyModel.FK_CpClassStaff_CpClass">
             <End Role="CpClass" EntitySet="CpClasses" />
             <End Role="CpClassStaff" EntitySet="CpClassStaffs" />
           </AssociationSet>
+          <AssociationSet Name="FK_CpScheduleDetail_CpClass" Association="chappyModel.FK_CpScheduleDetail_CpClass">
+            <End Role="CpClass" EntitySet="CpClasses" />
+            <End Role="CpScheduleDetail" EntitySet="CpScheduleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpClassStaff_CpTerm" Association="chappyModel.FK_CpClassStaff_CpTerm">
+            <End Role="CpTerm" EntitySet="CpTerms" />
+            <End Role="CpClassStaff" EntitySet="CpClassStaffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpSchools_CpCorporation" Association="chappyModel.FK_CpSchools_CpCorporation">
+            <End Role="CpCorporation" EntitySet="CpCorporations" />
+            <End Role="CpSchool" EntitySet="CpSchools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpGradeCode_CpTerm" Association="chappyModel.FK_CpGradeCode_CpTerm">
+            <End Role="CpTerm" EntitySet="CpTerms" />
+            <End Role="CpGradeCode" EntitySet="CpGradeCodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpGroup_CpSchools" Association="chappyModel.FK_CpGroup_CpSchools">
+            <End Role="CpSchool" EntitySet="CpSchools" />
+            <End Role="CpGroup" EntitySet="CpGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpHoliday_CpSchools" Association="chappyModel.FK_CpHoliday_CpSchools">
+            <End Role="CpSchool" EntitySet="CpSchools" />
+            <End Role="CpHoliday" EntitySet="CpHolidays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpPosition_CpSchools" Association="chappyModel.FK_CpPosition_CpSchools">
+            <End Role="CpSchool" EntitySet="CpSchools" />
+            <End Role="CpPosition" EntitySet="CpPositions" />
+          </AssociationSet>
           <AssociationSet Name="FK_CpStaff_CpPosition" Association="chappyModel.FK_CpStaff_CpPosition">
             <End Role="CpPosition" EntitySet="CpPositions" />
             <End Role="CpStaff" EntitySet="CpStaffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpSchedule_CpTerm" Association="chappyModel.FK_CpSchedule_CpTerm">
+            <End Role="CpTerm" EntitySet="CpTerms" />
+            <End Role="CpSchedule" EntitySet="CpSchedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpScheduleDetail_CpSchedule" Association="chappyModel.FK_CpScheduleDetail_CpSchedule">
+            <End Role="CpSchedule" EntitySet="CpSchedules" />
+            <End Role="CpScheduleDetail" EntitySet="CpScheduleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpScheduleDetail_CpStaff" Association="chappyModel.FK_CpScheduleDetail_CpStaff">
+            <End Role="CpStaff" EntitySet="CpStaffs" />
+            <End Role="CpScheduleDetail" EntitySet="CpScheduleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpScheduleDetail_CpTimeZone" Association="chappyModel.FK_CpScheduleDetail_CpTimeZone">
+            <End Role="CpTimeZone" EntitySet="CpTimeZones" />
+            <End Role="CpScheduleDetail" EntitySet="CpScheduleDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_CpStaff_CpSchools" Association="chappyModel.FK_CpStaff_CpSchools">
             <End Role="CpSchool" EntitySet="CpSchools" />
             <End Role="CpStaff" EntitySet="CpStaffs" />
           </AssociationSet>
+          <AssociationSet Name="FK_CpStaffType_CpSchools" Association="chappyModel.FK_CpStaffType_CpSchools">
+            <End Role="CpSchool" EntitySet="CpSchools" />
+            <End Role="CpStaffType" EntitySet="CpStaffTypes" />
+          </AssociationSet>
           <AssociationSet Name="FK_CpStartEndDate_CpSchools" Association="chappyModel.FK_CpStartEndDate_CpSchools">
             <End Role="CpSchool" EntitySet="CpSchools" />
             <End Role="CpStartEndDate" EntitySet="CpStartEndDates" />
           </AssociationSet>
-          <AssociationSet Name="FK_CpTannin_CpSchools" Association="chappyModel.FK_CpTannin_CpSchools">
+          <AssociationSet Name="FK_CpTerm_CpSchools" Association="chappyModel.FK_CpTerm_CpSchools">
             <End Role="CpSchool" EntitySet="CpSchools" />
-            <End Role="CpTannin" EntitySet="CpTannins" />
+            <End Role="CpTerm" EntitySet="CpTerms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpTimeZone_CpSchools" Association="chappyModel.FK_CpTimeZone_CpSchools">
+            <End Role="CpSchool" EntitySet="CpSchools" />
+            <End Role="CpTimeZone" EntitySet="CpTimeZones" />
           </AssociationSet>
           <AssociationSet Name="FK_CpStaff_CpStaffType" Association="chappyModel.FK_CpStaff_CpStaffType">
             <End Role="CpStaffType" EntitySet="CpStaffTypes" />
             <End Role="CpStaff" EntitySet="CpStaffs" />
           </AssociationSet>
-          <EntitySet Name="CpScheduleDetails" EntityType="chappyModel.CpScheduleDetail" />
-          <AssociationSet Name="FK_CpScheduleDetail_CpScheduleDetail" Association="chappyModel.FK_CpScheduleDetail_CpScheduleDetail">
-            <End Role="CpScheduleDetail" EntitySet="CpScheduleDetails" />
-            <End Role="CpScheduleDetail1" EntitySet="CpScheduleDetails" />
+          <AssociationSet Name="FK_CpTimeZone_CpTerm" Association="chappyModel.FK_CpTimeZone_CpTerm">
+            <End Role="CpTerm" EntitySet="CpTerms" />
+            <End Role="CpTimeZone" EntitySet="CpTimeZones" />
           </AssociationSet>
-          <EntitySet Name="CpSchedules" EntityType="chappyModel.CpSchedule" />
-          <AssociationSet Name="FK_CpScheduleDetail_CpSchedule" Association="chappyModel.FK_CpScheduleDetail_CpSchedule">
-            <End Role="CpSchedule" EntitySet="CpSchedules" />
-            <End Role="CpScheduleDetail" EntitySet="CpScheduleDetails" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="CpBuilding">
           <Key>
             <PropertyRef Name="Id" />
@@ -450,7 +835,10 @@
           <Property Type="DateTime" Name="CreatedAt" Precision="3" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
           <NavigationProperty Name="CpGradeCode" Relationship="chappyModel.FK_CpClass_CpGradeCode" FromRole="CpClass" ToRole="CpGradeCode" />
+          <NavigationProperty Name="CpSchool" Relationship="chappyModel.FK_CpClass_CpSchools" FromRole="CpClass" ToRole="CpSchool" />
+          <NavigationProperty Name="CpTerm" Relationship="chappyModel.FK_CpClass_CpTerm" FromRole="CpClass" ToRole="CpTerm" />
           <NavigationProperty Name="CpClassStaffs" Relationship="chappyModel.FK_CpClassStaff_CpClass" FromRole="CpClass" ToRole="CpClassStaff" />
+          <NavigationProperty Name="CpScheduleDetails" Relationship="chappyModel.FK_CpScheduleDetail_CpClass" FromRole="CpClass" ToRole="CpScheduleDetail" />
         </EntityType>
         <EntityType Name="CpClassStaff">
           <Key>
@@ -465,10 +853,11 @@
           <Property Type="Int32" Name="StaffId5" />
           <Property Type="Int32" Name="StaffId6" />
           <Property Type="Int32" Name="NumberOfStaff" />
-          <Property Type="Int32" Name="TanninId" Nullable="false" />
+          <Property Type="Int32" Name="TermId" Nullable="false" />
           <Property Type="DateTime" Name="CreatedAt" Precision="3" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
           <NavigationProperty Name="CpClass" Relationship="chappyModel.FK_CpClassStaff_CpClass" FromRole="CpClassStaff" ToRole="CpClass" />
+          <NavigationProperty Name="CpTerm" Relationship="chappyModel.FK_CpClassStaff_CpTerm" FromRole="CpClassStaff" ToRole="CpTerm" />
         </EntityType>
         <EntityType Name="CpCorporation">
           <Key>
@@ -487,31 +876,34 @@
           <Property Type="String" Name="HomePage" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="CreatedAt" Precision="3" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+          <NavigationProperty Name="CpSchools" Relationship="chappyModel.FK_CpSchools_CpCorporation" FromRole="CpCorporation" ToRole="CpSchool" />
         </EntityType>
         <EntityType Name="CpGradeCode">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Type="Int32" Name="TermId" Nullable="false" />
           <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreatedAt" Precision="3" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
           <NavigationProperty Name="CpClasses" Relationship="chappyModel.FK_CpClass_CpGradeCode" FromRole="CpGradeCode" ToRole="CpClass" />
+          <NavigationProperty Name="CpTerm" Relationship="chappyModel.FK_CpGradeCode_CpTerm" FromRole="CpGradeCode" ToRole="CpTerm" />
         </EntityType>
         <EntityType Name="CpGroup">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="SchoolId" />
           <Property Type="String" Name="Code" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Abbreviation" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ListStaffId" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="CreatedAt" Precision="3" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
-          <Property Type="String" Name="ListStaffId" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CpSchool" Relationship="chappyModel.FK_CpGroup_CpSchools" FromRole="CpGroup" ToRole="CpSchool" />
         </EntityType>
         <EntityType Name="CpHoliday">
           <Key>
@@ -521,6 +913,7 @@
           <Property Type="Int32" Name="SchoolId" />
           <Property Type="DateTime" Name="Date" Precision="3" />
           <Property Type="String" Name="Reason" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CpSchool" Relationship="chappyModel.FK_CpHoliday_CpSchools" FromRole="CpHoliday" ToRole="CpSchool" />
         </EntityType>
         <EntityType Name="CpPosition">
           <Key>
@@ -533,7 +926,35 @@
           <Property Type="String" Name="Abbreviation" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreatedAt" Precision="3" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+          <NavigationProperty Name="CpSchool" Relationship="chappyModel.FK_CpPosition_CpSchools" FromRole="CpPosition" ToRole="CpSchool" />
           <NavigationProperty Name="CpStaffs" Relationship="chappyModel.FK_CpStaff_CpPosition" FromRole="CpPosition" ToRole="CpStaff" />
+        </EntityType>
+        <EntityType Name="CpSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TermID" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Precision="0" />
+          <Property Type="DateTime" Name="EndDate" Precision="0" />
+          <Property Type="Int32" Name="Chosen" />
+          <NavigationProperty Name="CpTerm" Relationship="chappyModel.FK_CpSchedule_CpTerm" FromRole="CpSchedule" ToRole="CpTerm" />
+          <NavigationProperty Name="CpScheduleDetails" Relationship="chappyModel.FK_CpScheduleDetail_CpSchedule" FromRole="CpSchedule" ToRole="CpScheduleDetail" />
+        </EntityType>
+        <EntityType Name="CpScheduleDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ScheduleID" Nullable="false" />
+          <Property Type="Int32" Name="ClassID" Nullable="false" />
+          <Property Type="Int32" Name="StaffID" Nullable="false" />
+          <Property Type="Int32" Name="Date" Nullable="false" />
+          <Property Type="Int32" Name="TimezoneID" />
+          <NavigationProperty Name="CpClass" Relationship="chappyModel.FK_CpScheduleDetail_CpClass" FromRole="CpScheduleDetail" ToRole="CpClass" />
+          <NavigationProperty Name="CpSchedule" Relationship="chappyModel.FK_CpScheduleDetail_CpSchedule" FromRole="CpScheduleDetail" ToRole="CpSchedule" />
+          <NavigationProperty Name="CpStaff" Relationship="chappyModel.FK_CpScheduleDetail_CpStaff" FromRole="CpScheduleDetail" ToRole="CpStaff" />
+          <NavigationProperty Name="CpTimeZone" Relationship="chappyModel.FK_CpScheduleDetail_CpTimeZone" FromRole="CpScheduleDetail" ToRole="CpTimeZone" />
         </EntityType>
         <EntityType Name="CpSchool">
           <Key>
@@ -555,11 +976,19 @@
           <Property Type="String" Name="HomePage" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Type="Byte" Name="UsePass" />
           <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="LimitHour" />
           <Property Type="DateTime" Name="CreatedAt" Precision="3" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+          <NavigationProperty Name="CpClasses" Relationship="chappyModel.FK_CpClass_CpSchools" FromRole="CpSchool" ToRole="CpClass" />
+          <NavigationProperty Name="CpCorporation" Relationship="chappyModel.FK_CpSchools_CpCorporation" FromRole="CpSchool" ToRole="CpCorporation" />
+          <NavigationProperty Name="CpGroups" Relationship="chappyModel.FK_CpGroup_CpSchools" FromRole="CpSchool" ToRole="CpGroup" />
+          <NavigationProperty Name="CpHolidays" Relationship="chappyModel.FK_CpHoliday_CpSchools" FromRole="CpSchool" ToRole="CpHoliday" />
+          <NavigationProperty Name="CpPositions" Relationship="chappyModel.FK_CpPosition_CpSchools" FromRole="CpSchool" ToRole="CpPosition" />
           <NavigationProperty Name="CpStaffs" Relationship="chappyModel.FK_CpStaff_CpSchools" FromRole="CpSchool" ToRole="CpStaff" />
+          <NavigationProperty Name="CpStaffTypes" Relationship="chappyModel.FK_CpStaffType_CpSchools" FromRole="CpSchool" ToRole="CpStaffType" />
           <NavigationProperty Name="CpStartEndDates" Relationship="chappyModel.FK_CpStartEndDate_CpSchools" FromRole="CpSchool" ToRole="CpStartEndDate" />
-          <NavigationProperty Name="CpTannins" Relationship="chappyModel.FK_CpTannin_CpSchools" FromRole="CpSchool" ToRole="CpTannin" />
+          <NavigationProperty Name="CpTerms" Relationship="chappyModel.FK_CpTerm_CpSchools" FromRole="CpSchool" ToRole="CpTerm" />
+          <NavigationProperty Name="CpTimeZones" Relationship="chappyModel.FK_CpTimeZone_CpSchools" FromRole="CpSchool" ToRole="CpTimeZone" />
         </EntityType>
         <EntityType Name="CpStaff">
           <Key>
@@ -577,9 +1006,6 @@
           <Property Type="DateTime" Name="BirthDay" Precision="3" />
           <Property Type="DateTime" Name="CreatedAt" Precision="3" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
-          <NavigationProperty Name="CpPosition" Relationship="chappyModel.FK_CpStaff_CpPosition" FromRole="CpStaff" ToRole="CpPosition" />
-          <NavigationProperty Name="CpSchool" Relationship="chappyModel.FK_CpStaff_CpSchools" FromRole="CpStaff" ToRole="CpSchool" />
-          <NavigationProperty Name="CpStaffType" Relationship="chappyModel.FK_CpStaff_CpStaffType" FromRole="CpStaff" ToRole="CpStaffType" />
           <Property Type="String" Name="Hiragana2" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Name2" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="beginJob" Precision="3" />
@@ -594,6 +1020,16 @@
           <Property Type="String" Name="EmerencyAddress1" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="EmerencyAddress2" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="EmerencyTel" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="experienceYears" />
+          <Property Type="String" Name="experienceType" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="useBus" />
+          <Property Type="DateTime" Name="holidayFrom" Precision="3" />
+          <Property Type="Int32" Name="hodidayNumber" />
+          <Property Type="String" Name="notCombiStaffs" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CpPosition" Relationship="chappyModel.FK_CpStaff_CpPosition" FromRole="CpStaff" ToRole="CpPosition" />
+          <NavigationProperty Name="CpScheduleDetails" Relationship="chappyModel.FK_CpScheduleDetail_CpStaff" FromRole="CpStaff" ToRole="CpScheduleDetail" />
+          <NavigationProperty Name="CpSchool" Relationship="chappyModel.FK_CpStaff_CpSchools" FromRole="CpStaff" ToRole="CpSchool" />
+          <NavigationProperty Name="CpStaffType" Relationship="chappyModel.FK_CpStaff_CpStaffType" FromRole="CpStaff" ToRole="CpStaffType" />
         </EntityType>
         <EntityType Name="CpStaffType">
           <Key>
@@ -606,6 +1042,7 @@
           <Property Type="String" Name="Abbreviation" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreatedAt" Precision="3" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+          <NavigationProperty Name="CpSchool" Relationship="chappyModel.FK_CpStaffType_CpSchools" FromRole="CpStaffType" ToRole="CpSchool" />
           <NavigationProperty Name="CpStaffs" Relationship="chappyModel.FK_CpStaff_CpStaffType" FromRole="CpStaffType" ToRole="CpStaff" />
         </EntityType>
         <EntityType Name="CpStartEndDate">
@@ -620,18 +1057,6 @@
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
           <NavigationProperty Name="CpSchool" Relationship="chappyModel.FK_CpStartEndDate_CpSchools" FromRole="CpStartEndDate" ToRole="CpSchool" />
         </EntityType>
-        <EntityType Name="CpTannin">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="SchoolId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="CreatedAt" Precision="3" />
-          <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
-          <NavigationProperty Name="CpSchool" Relationship="chappyModel.FK_CpTannin_CpSchools" FromRole="CpTannin" ToRole="CpSchool" />
-          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-        </EntityType>
         <EntityType Name="CpTerm">
           <Key>
             <PropertyRef Name="Id" />
@@ -643,6 +1068,12 @@
           <Property Type="DateTime" Name="CreatedAt" Precision="3" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
           <Property Type="Int32" Name="Year" Nullable="false" />
+          <NavigationProperty Name="CpClasses" Relationship="chappyModel.FK_CpClass_CpTerm" FromRole="CpTerm" ToRole="CpClass" />
+          <NavigationProperty Name="CpClassStaffs" Relationship="chappyModel.FK_CpClassStaff_CpTerm" FromRole="CpTerm" ToRole="CpClassStaff" />
+          <NavigationProperty Name="CpGradeCodes" Relationship="chappyModel.FK_CpGradeCode_CpTerm" FromRole="CpTerm" ToRole="CpGradeCode" />
+          <NavigationProperty Name="CpSchedules" Relationship="chappyModel.FK_CpSchedule_CpTerm" FromRole="CpTerm" ToRole="CpSchedule" />
+          <NavigationProperty Name="CpSchool" Relationship="chappyModel.FK_CpTerm_CpSchools" FromRole="CpTerm" ToRole="CpSchool" />
+          <NavigationProperty Name="CpTimeZones" Relationship="chappyModel.FK_CpTimeZone_CpTerm" FromRole="CpTerm" ToRole="CpTimeZone" />
         </EntityType>
         <EntityType Name="CpTimeZone">
           <Key>
@@ -651,6 +1082,7 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Type="Int32" Name="SchoolId" Nullable="false" />
+          <Property Type="Int32" Name="TermID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Abbreviation" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Color" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
@@ -664,25 +1096,26 @@
           <Property Type="String" Name="ApplyClassed" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreatedAt" Precision="3" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+          <NavigationProperty Name="CpScheduleDetails" Relationship="chappyModel.FK_CpScheduleDetail_CpTimeZone" FromRole="CpTimeZone" ToRole="CpScheduleDetail" />
+          <NavigationProperty Name="CpSchool" Relationship="chappyModel.FK_CpTimeZone_CpSchools" FromRole="CpTimeZone" ToRole="CpSchool" />
+          <NavigationProperty Name="CpTerm" Relationship="chappyModel.FK_CpTimeZone_CpTerm" FromRole="CpTimeZone" ToRole="CpTerm" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="Rsvp" />
+          <Property Type="String" Name="Requests" MaxLength="4000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="JapanHoliday">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="Year" />
           <Property Type="DateTime" Name="Date" Precision="0" />
           <Property Type="String" Name="Name" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="principal_id" Nullable="false" />
-          <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="version" />
-          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_CpClass_CpGradeCode">
           <End Type="chappyModel.CpGradeCode" Role="CpGradeCode" Multiplicity="1" />
@@ -693,6 +1126,30 @@
             </Principal>
             <Dependent Role="CpClass">
               <PropertyRef Name="GradeCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpClass_CpSchools">
+          <End Type="chappyModel.CpSchool" Role="CpSchool" Multiplicity="1" />
+          <End Type="chappyModel.CpClass" Role="CpClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpSchool">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpClass">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpClass_CpTerm">
+          <End Type="chappyModel.CpTerm" Role="CpTerm" Multiplicity="1" />
+          <End Type="chappyModel.CpClass" Role="CpClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpTerm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpClass">
+              <PropertyRef Name="TermId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -708,6 +1165,90 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CpScheduleDetail_CpClass">
+          <End Type="chappyModel.CpClass" Role="CpClass" Multiplicity="1" />
+          <End Type="chappyModel.CpScheduleDetail" Role="CpScheduleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpClass">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpScheduleDetail">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpClassStaff_CpTerm">
+          <End Type="chappyModel.CpTerm" Role="CpTerm" Multiplicity="1" />
+          <End Type="chappyModel.CpClassStaff" Role="CpClassStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpTerm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpClassStaff">
+              <PropertyRef Name="TermId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpSchools_CpCorporation">
+          <End Type="chappyModel.CpCorporation" Role="CpCorporation" Multiplicity="0..1" />
+          <End Type="chappyModel.CpSchool" Role="CpSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpCorporation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpSchool">
+              <PropertyRef Name="CorporationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpGradeCode_CpTerm">
+          <End Type="chappyModel.CpTerm" Role="CpTerm" Multiplicity="1" />
+          <End Type="chappyModel.CpGradeCode" Role="CpGradeCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpTerm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpGradeCode">
+              <PropertyRef Name="TermId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpGroup_CpSchools">
+          <End Type="chappyModel.CpSchool" Role="CpSchool" Multiplicity="0..1" />
+          <End Type="chappyModel.CpGroup" Role="CpGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpSchool">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpGroup">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpHoliday_CpSchools">
+          <End Type="chappyModel.CpSchool" Role="CpSchool" Multiplicity="0..1" />
+          <End Type="chappyModel.CpHoliday" Role="CpHoliday" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpSchool">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpHoliday">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpPosition_CpSchools">
+          <End Type="chappyModel.CpSchool" Role="CpSchool" Multiplicity="0..1" />
+          <End Type="chappyModel.CpPosition" Role="CpPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpSchool">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpPosition">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CpStaff_CpPosition">
           <End Type="chappyModel.CpPosition" Role="CpPosition" Multiplicity="1" />
           <End Type="chappyModel.CpStaff" Role="CpStaff" Multiplicity="*" />
@@ -720,6 +1261,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CpSchedule_CpTerm">
+          <End Type="chappyModel.CpTerm" Role="CpTerm" Multiplicity="1" />
+          <End Type="chappyModel.CpSchedule" Role="CpSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpTerm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpSchedule">
+              <PropertyRef Name="TermID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpScheduleDetail_CpSchedule">
+          <End Type="chappyModel.CpSchedule" Role="CpSchedule" Multiplicity="1" />
+          <End Type="chappyModel.CpScheduleDetail" Role="CpScheduleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpSchedule">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpScheduleDetail">
+              <PropertyRef Name="ScheduleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpScheduleDetail_CpStaff">
+          <End Type="chappyModel.CpStaff" Role="CpStaff" Multiplicity="1" />
+          <End Type="chappyModel.CpScheduleDetail" Role="CpScheduleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpStaff">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpScheduleDetail">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpScheduleDetail_CpTimeZone">
+          <End Type="chappyModel.CpTimeZone" Role="CpTimeZone" Multiplicity="0..1" />
+          <End Type="chappyModel.CpScheduleDetail" Role="CpScheduleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpTimeZone">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpScheduleDetail">
+              <PropertyRef Name="TimezoneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CpStaff_CpSchools">
           <End Type="chappyModel.CpSchool" Role="CpSchool" Multiplicity="1" />
           <End Type="chappyModel.CpStaff" Role="CpStaff" Multiplicity="*" />
@@ -728,6 +1317,18 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="CpStaff">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpStaffType_CpSchools">
+          <End Type="chappyModel.CpSchool" Role="CpSchool" Multiplicity="0..1" />
+          <End Type="chappyModel.CpStaffType" Role="CpStaffType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpSchool">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpStaffType">
               <PropertyRef Name="SchoolId" />
             </Dependent>
           </ReferentialConstraint>
@@ -744,14 +1345,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CpTannin_CpSchools">
+        <Association Name="FK_CpTerm_CpSchools">
           <End Type="chappyModel.CpSchool" Role="CpSchool" Multiplicity="1" />
-          <End Type="chappyModel.CpTannin" Role="CpTannin" Multiplicity="*" />
+          <End Type="chappyModel.CpTerm" Role="CpTerm" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CpSchool">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="CpTannin">
+            <Dependent Role="CpTerm">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpTimeZone_CpSchools">
+          <End Type="chappyModel.CpSchool" Role="CpSchool" Multiplicity="1" />
+          <End Type="chappyModel.CpTimeZone" Role="CpTimeZone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpSchool">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpTimeZone">
               <PropertyRef Name="SchoolId" />
             </Dependent>
           </ReferentialConstraint>
@@ -768,50 +1381,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="CpScheduleDetail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="ScheduleID" Nullable="false" />
-          <Property Type="Int32" Name="ClassID" Nullable="false" />
-          <Property Type="Int32" Name="StaffID" Nullable="false" />
-          <Property Type="DateTime" Name="Date" Nullable="false" Precision="0" />
-          <Property Type="Int32" Name="TimezoneID" Nullable="false" />
-          <NavigationProperty Name="CpScheduleDetail1" Relationship="chappyModel.FK_CpScheduleDetail_CpScheduleDetail" FromRole="CpScheduleDetail" ToRole="CpScheduleDetail1" />
-          <NavigationProperty Name="CpScheduleDetail2" Relationship="chappyModel.FK_CpScheduleDetail_CpScheduleDetail" FromRole="CpScheduleDetail1" ToRole="CpScheduleDetail" />
-          <NavigationProperty Name="CpSchedule" Relationship="chappyModel.FK_CpScheduleDetail_CpSchedule" FromRole="CpScheduleDetail" ToRole="CpSchedule" />
-        </EntityType>
-        <Association Name="FK_CpScheduleDetail_CpScheduleDetail">
-          <End Type="chappyModel.CpScheduleDetail" Role="CpScheduleDetail" Multiplicity="1" />
-          <End Type="chappyModel.CpScheduleDetail" Role="CpScheduleDetail1" Multiplicity="0..1" />
+        <Association Name="FK_CpTimeZone_CpTerm">
+          <End Type="chappyModel.CpTerm" Role="CpTerm" Multiplicity="1" />
+          <End Type="chappyModel.CpTimeZone" Role="CpTimeZone" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CpScheduleDetail">
+            <Principal Role="CpTerm">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="CpScheduleDetail1">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="CpSchedule">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="DateTime" Name="StartDate" Precision="0" />
-          <Property Type="DateTime" Name="EndDate" Precision="0" />
-          <NavigationProperty Name="CpScheduleDetails" Relationship="chappyModel.FK_CpScheduleDetail_CpSchedule" FromRole="CpSchedule" ToRole="CpScheduleDetail" />
-        </EntityType>
-        <Association Name="FK_CpScheduleDetail_CpSchedule">
-          <End Type="chappyModel.CpSchedule" Role="CpSchedule" Multiplicity="1" />
-          <End Type="chappyModel.CpScheduleDetail" Role="CpScheduleDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CpSchedule">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CpScheduleDetail">
-              <PropertyRef Name="ScheduleID" />
+            <Dependent Role="CpTimeZone">
+              <PropertyRef Name="TermID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -853,7 +1431,7 @@
               <MappingFragment StoreEntitySet="CpClassStaff">
                 <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="TanninId" ColumnName="TanninId" />
+                <ScalarProperty Name="TermId" ColumnName="TermId" />
                 <ScalarProperty Name="NumberOfStaff" ColumnName="NumberOfStaff" />
                 <ScalarProperty Name="StaffId6" ColumnName="StaffId6" />
                 <ScalarProperty Name="StaffId5" ColumnName="StaffId5" />
@@ -900,9 +1478,9 @@
           <EntitySetMapping Name="CpGroups">
             <EntityTypeMapping TypeName="chappyModel.CpGroup">
               <MappingFragment StoreEntitySet="CpGroup">
-                <ScalarProperty Name="ListStaffId" ColumnName="ListStaffId" />
                 <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="ListStaffId" ColumnName="ListStaffId" />
                 <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
@@ -934,11 +1512,35 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CpSchedules">
+            <EntityTypeMapping TypeName="chappyModel.CpSchedule">
+              <MappingFragment StoreEntitySet="CpSchedule">
+                <ScalarProperty Name="Chosen" ColumnName="Chosen" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="TermID" ColumnName="TermID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CpScheduleDetails">
+            <EntityTypeMapping TypeName="chappyModel.CpScheduleDetail">
+              <MappingFragment StoreEntitySet="CpScheduleDetail">
+                <ScalarProperty Name="TimezoneID" ColumnName="TimezoneID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CpSchools">
             <EntityTypeMapping TypeName="chappyModel.CpSchool">
               <MappingFragment StoreEntitySet="CpSchools">
                 <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="LimitHour" ColumnName="LimitHour" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UsePass" ColumnName="UsePass" />
                 <ScalarProperty Name="HomePage" ColumnName="HomePage" />
@@ -961,6 +1563,12 @@
           <EntitySetMapping Name="CpStaffs">
             <EntityTypeMapping TypeName="chappyModel.CpStaff">
               <MappingFragment StoreEntitySet="CpStaff">
+                <ScalarProperty Name="notCombiStaffs" ColumnName="notCombiStaffs" />
+                <ScalarProperty Name="hodidayNumber" ColumnName="hodidayNumber" />
+                <ScalarProperty Name="holidayFrom" ColumnName="holidayFrom" />
+                <ScalarProperty Name="useBus" ColumnName="useBus" />
+                <ScalarProperty Name="experienceType" ColumnName="experienceType" />
+                <ScalarProperty Name="experienceYears" ColumnName="experienceYears" />
                 <ScalarProperty Name="EmerencyTel" ColumnName="EmerencyTel" />
                 <ScalarProperty Name="EmerencyAddress2" ColumnName="EmerencyAddress2" />
                 <ScalarProperty Name="EmerencyAddress1" ColumnName="EmerencyAddress1" />
@@ -1015,18 +1623,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CpTannins">
-            <EntityTypeMapping TypeName="chappyModel.CpTannin">
-              <MappingFragment StoreEntitySet="CpTannin">
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CpTerms">
             <EntityTypeMapping TypeName="chappyModel.CpTerm">
               <MappingFragment StoreEntitySet="CpTerm">
@@ -1056,9 +1652,19 @@
                 <ScalarProperty Name="Color" ColumnName="Color" />
                 <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TermID" ColumnName="TermID" />
                 <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="chappyModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Requests" ColumnName="Requests" />
+                <ScalarProperty Name="Rsvp" ColumnName="Rsvp" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1068,38 +1674,6 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="chappyModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CpScheduleDetails">
-            <EntityTypeMapping TypeName="chappyModel.CpScheduleDetail">
-              <MappingFragment StoreEntitySet="CpScheduleDetail">
-                <ScalarProperty Name="TimezoneID" ColumnName="TimezoneID" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
-                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
-                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CpSchedules">
-            <EntityTypeMapping TypeName="chappyModel.CpSchedule">
-              <MappingFragment StoreEntitySet="CpSchedule">
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

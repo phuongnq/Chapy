@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace Chapy
 {
     public partial class FrmBuilding : Form
     {
-        chapyEntities db = new chapyEntities();
+        chapyEntities db = new chapyEntities(VariableGlobal.connectionString);
 
         public FrmBuilding()
         {
@@ -21,9 +22,19 @@ namespace Chapy
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            
+            Thread thread = new Thread(new ThreadStart(ShowBuildingList)); //Tạo luồng mới
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start(); //Khởi chạy luồng
+            this.Close(); //đóng Form hiện tại. (Form1)
+        }
+
+        private void ShowBuildingList()
+        {
+            
             FrmBuildingList list_building = new FrmBuildingList();
-            list_building.Show();
+            list_building.ShowDialog();
+
         }
 
         private void btn_Register_Click(object sender, EventArgs e)
@@ -32,7 +43,7 @@ namespace Chapy
             {
                 //check data exit in database?
                 string code = txt_Code.Text;
-                var cp_building = (from bd in db.CpBuildings where bd.Code == code select bd).SingleOrDefault();
+                var cp_building = (from bd in db.CpBuildings where bd.Code == code && bd.SchoolId == VariableGlobal.school_id select bd).SingleOrDefault();
                 if (cp_building == null)
                 {
                     CpBuilding building_obj_new = new CpBuilding();
@@ -130,7 +141,7 @@ namespace Chapy
 
         private void loadBuildingEdit()
         {
-            var obi_building = (from bd in db.CpBuildings where bd.Id == VariableGlobal.building_id select bd).Single();
+            var obi_building = (from bd in db.CpBuildings where bd.Id == VariableGlobal.building_id && bd.SchoolId == VariableGlobal.school_id select bd).Single();
             if (obi_building != null)
             {
                 txt_Code.Text = obi_building.Code.ToString();
@@ -151,7 +162,7 @@ namespace Chapy
             {
                 //check db school_code is exits?
                 string code = txt_Code.Text;
-                var cp_buidings = (from bd in db.CpBuildings where bd.Code == code select bd).SingleOrDefault();
+                var cp_buidings = (from bd in db.CpBuildings where bd.Code == code && bd.SchoolId == VariableGlobal.school_id select bd).SingleOrDefault();
                 if (cp_buidings != null)
                 {
                    // txt_Code.Text = cp_buidings.Code.ToString();
@@ -189,7 +200,7 @@ namespace Chapy
         private void txt_Code_KeyPress(object sender, KeyPressEventArgs e)
         {
             char keypress = e.KeyChar;
-            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back))
+            if (char.IsDigit(keypress) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 13)
             {
 
             }
@@ -198,6 +209,28 @@ namespace Chapy
                 MessageBox.Show("You Can Only Enter A Number!");
                 e.Handled = true;
             }
+        }
+
+        private void FrmBuilding_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == System.Windows.Forms.Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void txt_Code_Leave(object sender, EventArgs e)
+        {
+            txt_Code.Text = makeCodeParam(txt_Code.Text.Trim());
+        }
+
+        string makeCodeParam(string code)
+        {
+            while (code.Length < 2)
+            {
+                code = "0" + code;
+            }
+            return code;
         }
 
     }

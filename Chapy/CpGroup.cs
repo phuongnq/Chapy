@@ -19,8 +19,10 @@ namespace Chapy
         public string Code { get; set; }
         public string Name { get; set; }
         public string Abbreviation { get; set; }
+        public string ListStaffId { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
-        public string ListStaffId { get; set; }
+    
+        public virtual CpSchool CpSchool { get; set; }
     }
 }

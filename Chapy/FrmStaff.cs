@@ -42,6 +42,34 @@ namespace Chapy
 
         }
 
+        private void FrmStaff_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == System.Windows.Forms.Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void buttonX2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonX3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonX6_Click(object sender, EventArgs e)
+        {
+
+        }
+
         
     }
 }

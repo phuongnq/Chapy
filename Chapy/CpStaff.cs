@@ -14,6 +14,11 @@ namespace Chapy
     
     public partial class CpStaff
     {
+        public CpStaff()
+        {
+            this.CpScheduleDetails = new HashSet<CpScheduleDetail>();
+        }
+    
         public int Id { get; set; }
         public string Code { get; set; }
         public int StaffTypeId { get; set; }
@@ -40,8 +45,15 @@ namespace Chapy
         public string EmerencyAddress1 { get; set; }
         public string EmerencyAddress2 { get; set; }
         public string EmerencyTel { get; set; }
+        public Nullable<int> experienceYears { get; set; }
+        public string experienceType { get; set; }
+        public Nullable<byte> useBus { get; set; }
+        public Nullable<System.DateTime> holidayFrom { get; set; }
+        public Nullable<int> hodidayNumber { get; set; }
+        public string notCombiStaffs { get; set; }
     
         public virtual CpPosition CpPosition { get; set; }
+        public virtual ICollection<CpScheduleDetail> CpScheduleDetails { get; set; }
         public virtual CpSchool CpSchool { get; set; }
         public virtual CpStaffType CpStaffType { get; set; }
     }
